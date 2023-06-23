@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg bg-light bg-light p-2">
+  <a class="navbar-brand" href="/"><img class="logo-sm img-fluid" src="/images/logo.png" alt="logo">Project 2</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    {{#if isAuthenticated}}
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item active ms-auto">
+        <a class="nav-link" href="/">Dashboard</span></a>
+      </li>
+      <li class="nav-item ms-auto">
+        <button id="logout" class="nav-link nav-btn">Logout</button>
+      </li>
+    </ul>
+    {{ else}}
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item active ms-auto">
+        <a class="nav-link" href="/login">Login</span></a>
+      </li>
+      <li class="nav-item ms-auto">
+        <a class="nav-link" href="/register">Signup</span></a>
+      </li>
+    </ul>
+    {{/if}}
+</nav>

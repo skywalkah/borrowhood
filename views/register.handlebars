@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+      <form id="registration-form"
+        class="registration-form shadow p-4 my-5 mx-auto bg-body rounded w-75 requires-validation" novalidate>
+        <div class="d-flex justify-content-center">
+          <img src="images/logo.png" />
+        </div>
+        <h2 class="text-center">Register</h2>
+        <div>
+          <label for="firstName" class="col-form-label">First Name</label>
+          <div class="input-group has-validation">
+            <input type="text" class="form-control" id="firstName" required>
+            <div class="invalid-feedback">Please enter a first name</div>
+          </div>
+        </div>
+        <div>
+          <label for="lastName" class="col-form-label">Last Name</label>
+          <div class="input-group has-validation">
+            <input type="text" class="form-control" id="lastName" required>
+            <div class="invalid-feedback">Please enter a last name</div>
+          </div>
+        </div>
+        <div>
+          <label for="email" class="col-form-label">Email</label>
+          <div class="input-group has-validation">
+            <input type="email" class="form-control" id="email" required>
+            <div class="invalid-feedback">Please enter an email</div>
+          </div>
+        </div>
+        <div>
+          <label for="password" class="col-form-label">Password</label>
+          <div class="input-group has-validation">
+            <input type="password" class="form-control" id="password" required>
+            <div class="invalid-feedback">Please enter a password</div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg w-100 mt-4 p-3">Submit</button>
+        <p class="text-center mt-3 mb-0">Already have an account? <a href="/login">Login here</a></p>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="js/register.js"></script>

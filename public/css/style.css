@@ -1,5 +1,18 @@
+:root { 
+  --primary:#;
+  --secondary: #;
+  --highlights: #; 
+}
+
+* {
+  margin: 0;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
 body {
-  background-color: #eeeeee;
+  background-color:;
+  padding: 5px;
 }
 
 .logo-sm {
@@ -7,8 +20,14 @@ body {
   height: 50px;
 }
 
-.nav-btn {
+.navbar-btn {
+  margin-left: 2.5rem;
   background: none !important;
   border: none;
   cursor: pointer;
+}
+
+.logo {
+  height: 4.5rem;
+  width: auto;
 }

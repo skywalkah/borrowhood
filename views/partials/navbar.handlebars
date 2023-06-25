@@ -1,27 +1,34 @@
-<nav class="navbar navbar-expand-lg bg-light bg-light p-2">
-  <a class="navbar-brand" href="/"><img class="logo-sm img-fluid" src="/images/logo.png" alt="logo">Borrowhood</a>
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+<div class="navbar bg-base-100">
+  <div class="navbar-start">
+    <div class="dropdown">
+      {{#if isAuthenticated}}
+      <label tabindex="0" class="btn btn-ghost btn-circle">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-35 w-35" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+      </label>
+      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+        <li><a>Profile</a></li>
+        <li><a>Borrow</a></li>
+        <li><a>Return</a></li>
+      </ul>
+      {{ else}}
+      {{/if}}
+    </div>
+  </div>
+  
+  <div class="navbar-center">
+    <a href="/">
+<img src="images/borrowhoodlogo.png" class="logo" alt="logo"></a>
+  </div>
+  <div class="navbar-end">
     {{#if isAuthenticated}}
-    <ul class="navbar-nav ms-auto">
-      <li class="nav-item active ms-auto">
-        <a class="nav-link" href="/">Dashboard</span></a>
-      </li>
-      <li class="nav-item ms-auto">
-        <button id="logout" class="nav-link nav-btn">Logout</button>
-      </li>
-    </ul>
-    {{ else}}
-    <ul class="navbar-nav ms-auto">
-      <li class="nav-item active ms-auto">
-        <a class="nav-link" href="/login">Login</span></a>
-      </li>
-      <li class="nav-item ms-auto">
-        <a class="nav-link" href="/register">Sign Up</span></a>
-      </li>
-    </ul>
+     {{ else}}
+    <button class="btn btn-ghost btn-circle navbar-btn" >
+      <a role="button" class="btn" href="/login">Login</a>
+    </button>
+    <button class="btn btn-ghost btn-circle navbar-btn">
+      <a role="button" class="btn" href="/register">Signup</a>
+    </button>
     {{/if}}
+  </div>
+</div>
 </nav>

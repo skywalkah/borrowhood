@@ -1,9 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [],
-  prefix: 'tw-',
+  content: ['views/layouts/main.handlebars', 'views/*.handlebars', 'views/partials/*.handlebars'],
   theme: {
     extend: {},
   },
-  plugins: [require('daisyui')],
-};
+  plugins: [],
+}

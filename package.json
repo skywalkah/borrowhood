@@ -4,7 +4,7 @@
   "description": "starter template for project 2",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js",
+    "dev": "tailwindcss build -o public/css/tailwind.css && nodemon server.js",
     "seed": "node seeds",
     "lint": "eslint --fix --ext .js .",
     "test": "test"

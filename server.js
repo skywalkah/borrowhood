@@ -32,7 +32,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
-
 const force = process.env.FORCE_SYNC === 'true';
 
 sequelize.sync({ force }).then(() => {

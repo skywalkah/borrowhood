@@ -1,18 +1,18 @@
 :root { 
-  --primary:#;
-  --secondary: #;
-  --highlights: #; 
+  --primary:#f5f2f2;
+  --secondary: #43a6bf;
+  --highlights: #77b664; 
 }
 
 * {
   margin: 0;
-  padding: 5px;
+  padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  background-color:#31a5fd;
-  padding: 5px;
+  background-color: var(--primary);
+  min-height: 100vh;
 }
 
 .logo-sm {
@@ -20,8 +20,16 @@ body {
   height: 50px;
 }
 
+/*  Navbar Styling  */
+.navbar {
+  padding: 25px;
+  background-color: var(--primary);
+  border-bottom: solid 1px var(--secondary);
+  /* will remove bottom border later on, it's here for now as a reference */
+}
 .navbar-btn {
   margin-left: 2.5rem;
+  padding: 5px;
   background: none !important;
   border: none;
   cursor: pointer;
@@ -30,4 +38,29 @@ body {
 .logo {
   height: 4.5rem;
   width: auto;
+}
+
+.welcome {
+  font-size: 20px;
+}
+
+/* Chat Styling */
+.chat {
+  padding: 80px;
+}
+
+.chat-bubble {
+  background-color: var(--highlights);
+}
+
+.chat-start {
+  margin-bottom: -80px;
+}
+
+/* Foot Styling */
+footer {
+  position:absolute; 
+  background-color: var(--secondary);
+  bottom: 0;
+  width: 100%;
 }

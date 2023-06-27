@@ -639,11 +639,6 @@ video {
   border-radius: 0.25rem;
 }
 
-.bg-sky-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(14 165 233 / var(--tw-bg-opacity));
-}
-
 .p-2 {
   padding: 0.5rem;
 }

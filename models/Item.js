@@ -3,8 +3,12 @@ const sequelize = require('../db/config');
 
 class Item extends Model {
   static associate(models) {
-    Item.hasMany(models.Comment, {
+    Item.hasMany(models.Review, {
       foreignKey: 'item_id',
+      onDelete: 'CASCADE',
+    });
+    Item.belongsTo(models.User, {
+      foreignKey: 'user_id',
       onDelete: 'CASCADE',
     });
   }
@@ -31,7 +35,7 @@ Item.init(
       allowNull: false,
     },
     user_id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       references: {
         model: 'user',
         key: 'id',
@@ -41,7 +45,8 @@ Item.init(
   {
     sequelize,
     freezeTableName: true,
-    modelName: 'Item',
+    underscored: true,
+    modelName: 'item',
   }
 );
 

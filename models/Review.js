@@ -21,14 +21,14 @@ Review.init(
       defaultValue: DataTypes.NOW,
     },
     user_id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       references: {
         model: 'user',
         key: 'id',
       },
     },
     item_id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       references: {
         model: 'item',
         key: 'id',

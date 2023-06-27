@@ -1,17 +1,17 @@
 [
   {
     "review_text": "I love this shovel! 10/10 would recommend.",
-    "user_id": "1",
+    "user_id": "3",
     "item_id": "1"
   },
   {
     "review_text": "This wheelbarrow is awesome!",
-    "user_id": "2",
+    "user_id": "1",
     "item_id": "2"
   },
   {
     "review_text": "I fell from this ladder! Don't recommend.",
-    "user_id": "3",
+    "user_id": "1",
     "item_id": "3"
   }
 ]

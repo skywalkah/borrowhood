@@ -7,6 +7,13 @@ class User extends Model {
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
   }
+
+  static associate(models) {
+    User.hasMany(models.Comment, {
+      foreignKey: 'user_id',
+      onDelete: 'CASCADE',
+    });
+  }
 }
 
 User.init(

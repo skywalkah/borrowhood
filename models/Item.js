@@ -17,10 +17,10 @@ class Item extends Model {
 Item.init(
   {
     id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
+      autoIncrement: true,
     },
     item_name: {
       type: DataTypes.STRING,
@@ -35,7 +35,7 @@ Item.init(
       allowNull: false,
     },
     user_id: {
-      type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
       references: {
         model: 'user',
         key: 'id',

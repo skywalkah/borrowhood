@@ -19,7 +19,7 @@
     "express-handlebars": "^6.0.6",
     "express-session": "^1.17.3",
     "mysql2": "^2.3.3",
-    "sequelize": "^6.25.3"
+    "sequelize": "^6.32.1"
   },
   "devDependencies": {
     "daisy": "^0.1.7",

@@ -57,6 +57,15 @@ body {
   margin-bottom: -80px;
 }
 
+.forms {
+  margin: auto;
+  width: 40%;
+  margin-top: 55px;
+}
+
+button .forms {
+  background-color: none !important ;
+}
 /* Foot Styling */
 footer {
   position:absolute; 

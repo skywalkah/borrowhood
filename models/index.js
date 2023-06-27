@@ -1,6 +1,6 @@
 const User = require('./User');
-const Review = require('./Review');
 const Item = require('./Item');
+const Review = require('./Review');
 
 User.hasMany(Item, { foreignKey: 'user_id', onDelete: 'CASCADE' });
 Item.belongsTo(User, { foreignKey: 'user_id' });
@@ -10,6 +10,6 @@ Review.belongsTo(Item, { foreignKey: 'item_id' });
 
 module.exports = {
   User,
-  Review,
   Item,
+  Review,
 };

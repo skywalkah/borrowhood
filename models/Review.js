@@ -27,10 +27,10 @@ Review.init(
         key: 'id',
       },
     },
-    post_id: {
+    item_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'blogpost',
+        model: 'item',
         key: 'id',
       },
     },

@@ -1,29 +1,30 @@
 <div class='container forms'>
-   <div class="relative flex flex-col justify-center h-screen overflow-hidden">
-        <div class="p-6 m-auto rounded-md shadow-md lg:max-w-lg">
-            <form class="space-y-4">
+   <div class='relative flex-col justify-center h-screen overflow-hidden'>
+        <div class='p-6 rounded-md shadow-md lg:max-w-lg'>
+            <form id='login-form' class='login-form space-y-4 requires-validation' novalidate>
+              <div id='login-alert'></div>
                 <div>
-                    <label for="email" class="label">
-                        <span class="text-base label-text">Email</span>
+                    <label for='email' class='label'>
+                        <span class='text-base label-text'>Email</span>
                     </label>
                     <div class='input-group has-validation'>
-                      <input type="email" placeholder="Email Address" class="w-full input input-bordered input-primary" id="email" required/>
+                      <input type='email' placeholder='Email Address' class='w-full input input-bordered input-primary' id='email' required/>
                     </div>
                 </div>
                 <div>
-                    <label for="password" class="label">
-                        <span class="text-base label-text">Password</span>
+                    <label for='password' class='label'>
+                        <span class='text-base label-text'>Password</span>
                     </label>
                     <div class='input-group has-validation'>
-                      <input type="password" placeholder="Enter Password"
-                        class="w-full input input-bordered input-primary" id="password" required/>
+                      <input type='password' placeholder='Enter Password'
+                        class='w-full input input-bordered input-primary' id='password' required/>
                     </div>
                 </div>
                 <div>
-                    <button class="btn btn-primary mt-4">Login</button>
+                    <button type='submit' class='btn mt-4 login-btn'>Login</button>
                 </div>
                 <p class='text-center mt-3 mb-0'>Don't have an account? 
-                  <a class='link link-hover text-primary' a href='/register'>Register here</a></p>
+                  <a class='link link-hover register-link' a href='/register'>Register here</a></p>
             </form>
         </div>
     </div>

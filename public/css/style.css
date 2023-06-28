@@ -2,6 +2,7 @@
   --primary:#f5f2f2;
   --secondary: #43a6bf;
   --highlights: #77b664; 
+  --text: black; 
 }
 
 * {
@@ -33,6 +34,7 @@ body {
   background: none !important;
   border: none;
   cursor: pointer;
+  border-color: var(--secondary);
 }
 
 .logo {
@@ -44,6 +46,10 @@ body {
   font-size: 20px;
 }
 
+.welcome {
+  color: var(--text);
+}
+
 /* Chat Styling */
 .chat {
   padding: 80px;
@@ -51,10 +57,34 @@ body {
 
 .chat-bubble {
   background-color: var(--highlights);
+  color: var(--primary);
 }
 
 .chat-start {
   margin-bottom: -80px;
+}
+
+/* Form Styling */
+.forms {
+  margin: auto;
+  width: 40%;
+}
+
+button .forms {
+  background-color: none !important ;
+}
+
+.login-btn {
+  border-color: var(--secondary);
+}
+
+.input-group  > :last-child{
+  border-color: var(--secondary);
+  border-radius: var(--rounded-btn, 0.5rem);
+}
+
+.register-link {
+  color: var(--secondary);
 }
 
 /* Foot Styling */

@@ -9,7 +9,7 @@ class User extends Model {
   }
 
   static associate(models) {
-    User.hasMany(models.Review, {
+    User.hasMany(models.Item, {
       foreignKey: 'user_id',
       onDelete: 'CASCADE',
     });

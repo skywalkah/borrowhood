@@ -1,10 +1,11 @@
 const router = require('express').Router();
-const { UserController } = require('../../controllers');
 
-const isAuthenticated = require('../../middleware/isAuthenticated');
+const userRoutes = require('./user-routes');
+const itemRoutes = require('./item-routes');
+const reviewRoutes = require('./review-routes');
 
-router.post('/register', UserController.register);
-router.post('/login', UserController.login);
-router.post('/logout', isAuthenticated, UserController.logout);
+router.use('/', userRoutes);
+router.use('/items', itemRoutes);
+router.use('/reviews', reviewRoutes);
 
 module.exports = router;

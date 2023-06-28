@@ -7,15 +7,22 @@ class User extends Model {
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
   }
+
+  static associate(models) {
+    User.hasMany(models.Item, {
+      foreignKey: 'user_id',
+      onDelete: 'CASCADE',
+    });
+  }
 }
 
 User.init(
   {
     id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
+      autoIncrement: true,
     },
     firstName: {
       type: DataTypes.STRING,
@@ -37,7 +44,7 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [7],
+        len: [8],
       },
     },
   },
@@ -57,8 +64,9 @@ User.init(
       },
     },
     sequelize,
+    freezeTableName: true,
     underscored: true,
-    modelName: 'User',
+    modelName: 'user',
   }
 );
 

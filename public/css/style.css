@@ -3,6 +3,7 @@
   --secondary: #43a6bf;
   --highlights: #77b664; 
   --text: black; 
+  --lawn: green;
 }
 
 * {
@@ -85,6 +86,30 @@ button .forms {
 
 .register-link {
   color: var(--secondary);
+}
+
+/* Dashboard Styling */
+
+.welcome-text {
+  color: var(--text);
+  font-size: xx-large;
+  font-weight: bold;
+}
+
+.item-card {
+  margin: auto;
+  width: 70%;
+  margin-top: 1rem;
+}
+
+.dash-card-title {
+  font-size: xx-large;
+  margin-bottom: 1rem;
+}
+
+.dash-card-text {
+  font-size: large;
+  margin-bottom: 1rem;
 }
 
 /* Foot Styling */

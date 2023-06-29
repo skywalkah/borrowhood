@@ -34,7 +34,6 @@ body {
   background: none !important;
   border: none;
   cursor: pointer;
-  border-color: var(--secondary);
 }
 
 .logo {
@@ -44,9 +43,6 @@ body {
 
 .welcome {
   font-size: 20px;
-}
-
-.welcome {
   color: var(--text);
 }
 
@@ -67,8 +63,10 @@ body {
 /* Form Styling */
 .forms {
   margin: auto;
+  margin-top: 3.5rem;
   width: 40%;
 }
+
 
 button .forms {
   background-color: none !important ;

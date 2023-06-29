@@ -88,15 +88,21 @@ button .forms {
 .input-group  > :last-child{
   border-color: var(--secondary);
   border-radius: var(--rounded-btn, 0.5rem);
+  background-color: white !important;
 }
 
-.register-link {
+.input-primary {
+  border-color: var(--secondary);
+  border-radius: var(--rounded-btn, 0.5rem);
+  background-color: white !important;
+}
+
+.form-link {
   color: var(--secondary);
 }
 
 /* Foot Styling */
 footer {
-  position:absolute; 
   background-color: var(--secondary);
   bottom: 0;
   width: 100%;

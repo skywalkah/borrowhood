@@ -35,7 +35,10 @@ body {
   background: none !important;
   border: none;
   cursor: pointer;
-  border-color: var(--secondary);
+}
+
+.burger :hover {
+  background-color: none !important;
 }
 
 .logo {
@@ -45,9 +48,6 @@ body {
 
 .welcome {
   font-size: 20px;
-}
-
-.welcome {
   color: var(--text);
 }
 
@@ -65,11 +65,18 @@ body {
   margin-bottom: -80px;
 }
 
+.btn {
+  background-color: var(--primary);
+}
+
 /* Form Styling */
+
 .forms {
   margin: auto;
+  margin-top: 3.5rem;
   width: 40%;
 }
+
 
 button .forms {
   background-color: none !important ;
@@ -118,4 +125,8 @@ footer {
   background-color: var(--secondary);
   bottom: 0;
   width: 100%;
+}
+
+footer .text {
+  color: var(--text); 
 }

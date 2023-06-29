@@ -33,6 +33,7 @@
   {{> navbar isAuthenticated=this.isAuthenticated }}
   {{!-- {{> toast}} --}} {{!-- also leaving this commented out for now since this file still needs formatting, we many not need it as it is right now --}}
   {{{ body }}}
+  {{> footer }}
   {{#if isAuthenticated}}
   <script src='/js/logout.js'></script>
   {{/if}}
@@ -55,20 +56,5 @@
     })()
   </script>
 </body>
-
-<footer class='footer footer-center p-5'>
-  <div class='grid grid-flow-col gap-4'>
-    <a class='link link-hover'>About Us</a> 
-    <a class='link link-hover'>Contact Us</a> 
-  </div> 
-  <div>
-    <div class='grid grid-flow-col gap-4'>
-      <a href='https://github.com/skywalkah/borrowhood'  target='_blank'><i class='fa fa-github' style='font-size:30px;'></i></a>
-    </div>
-  </div> 
-  <div>
-    <p>Copyright © 2023 - All right reserved by borrowHood</p>
-  </div>
-</footer>
 
 </html>

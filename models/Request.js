@@ -1,39 +1,26 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../db/config');
 
-class Review extends Model {
+class Request extends Model {
   static associate(models) {
-    Review.belongsTo(models.Item, {
+    Request.belongsTo(models.User, {
+      foreignKey: 'user_id',
+      onDelete: 'CASCADE',
+    });
+    Request.belongsTo(models.Item, {
       foreignKey: 'item_id',
       onDelete: 'CASCADE',
     });
   }
 }
 
-Review.init(
+Request.init(
   {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
-    },
-    review_text: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
-    rating: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        min: 1,
-        max: 5,
-      },
-    },
-    date_created: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
     },
     item_id: {
       type: DataTypes.INTEGER,
@@ -42,13 +29,24 @@ Review.init(
         key: 'id',
       },
     },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'user',
+        key: 'id',
+      },
+    },
+    request_status: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
   {
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'review',
+    modelName: 'request',
   }
 );
 
-module.exports = Review;
+module.exports = Request;

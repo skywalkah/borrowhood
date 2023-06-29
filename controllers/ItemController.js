@@ -1,4 +1,4 @@
-const { Item, Review } = require('../models');
+const { Item, Review, User } = require('../models');
 
 const ItemController = {
   // Get all items
@@ -29,6 +29,30 @@ const ItemController = {
 
       return res.json(item);
     } catch (err) {
+      return res.status(500).json(err);
+    }
+  },
+
+  // Get my items (the logged in user)
+  getMyItems: async (req, res) => {
+    try {
+      const currentUser = req.session.currentUser; // Modify this according to your authentication mechanism
+
+      const user = await User.findByPk(currentUser.id, {
+        attributes: { exclude: ['password'] },
+        include: {
+          model: Item,
+          as: 'items',
+        },
+      });
+
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+
+      return res.json(user.items);
+    } catch (err) {
+      console.error(err);
       return res.status(500).json(err);
     }
   },
@@ -77,9 +101,24 @@ const ItemController = {
   // Create a new item
   createItem: async (req, res) => {
     try {
-      const newItem = await Item.create(req.body);
-      return res.json(newItem);
+      const { item_name, item_description, item_condition } = req.body;
+
+      // Get the logged-in user from the session or authentication middleware
+      const currentUser = req.session.currentUser; // Modify this according to your authentication mechanism
+
+      // Create the item associated with the logged-in user
+      await Item.create({
+        item_name,
+        item_description,
+        item_condition,
+        user_id: currentUser.id, // Set the user_id to the ID of the logged-in user
+      });
+
+      return res
+        .status(201)
+        .json({ message: `Nice! ${item_name} added successfully` });
     } catch (err) {
+      console.error(err);
       return res.status(500).json(err);
     }
   },

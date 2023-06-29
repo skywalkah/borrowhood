@@ -3,12 +3,16 @@ const sequelize = require('../db/config');
 
 class Item extends Model {
   static associate(models) {
+    Item.belongsTo(models.User, {
+      foreignKey: 'user_id',
+      onDelete: 'CASCADE',
+    });
     Item.hasMany(models.Review, {
       foreignKey: 'item_id',
       onDelete: 'CASCADE',
     });
-    Item.belongsTo(models.User, {
-      foreignKey: 'user_id',
+    Item.hasMany(models.Request, {
+      foreignKey: 'item_id',
       onDelete: 'CASCADE',
     });
   }
@@ -33,6 +37,18 @@ Item.init(
     item_condition: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    is_available: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true,
+    },
+    borrowed_by: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'user',
+        key: 'id',
+      },
     },
     user_id: {
       type: DataTypes.INTEGER,

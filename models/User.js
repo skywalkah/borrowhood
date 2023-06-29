@@ -13,6 +13,14 @@ class User extends Model {
       foreignKey: 'user_id',
       onDelete: 'CASCADE',
     });
+    User.hasMany(models.Item, {
+      foreignKey: 'user_id',
+      as: 'items',
+    });
+    User.hasMany(models.Request, {
+      foreignKey: 'user_id',
+      onDelete: 'CASCADE',
+    });
   }
 }
 

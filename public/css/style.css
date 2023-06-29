@@ -121,7 +121,6 @@ button .forms {
 
 /* Foot Styling */
 footer {
-  position:absolute; 
   background-color: var(--secondary);
   bottom: 0;
   width: 100%;

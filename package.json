@@ -7,7 +7,8 @@
     "dev": "tailwindcss build -o public/css/tailwind.css && nodemon server.js",
     "seed": "node seeds",
     "lint": "eslint --fix --ext .js .",
-    "test": "test"
+    "test": "test",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",

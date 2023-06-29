@@ -1,0 +1,17 @@
+[
+  {
+    "item_id": 1,
+    "user_id": 2,
+    "request_status": "pending"
+  },
+  {
+    "item_id": 2,
+    "user_id": 3,
+    "request_status": "approved"
+  },
+  {
+    "item_id": 3,
+    "user_id": 1,
+    "request_status": "rejected"
+  }
+]

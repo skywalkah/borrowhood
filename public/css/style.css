@@ -1,5 +1,20 @@
+:root { 
+  --primary:#f5f2f2;
+  --secondary: #43a6bf;
+  --highlights: #77b664; 
+  --text: black; 
+  --lawn: green;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background-color: #eeeeee;
+  background-color: var(--primary);
+  min-height: 100vh;
 }
 
 .logo-sm {
@@ -7,8 +22,110 @@ body {
   height: 50px;
 }
 
-.nav-btn {
+/*  Navbar Styling  */
+.navbar {
+  padding: 25px;
+  background-color: var(--primary);
+  border-bottom: solid 1px var(--secondary);
+  /* will remove bottom border later on, it's here for now as a reference */
+}
+.navbar-btn {
+  margin-left: 2.5rem;
+  padding: 5px;
   background: none !important;
   border: none;
   cursor: pointer;
+}
+
+.burger :hover {
+  background-color: none !important;
+}
+
+.logo {
+  height: 4.5rem;
+  width: auto;
+}
+
+.welcome {
+  font-size: 20px;
+  color: var(--text);
+}
+
+/* Chat Styling */
+.chat {
+  padding: 80px;
+}
+
+.chat-bubble {
+  background-color: var(--highlights);
+  color: var(--primary);
+}
+
+.chat-start {
+  margin-bottom: -80px;
+}
+
+.btn {
+  background-color: var(--primary);
+}
+
+/* Form Styling */
+
+.forms {
+  margin: auto;
+  margin-top: 3.5rem;
+  width: 40%;
+}
+
+
+button .forms {
+  background-color: none !important ;
+}
+
+.login-btn {
+  border-color: var(--secondary);
+}
+
+.input-group  > :last-child{
+  border-color: var(--secondary);
+  border-radius: var(--rounded-btn, 0.5rem);
+}
+
+.register-link {
+  color: var(--secondary);
+}
+
+/* Dashboard Styling */
+
+.welcome-text {
+  color: var(--text);
+  font-size: xx-large;
+  font-weight: bold;
+}
+
+.item-card {
+  margin: auto;
+  width: 70%;
+  margin-top: 1rem;
+}
+
+.dash-card-title {
+  font-size: xx-large;
+  margin-bottom: 1rem;
+}
+
+.dash-card-text {
+  font-size: large;
+  margin-bottom: 1rem;
+}
+
+/* Foot Styling */
+footer {
+  background-color: var(--secondary);
+  bottom: 0;
+  width: 100%;
+}
+
+footer .text {
+  color: var(--text); 
 }

@@ -4,7 +4,7 @@
   "description": "starter template for project 2",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js",
+    "dev": "tailwindcss build -o public/css/tailwind.css && nodemon server.js",
     "seed": "node seeds",
     "lint": "eslint --fix --ext .js .",
     "test": "test"
@@ -12,21 +12,23 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.1.0",
+    "bcrypt": "^5.0.1",
     "connect-session-sequelize": "^7.1.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-handlebars": "^6.0.6",
     "express-session": "^1.17.3",
     "mysql2": "^2.3.3",
-    "sequelize": "^6.25.3"
+    "sequelize": "^6.32.1"
   },
   "devDependencies": {
+    "daisy": "^0.1.7",
     "eslint": "^8.27.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "nodemon": "^2.0.20",
-    "prettier": "2.8.8"
+    "nodemon": "^2.0.22",
+    "prettier": "2.8.8",
+    "tailwindcss": "^3.3.2"
   }
 }

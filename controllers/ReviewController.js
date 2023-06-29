@@ -64,7 +64,7 @@ const ReviewController = {
         },
       });
       if (!result) return res.status(404).json({ message: 'Review not found' });
-      res.status(200).json({ message: 'Bye bye review!' });
+      res.status(200).json({ message: 'Bye bye review! Biased much?' });
     } catch (err) {
       return res.status(500).json(err);
     }

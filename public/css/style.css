@@ -36,6 +36,10 @@ body {
   cursor: pointer;
 }
 
+.burger :hover {
+  background-color: none !important;
+}
+
 .logo {
   height: 4.5rem;
   width: auto;
@@ -60,7 +64,12 @@ body {
   margin-bottom: -80px;
 }
 
+.btn {
+  background-color: var(--primary);
+}
+
 /* Form Styling */
+
 .forms {
   margin: auto;
   margin-top: 3.5rem;
@@ -91,4 +100,8 @@ footer {
   background-color: var(--secondary);
   bottom: 0;
   width: 100%;
+}
+
+footer .text {
+  color: var(--text); 
 }

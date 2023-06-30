@@ -1,10 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const ratingInputs = doucment.querySelectorAll('input[name="rating"]')
     const starLabels = document.querySelector('label[for^="star"]')
 
     starLables.forEach((label, index) => {
         label.addEventListener('click', async () => {
-            const rating = ratingInputs[index].value; 
+            const rating = parseInt(index) + 1; 
 
         for (let i = 0; i <= index; i++){
             starLabels[i].classList.add('selected');

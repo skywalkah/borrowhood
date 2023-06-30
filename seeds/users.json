@@ -16,5 +16,29 @@
     "lastName": "Danvers",
     "email": "captainmarvel@example.com",
     "password": "password1234"
-  }
+  },
+  {
+    "firstName": "Ron",
+    "lastName": "Swanson",
+    "email": "rswan@example.com",
+    "password": "password1234"
+  },
+  {
+    "firstName": "Micheal",
+    "lastName": "Scott",
+    "email": "thatswhatshesaid@example.com",
+    "password": "password1234"
+  },
+  {
+    "firstName": "Dwight",
+    "lastName": "Schrute",
+    "email": "beets@example.com",
+    "password": "password1234"
+  },
+  {
+    "firstName": "Dean",
+    "lastName": "Winchester",
+    "email": "iwantpie@example.com",
+    "password": "password1234"
+  },
 ]

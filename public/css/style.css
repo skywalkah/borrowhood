@@ -137,3 +137,18 @@ footer {
 footer .text {
   color: var(--text); 
 }
+
+/* About Us */
+
+.about-main {
+  background-image: url(../images/neighborhood.jpg);
+}
+
+.about-title {
+  color: var(--text);
+  font-size: xx-large;
+}
+
+.about-body {
+  color: var(--text);
+}

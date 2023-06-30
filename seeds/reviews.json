@@ -14,7 +14,73 @@
   {
     "rating": 1,
     "review_text": "I fell from this ladder! Don't recommend.",
-    "user_id": "1",
+    "user_id": "7",
     "item_id": "3"
+  },
+  {
+    "rating": 1,
+    "review_text": "I hit my thumb with this hammer!",
+    "user_id": "1",
+    "item_id": "4"
+  },
+  {
+    "rating": 5,
+    "review_text": "I cleaned my sidewalk super easily.",
+    "user_id": "7",
+    "item_id": "5"
+  },
+  {
+    "rating": 5,
+    "review_text": "I made the best brownies ever with this mixer!",
+    "user_id": "6",
+    "item_id": "6"
+  },
+  {
+    "rating": 3,
+    "review_text": "I couldn't reach what I needed to.",
+    "user_id": "3",
+    "item_id": "7"
+  },
+  {
+    "rating": 4,
+    "review_text": "Raked up my leaves perfectly but was useless to get them in a bag.",
+    "user_id": "4",
+    "item_id": "8"
+  },
+  {
+    "rating": 5,
+    "review_text": "I finished my woodworking project with this awesome miter saw.",
+    "user_id": "4",
+    "item_id": "9"
+  },
+  {
+    "rating": 4,
+    "review_text": "My bread didn't rise but it tasted great.",
+    "user_id": "6",
+    "item_id": "10"
+  },
+  {
+    "rating": 2,
+    "review_text": "The leaf blower wasn't strong enough.",
+    "user_id": "6",
+    "item_id": "12"
+  },
+  {
+    "rating": 4,
+    "review_text": "It did what I needed but was hard to hold.",
+    "user_id": "5",
+    "item_id": "13"
+  },
+  {
+    "rating": 5,
+    "review_text": "It worked perfect and I got my lawn mowed in no time.",
+    "user_id": "7",
+    "item_id": "14"
+  },
+  {
+    "rating": 3,
+    "review_text": "It worked okay but didn't vacuum up everything I needed it to.",
+    "user_id": "2",
+    "item_id": "15"
   }
 ]

@@ -11,7 +11,7 @@ const loginFormHandler = async event => {
     });
 
     if (response.ok) {
-      document.location.replace('/dashboard');
+      document.location.replace('/feed');
     } else {
       const alert = document.createElement('div');
       alert.className = 'alert alert-error';

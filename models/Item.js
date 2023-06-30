@@ -31,7 +31,7 @@ Item.init(
       allowNull: false,
     },
     item_description: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(500),
       allowNull: false,
     },
     item_condition: {

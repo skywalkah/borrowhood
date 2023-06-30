@@ -67,6 +67,7 @@ body {
 
 .btn {
   background-color: var(--primary);
+  color: var(--text);
 }
 
 /* Form Styling */

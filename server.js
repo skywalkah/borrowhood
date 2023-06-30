@@ -3,6 +3,7 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const { SafeString } = require('handlebars');
 
 const sequelize = require('./db/config');
 const routes = require('./routes');
@@ -10,7 +11,21 @@ const routes = require('./routes');
 const PORT = process.env.PORT || 3001;
 
 const app = express();
-const hbs = exphbs.create();
+const hbs = exphbs.create({
+  helpers: {
+    renderStars: rating => {
+      const stars = '&#11089;'.repeat(rating);
+      return new SafeString(stars);
+    },
+    isCurrentUserItem: (itemId, currentUserId) => {
+      return itemId === currentUserId;
+    },
+  },
+  runtimeOptions: {
+    allowProtoPropertiesByDefault: true,
+    allowProtoMethodsByDefault: true,
+  },
+});
 
 const sessionConfig = {
   secret: process.env.SESSION_SECRET,

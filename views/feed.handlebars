@@ -51,11 +51,11 @@
                 <blockquote>"{{this.review_text}}"</blockquote>
             {{/each}}
             <div class='modal-action'>
-                {{#unless (isCurrentUserItem this.id ../userId)}}
-                <button type='button' class='btn btn-primary borrow-button' data-user-id="{{../userId}}" data-item-id="{{this.id}}">Borrow</button>
-                {{else}}
-                <button type='button' class='btn btn-primary borrow-button' data-user-id="{{../userId}}" data-item-id="{{this.id}}" disabled>You own it</button>
-                {{/unless}}
+                {{#unless (isCurrentUserItem this.user_id ../userId)}}
+  <button type='button' class='btn btn-primary borrow-button' data-user-id="{{../userId}}" data-item-id="{{this.id}}">Borrow</button>
+{{else}}
+  <button type='button' class='btn btn-primary borrow-button' data-user-id="{{../userId}}" data-item-id="{{this.id}}" disabled>You own it</button>
+{{/unless}}
             </div>
             </form>
         </dialog>

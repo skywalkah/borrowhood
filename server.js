@@ -17,8 +17,8 @@ const hbs = exphbs.create({
       const stars = '&#11089;'.repeat(rating);
       return new SafeString(stars);
     },
-    isCurrentUserItem: (itemId, currentUserId) => {
-      return itemId === currentUserId;
+    isCurrentUserItem: (itemUserId, currentUserId) => {
+      return itemUserId === currentUserId;
     },
   },
   runtimeOptions: {

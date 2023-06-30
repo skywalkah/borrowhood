@@ -4,10 +4,16 @@
             <form id='registration-form' class='registration-form space-y-4 requires-validation' novalidate>
               <div id='registration-alert'></div>
                 <div>
-                    <label for='name' class='label'>
-                        <span class='text-base label-text'>Name</span>
+                    <label for='firstName' class='label'>
+                        <span class='text-base label-text'>First Name</span>
                     </label>
-                    <input type='text' placeholder='Name' class='w-full input input-bordered input-primary' id='name' required />
+                    <input type='text' placeholder='First Name' class='w-full input input-bordered input-primary' id='firstName' required />
+                </div>
+                <div>
+                    <label for='lastName' class='label'>
+                        <span class='text-base label-text'>Last Name</span>
+                    </label>
+                    <input type='text' placeholder=' Last Name' class='w-full input input-bordered input-primary' id='lastName' required />
                 </div>
                 <div>
                     <label for='email' class='label'>
@@ -26,7 +32,7 @@
                     <button type='submit' class='btn btn-block mt-4 login-btn'>Sign Up</button>
                 </div>
                 <p class='text-center mt-3 mb-0'>Already have an account? 
-                  <a class='link link-hover form-link' href='/login'> Login</a></p>
+                  <a class='link link-hover form-link' href='/login'> Log in</a></p>
             </form>
         </div>
     </div>

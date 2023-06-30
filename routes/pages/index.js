@@ -8,6 +8,7 @@ router.get('/', (req, res) => res.render('homepage'));
 router.get('/register', (req, res) => res.render('register'));
 router.get('/login', (req, res) => res.render('login'));
 router.get('/aboutus', (req, res) => res.render('aboutus'));
+router.get('/contactus', (req, res) => res.render('contactus'));
 
 // Pages with data
 router.get('/feed', isAuthenticated, PageController.getFeed);

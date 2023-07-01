@@ -141,13 +141,33 @@ footer .text {
 
 .about-main {
   background-image: url(../images/neighborhood.jpg);
+  position: relative;
+  height: 75vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.about-main:before{
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(145, 145, 145, 0.7);
 }
 
 .about-title {
   color: var(--text);
-  font-size: xx-large;
+  font-size: 3rem;
+  position: relative;
+  padding-top: 1rem;
+  font-weight: bold;
 }
 
 .about-body {
   color: var(--text);
+  position: relative;
+  font-size: 1.5rem;
+  padding: 2rem;
 }

@@ -65,18 +65,12 @@ body {
   margin-bottom: -80px;
 }
 
-.btn {
-  background-color: var(--primary);
-}
-
 /* Form Styling */
-
 .forms {
   margin: auto;
   margin-top: 3.5rem;
   width: 40%;
 }
-
 
 button .forms {
   background-color: none !important ;

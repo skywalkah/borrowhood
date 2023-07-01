@@ -1,0 +1,66 @@
+<main class='container mx-auto px-4'>
+    <div
+        class='grid grid-flow-row my-8 gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
+    >
+        {{#each items}}
+        <div
+            class='rounded-xl p-6 shadow-lg shadow-gray-200 bg-white duration-300 hover:-translate-y-1'
+        >
+            <h2 class='card-title mb-3'>{{renderStars this.averageRating}}<br />{{this.item_name}}</h2>
+            <p class='mb-3'>{{this.item_description}}</p>
+            <p class='mb-3'><strong>Condition</strong>:
+            {{this.item_condition}}</p>
+            <p class='mb-3'><strong>Available</strong>:
+            {{#if this.is_available}}Yes{{else}}No{{/if}}</p>
+            <p><strong>Posted by</strong>: {{this.user.firstName}}</p>
+            <div class='card-actions justify-end'>
+            <button
+                class='btn btn-neutral'
+                onclick='my_modal_{{this.id}}.showModal()'
+            >View Details</button>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <dialog
+            class='modal modal-bottom sm:modal-middle'
+            id='my_modal_{{this.id}}'
+            tabindex='-1'
+            aria-labelledby='itemModal{{this.id}}Label'
+            aria-hidden='true'
+        >
+            <form method="dialog" class="modal-box">
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>            
+            <h4
+                class='modal-title'
+                id='itemModal{{this.id}}Label'
+            >{{this.item_name}}</h4>
+            <button
+                type='button'
+                class='btn-close'
+                data-bs-dismiss='modal'
+                aria-label='Close'
+            ></button>
+            <p>{{this.item_description}}</p>
+            <p><strong>Condition</strong>: {{this.item_condition}}</p>
+            <p><strong>Available</strong>:
+                {{#if this.is_available}}Yes{{else}}No{{/if}}</p>
+            <p><strong>Posted by</strong>: {{this.user.firstName}}</p>
+            
+            {{#each reviews}}
+                <blockquote>"{{this.review_text}}"</blockquote>
+            {{/each}}
+            <div class='modal-action'>
+                {{#unless (isCurrentUserItem this.user_id ../userId)}}
+  <button type='button' class='btn btn-primary borrow-button' data-user-id="{{../userId}}" data-item-id="{{this.id}}">Borrow</button>
+{{else}}
+  <button type='button' class='btn btn-primary borrow-button' data-user-id="{{../userId}}" data-item-id="{{this.id}}" disabled>You own it</button>
+{{/unless}}
+            </div>
+            </form>
+        </dialog>
+        {{/each}}
+    </div>
+
+</main>
+<script src='/js/request.js'></script>

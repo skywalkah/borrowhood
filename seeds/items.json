@@ -56,13 +56,6 @@
         "user_id": 5
     },
     {
-        "item_name": "Drill Set",
-        "item_description": "This is a Ryobi 18-Volt cordless 1/2 inch drill/driver as well as an impact drill combo kit. The drill has a 24-position clutch and 2-speed gearbox. The impact drill delivers up to 1,800 in./lbs of torque and 3200 impacts per minute.",
-        "item_condition": "It's used but still works like it's new.",
-        "is_available": true,
-        "user_id": 7
-    },
-    {
         "item_name": "Miter Saw",
         "item_description": "This is a 40V max XGT Brushless 8-1/2 in. Dual-Bevel Sliding Compound Miter Saw. It provides 4,800 RPM for faster and smoother cutting. The miter saw has a large 2-3/4” x 12-1/4” cutting capacity at 90-degrees. The saw miters 0° to 60° left and right and bevels from 0° to 48° left and right. It has extension wings for cutting longer material.",
         "item_condition": "It's been used a handful of times but works great.",
@@ -103,6 +96,12 @@
         "item_condition": "It's a bit used but still works.",
         "is_available": true,
         "user_id": 4
+    },
+    {
+        "item_name": "Drill Set",
+        "item_description": "This is a Ryobi 18-Volt cordless 1/2 inch drill/driver as well as an impact drill combo kit. The drill has a 24-position clutch and 2-speed gearbox. The impact drill delivers up to 1,800 in./lbs of torque and 3200 impacts per minute.",
+        "item_condition": "It's used but still works like it's new.",
+        "is_available": true,
+        "user_id": 7
     }
-
 ]

@@ -17,8 +17,23 @@ const hbs = exphbs.create({
       const stars = '&#11089;'.repeat(rating);
       return new SafeString(stars);
     },
-    isCurrentUserItem: (itemUserId, currentUserId) => {
-      return itemUserId === currentUserId;
+    isCurrentUserItem: function (
+      itemUserId,
+      currentUserId,
+      isAvailable,
+      options
+    ) {
+      if (itemUserId === currentUserId) {
+        return options.inverse(this);
+      } else if (!isAvailable) {
+        return options.inverse(this);
+      } else {
+        return options.fn(this);
+      }
+    },
+    trimString: function (passedString) {
+      var theString = passedString.substring(0, 125);
+      return new SafeString(theString);
     },
   },
   runtimeOptions: {

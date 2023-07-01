@@ -131,6 +131,7 @@ const ItemController = {
           id: req.params.id,
         },
       });
+
       const updatedItem = await Item.findByPk(req.params.id);
       if (!updatedItem)
         return res.status(404).json({ message: 'Item not found' });

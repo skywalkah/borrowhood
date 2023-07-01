@@ -4,6 +4,8 @@
   --highlights: #77b664; 
   --text: black; 
   --lawn: green;
+  --orange: #e67e22;
+  --red: #e74c3c;
 }
 
 * {
@@ -20,6 +22,38 @@ body {
 .logo-sm {
   width: 50px;
   height: 50px;
+}
+
+/* Global Styling */
+.stars {
+  color: var(--orange);
+}
+
+.trigger-modal {
+  cursor: pointer;
+}
+
+.card {
+  position: relative;
+}
+
+.status-dot {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+  position: absolute;
+  top: 10px;
+  right: 5px;
+}
+
+.available {
+  background-color: var(--highlights);
+}
+
+.not-available {
+  background-color: var(--red);
 }
 
 /*  Navbar Styling  */
@@ -120,17 +154,6 @@ button .forms {
   margin-bottom: 1rem;
 }
 
-/* Foot Styling */
-footer {
-  background-color: var(--secondary);
-  bottom: 0;
-  width: 100%;
-}
-
-footer .text {
-  color: var(--text); 
-}
-
 /* About Us */
 
 .about-main {
@@ -164,4 +187,15 @@ footer .text {
   position: relative;
   font-size: 1.5rem;
   padding: 2rem;
+}
+
+/* Foot Styling */
+footer {
+  background-color: var(--secondary);
+  bottom: 0;
+  width: 100%;
+}
+
+footer .text {
+  color: var(--text); 
 }

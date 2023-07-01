@@ -39,7 +39,7 @@ To create an item: **PUT** | http://localhost:3001/api/items/
   "item_condition": "Add item condition"
 }
 ```
-To update an item: PUT | http://localhost:3001/api/items/:id  
+To update an item: PUT | http://localhost:3001/api/items/:id/update
 ```code
 {
   "item_name": "Updated name",

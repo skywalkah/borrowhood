@@ -63,24 +63,24 @@
     "rating": 2,
     "review_text": "The leaf blower wasn't strong enough.",
     "user_id": "6",
-    "item_id": "12"
+    "item_id": "11"
   },
   {
     "rating": 4,
     "review_text": "It did what I needed but was hard to hold.",
     "user_id": "5",
-    "item_id": "13"
+    "item_id": "12"
   },
   {
     "rating": 5,
     "review_text": "It worked perfect and I got my lawn mowed in no time.",
     "user_id": "7",
-    "item_id": "14"
+    "item_id": "13"
   },
   {
     "rating": 3,
     "review_text": "It worked okay but didn't vacuum up everything I needed it to.",
     "user_id": "2",
-    "item_id": "15"
+    "item_id": "14"
   }
 ]

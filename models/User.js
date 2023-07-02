@@ -18,6 +18,11 @@ class User extends Model {
       foreignKey: 'user_id',
       onDelete: 'CASCADE',
     });
+    User.hasMany(models.Item, {
+      foreignKey: 'borrowed_by',
+      onDelete: 'SET NULL',
+      as: 'borrowedItems',
+    });
   }
 }
 

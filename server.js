@@ -17,6 +17,7 @@ const hbs = exphbs.create({
       const stars = '&#11089;'.repeat(rating);
       return new SafeString(stars);
     },
+    // Helper to check if the user is the owner of the item and wether the item is available
     isCurrentUserItem: function (
       itemUserId,
       currentUserId,
@@ -31,6 +32,7 @@ const hbs = exphbs.create({
         return options.fn(this);
       }
     },
+    // Helper to shorten the description of an item
     trimString: function (passedString) {
       var theString = passedString.substring(0, 125);
       return new SafeString(theString);

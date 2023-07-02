@@ -1,24 +1,26 @@
 <h1 class='welcome-text text-center mt-5'>{{welcomeMessage}}</h1>
 
-<section class='main'>
-
-{{#if items.length}}
-  {{#each items}}
-    {{#each this.items}}
-      <div class="item-card card bg-primary text-primary-content">
-        <div class="card-body">
-          <h2 class="dash-card-title card-title justify-center">
-            <i class="fa-solid fa-screwdriver-wrench"></i>
-            {{this.item_name}}
-          </h2>
-          <p class="dash-card-text text-center">{{this.item_description}}</p>
+<section class='main' id="dashboard-container">
+  {{#if items.length}}
+    {{#each items}}
+      {{#each this.items}}
+        <div class="item-card card bg-primary text-primary-content">
+          <div class="card-body">
+            <h2 class="dash-card-title card-title justify-center">
+              <i class="fa-solid fa-screwdriver-wrench"></i>
+              {{this.item_name}}
+            </h2>
+            <p class="dash-card-text text-center">{{this.item_description}}</p>
+            {{#if this.borrowed_by}}
+              <p class="dash-card-text text-center" id="borrowedUser-{{this.id}}">Borrowed by: Loading...</p>
+            {{/if}}
+          </div>
         </div>
-      </div>
+      {{/each}}
     {{/each}}
-  {{/each}}
-{{else}}
-  <p class="mb-5">Such empty... Post an item!</p>
-{{/if}}
-
+  {{else}}
+    <p class="mb-5">Such empty... Post an item!</p>
+  {{/if}}
 </section>
+
 <script src='/js/dashboard.js'></script>

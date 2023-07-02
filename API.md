@@ -28,6 +28,8 @@ To get all users and their associated items:  **GET** | http://localhost:3001/ap
 
 To get all items: **GET** | http://localhost:3001/api/items/  
 To get my (the logged in user) items: **GET** | http://localhost:3001/api/items/me  
+To get items I borrowed: **GET** | http://localhost:3001/api/borrows/mine
+To get borrowed items by ID: **GET** | http://localhost:3001/api/borrows/:userId
 To get all items and their reviews: **GET** | http://localhost:3001/api/items/reviews/  
 To get an item by ID: **GET** | http://localhost:3001/api/items/:id  
 To get an item by ID and with its reviews: **GET** | http://localhost:3001/api/items/reviews/:id  

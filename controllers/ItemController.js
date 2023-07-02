@@ -36,7 +36,7 @@ const ItemController = {
   // Get my items (the logged in user)
   getMyItems: async (req, res) => {
     try {
-      const currentUser = req.session.currentUser; // Modify this according to your authentication mechanism
+      const currentUser = req.session.currentUser;
 
       const user = await User.findByPk(currentUser.id, {
         attributes: { exclude: ['password'] },
@@ -104,7 +104,7 @@ const ItemController = {
       const { item_name, item_description, item_condition } = req.body;
 
       // Get the logged-in user from the session or authentication middleware
-      const currentUser = req.session.currentUser; // Modify this according to your authentication mechanism
+      const currentUser = req.session.currentUser;
 
       // Create the item associated with the logged-in user
       await Item.create({

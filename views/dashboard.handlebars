@@ -1,125 +1,44 @@
-<h1 class="welcome-text text-center mt-5">{{ welcomeMessage }}</h1>
+<h1 class='welcome-text text-center mt-5'>{{welcomeMessage}}</h1>
 
-<section class="main">
+<section class='main' id="dashboard-container">
+  {{#if ownedItems.length}}
+    <h2>My items</h2>
+    {{#each ownedItems}}
+      <div class="item-card card bg-primary text-primary-content">
+        <div class="card-body">
+          <h2 class="dash-card-title card-title justify-center">
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+            {{this.item_name}}
+          </h2>
+          <p class="dash-card-text text-center">{{this.item_description}}</p>
+          {{#if this.borrowed_by}}
+            <p class="dash-card-text text-center" id="borrowedBy-{{this.id}}">Borrowed by: Loading...</p>
+          {{/if}}
+        </div>
+      </div>
+    {{/each}}
+  {{else}}
+    <p class="mb-5">Such empty... Post an item!</p>
+  {{/if}}
 
-  <div class="item-card card bg-primary text-primary-content">
-    <div class="card-body">
-        <h2 class="dash-card-title card-title justify-center"> <i class="fa-solid fa-screwdriver-wrench"></i> Ball-peen Hammer</h2>
-        <p class="dash-card-text text-center">This is a brand new Estwing 16 Oz. ball-peen hammer. It can be used for forming and shaping sheet metal, striking punches, chiels, and peining rivets.</p>
-            <div class="card-actions justify-center">
-                <button class="dash-borrow-btn btn text-white">Borrow</button>
-            </div>
-    </div>
-  </div>
 
-  <div class="item-card card bg-primary text-primary-content">
-    <div class="card-body">
-        <h2 class="dash-card-title card-title justify-center"> <i class="fa-solid fa-screwdriver-wrench"></i> Pressure Washer</h2>
-        <p class="dash-card-text text-center">This is a used pressure washer that works great and will clean anything you need it to.</p>
-            <div class="card-actions justify-center">
-                <button class="dash-borrow-btn btn text-white">Borrow</button>
-            </div>
-    </div>
-  </div>
-
-  <div class="item-card card bg-info text-base-300">
-    <div class="card-body">
-        <h2 class="dash-card-title card-title justify-center"> <i class="fa-solid fa-house-chimney"></i> KitchenAid Stand Mixer</h2>
-        <p class="dash-card-text text-center">This is a 7 quart bowl lift KitchenAid Stand Mixer. The 7 quart capacity can make 13 dozen cookies. It has 11 distinct speeds for greater power and control. It has 1/2 speeds designed for delicate ingredients. It has a double flex edge beater, coated flat beater, coated dough hook, 11-wire whip, and a pouring shield.</p>
-            <div class="card-actions justify-center">
-                <button class="dash-borrow-btn btn text-white">Borrow</button>
-            </div>
-    </div>
-  </div>
-
-  <div class="item-card card bg-primary text-primary-content">
-    <div class="card-body">
-        <h2 class="dash-card-title card-title justify-center"> <i class="fa-solid fa-screwdriver-wrench"></i> Extension Ladder</h2>
-        <p class="dash-card-text text-center">This is a 24ft fiberglass type 1A extension ladder with a 300lb load capacity. It has a maximum reach of 23ft and has non-conductive rails which makes it perfect for working near electricity. Base and fly separate easily to use base section as single ladder, and pre-pierced holes make for easy field installation of accessories.</p>
-            <div class="card-actions justify-center">
-                <button class="dash-borrow-btn btn text-white">Borrow</button>
-            </div>
-    </div>
-  </div>
-
-  <div class="item-card card bg-success text-base-300">
-    <div class="card-body">
-        <h2 class="dash-card-title card-title justify-center"> <i class="fa-solid fa-tree"></i> Leaf Rake</h2>
-        <p class="dash-card-text text-center">This is a Collector Series 26 in. Poly Leaf Rake. Its large poly basket head design gathers leaves quickly. It has a vinyl coated steel handle and cushion end grip for comfort.</p>
-            <div class="card-actions justify-center">
-                <button class="dash-borrow-btn btn text-white">Borrow</button>
-            </div>
-    </div>
-  </div>
-
-  <div class="item-card card bg-primary text-primary-content">
-    <div class="card-body">
-        <h2 class="dash-card-title card-title justify-center"> <i class="fa-solid fa-screwdriver-wrench"></i> Drill Set</h2>
-        <p class="dash-card-text text-center">This is a Ryobi 18-Volt cordless 1/2 inch drill/driver as well as an impact drill combo kit. The drill has a 24-position clutch and 2-speed gearbox. The impact drill delivers up to 1,800 in./lbs of torque and 3200 impacts per minute.</p>
-            <div class="card-actions justify-center">
-                <button class="dash-borrow-btn btn text-white">Borrow</button>
-            </div>
-    </div>
-  </div>
-  
-  <div class="item-card card bg-primary text-primary-content">
-    <div class="card-body">
-        <h2 class="dash-card-title card-title justify-center"> <i class="fa-solid fa-screwdriver-wrench"></i> Miter Saw</h2>
-        <p class="dash-card-text text-center">This is a 40V max XGT Brushless 8-1/2" Dual-Bevel Sliding Compound Miter Saw. It provides 4,800 RPM for faster and smoother cutting. The miter saw has a large 2-3/4” x 12-1/4” cutting capacity at 90-degrees. The saw miters 0° to 60° left and right and bevels from 0° to 48° left and right. It has extension wings for cutting longer material.</p>
-            <div class="card-actions justify-center">
-                <button class="dash-borrow-btn btn text-white">Borrow</button>
-            </div>
-    </div>
-  </div>
-
-  <div class="item-card card bg-info text-base-300">
-    <div class="card-body">
-        <h2 class="dash-card-title card-title justify-center"> <i class="fa-solid fa-house-chimney"></i> Bread Maker</h2>
-        <p class="dash-card-text text-center">This is a Zojirushi 2-pound loaf bread maker. This dual-blade bread machine makes rectangular-shaped 2-pound loaves. It has 10 pre-programmed settings, 3 crust shades, and a 13-hour delay timer. it is rated for 120 volts/ 700 watts.</p>
-            <div class="card-actions justify-center">
-                <button class="dash-borrow-btn btn text-white">Borrow</button>
-            </div>
-    </div>
-  </div>
-
-  <div class="item-card card bg-success text-base-300">
-    <div class="card-body">
-        <h2 class="dash-card-title card-title justify-center"> <i class="fa-solid fa-tree"></i> Leaf Blower</h2>
-        <p class="dash-card-text text-center">This is a Makita 18V X2 LXT Lithium-Ion, 36V Brushless Cordless Leaf Blower. It has a 3 stage telescoping long nozzle for convenience. It has a lock-on button for continuous use. It weighs only 9 pounds for less fatigue and easier use.</p>
-            <div class="card-actions justify-center">
-                <button class="dash-borrow-btn btn text-white">Borrow</button>
-            </div>
-    </div>
-  </div>
-
-  <div class="item-card card bg-primary text-primary-content">
-    <div class="card-body">
-        <h2 class="dash-card-title card-title justify-center"> <i class="fa-solid fa-screwdriver-wrench"></i> Claw Hammer</h2>
-        <p class="dash-card-text text-center">This is a Irwin 16 Oz. fiberglass, general purpose claw hammer.</p>
-            <div class="card-actions justify-center">
-                <button class="dash-borrow-btn btn text-white">Borrow</button>
-            </div>
-    </div>
-  </div>
-
-  <div class="item-card card bg-success text-base-300">
-    <div class="card-body">
-        <h2 class="dash-card-title card-title justify-center"> <i class="fa-solid fa-tree"></i> Riding Lawn Mower</h2>
-        <p class="dash-card-text text-center">This is a 42 in. 17.5 HP gas riding lawn mower. It has 13 different cutting height options from 1-4 inches in 1/4 inch increments.</p>
-            <div class="card-actions justify-center">
-                <button class="dash-borrow-btn btn text-white">Borrow</button>
-            </div>
-    </div>
-  </div>
-
-  <div class="item-card card bg-primary text-primary-content">
-    <div class="card-body">
-        <h2 class="dash-card-title card-title justify-center"> <i class="fa-solid fa-screwdriver-wrench"></i> Shop Vacuum</h2>
-        <p class="dash-card-text text-center">This is a 12 gallon wet/dry utility vacuum. It has various attachments to complete any job.</p>
-            <div class="card-actions justify-center">
-                <button class="dash-borrow-btn btn text-white">Borrow</button>
-            </div>
-    </div>
-  </div>
-
+  {{#if borrowedItems.length}}
+    <h2>My borrowed items</h2>
+    {{#each borrowedItems}}
+      <div class="item-card card bg-primary text-primary-content">
+        <div class="card-body">
+          <h2 class="dash-card-title card-title justify-center">
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+            {{this.item_name}}
+          </h2>
+          <p class="dash-card-text text-center">{{this.item_description}}</p>
+          <p class="dash-card-text text-center" id="borrowedFrom-{{this.id}}">Borrowed by: Loading...</p>
+        </div>
+      </div>
+    {{/each}}
+  {{else}}
+    <p class="mb-5">No borrowed items.</p>
+  {{/if}}
 </section>
+
+<script src='/js/dashboard.js' data-user-id="{{ currentUser.id }}"></script>

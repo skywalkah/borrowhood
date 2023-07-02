@@ -12,14 +12,22 @@ class User extends Model {
     User.hasMany(models.Item, {
       foreignKey: 'user_id',
       onDelete: 'CASCADE',
-    });
-    User.hasMany(models.Item, {
-      foreignKey: 'user_id',
-      as: 'items',
+      as: 'ownedItems',
     });
     User.hasMany(models.Request, {
       foreignKey: 'user_id',
       onDelete: 'CASCADE',
+      as: 'borrowedRequests',
+    });
+    User.hasMany(models.Item, {
+      foreignKey: 'borrowed_by',
+      onDelete: 'SET NULL',
+      as: 'borrowedItems',
+    });
+    User.hasMany(models.Request, {
+      foreignKey: 'borrowed_by',
+      onDelete: 'SET NULL',
+      as: 'borrowedRequests', // Update the alias to 'borrowedRequests'
     });
   }
 }

@@ -2,7 +2,7 @@
     {
         "item_name": "Spade gardening shovel",
         "item_description": "This shovel has a carbon manganese steel blade that is 33% thicker and 25% harder than normal shovels. It also has a fiberglass handle that is reinforced to reduce cracks or breaks.",
-        "item_condition": "In perfect shape",
+        "item_condition": "In perfect shape.",
         "is_available": true,
         "user_id": 1
     },
@@ -16,8 +16,92 @@
     {
         "item_name": "Step ladder",
         "item_description": "A self-supporting A-frame design that can be used anywhere in a room without additional support.",
-        "item_condition": "Its fine, just don't wal underneath it.",
+        "item_condition": "It's fine, just don't walk underneath it.",
         "is_available": true,
         "user_id": 3
+    },
+    {
+        "item_name": "Ball-peen Hammer",
+        "item_description": "This is a brand new Estwing 16 Oz. ball-peen hammer. It can be used for forming and shaping sheet metal, striking punches, chiels, and peining rivets.",
+        "item_condition": "It's perfect and works great.",
+        "is_available": true,
+        "user_id": 4
+    },
+    {
+        "item_name": "Pressure Washer",
+        "item_description": "This is a used pressure washer that works great and will clean anything you need it to.",
+        "item_condition": "It's brand new and will allow you to clean whatever you need to.",
+        "is_available": true,
+        "user_id": 6
+    },
+    {
+        "item_name": "KitchenAid Stand Mixer",
+        "item_description": "This is a 7 quart bowl lift KitchenAid Stand Mixer. The 7 quart capacity can make 13 dozen cookies. It has 11 distinct speeds for greater power and control. It has 1/2 speeds designed for delicate ingredients. It has a double flex edge beater, coated flat beater, coated dough hook, 11-wire whip, and a pouring shield.",
+        "item_condition": "It works great and should be able to mix anything you need.",
+        "is_available": true,
+        "user_id": 3
+    },
+    {
+        "item_name": "Extension Ladder",
+        "item_description": "This is a 24ft fiberglass type 1A extension ladder with a 300lb load capacity. It has a maximum reach of 23ft and has non-conductive rails which makes it perfect for working near electricity. Base and fly separate easily to use base section as single ladder, and pre-pierced holes make for easy field installation of accessories.",
+        "item_condition": "It's in perfect condition.",
+        "is_available": true,
+        "user_id": 4
+    },
+    {
+        "item_name": "Leaf Rake",
+        "item_description": "This is a Collector Series 26 in. Poly Leaf Rake. Its large poly basket head design gathers leaves quickly. It has a vinyl coated steel handle and cushion end grip for comfort.",
+        "item_condition": "It is in perfect condition for raking your leaves.",
+        "is_available": true,
+        "user_id": 5
+    },
+    {
+        "item_name": "Miter Saw",
+        "item_description": "This is a 40V max XGT Brushless 8-1/2 in. Dual-Bevel Sliding Compound Miter Saw. It provides 4,800 RPM for faster and smoother cutting. The miter saw has a large 2-3/4” x 12-1/4” cutting capacity at 90-degrees. The saw miters 0° to 60° left and right and bevels from 0° to 48° left and right. It has extension wings for cutting longer material.",
+        "item_condition": "It's been used a handful of times but works great.",
+        "is_available": true,
+        "user_id": 7
+    },
+    {
+        "item_name": "Bread Maker",
+        "item_description": "This is a Zojirushi 2-pound loaf bread maker. This dual-blade bread machine makes rectangular-shaped 2-pound loaves. It has 10 pre-programmed settings, 3 crust shades, and a 13-hour delay timer. it is rated for 120 volts/ 700 watts.",
+        "item_condition": "It's been used heavily and turns out perfect bread each time.",
+        "is_available": true,
+        "user_id": 2
+    },
+    {
+        "item_name": "Leaf Blower",
+        "item_description": "This is a Makita 18V X2 LXT Lithium-Ion, 36V Brushless Cordless Leaf Blower. It has a 3 stage telescoping long nozzle for convenience. It has a lock-on button for continuous use. It weighs only 9 pounds for less fatigue and easier use.",
+        "item_condition": "It's a little old but still gets the job done.",
+        "is_available": true,
+        "user_id": 1
+    },
+    {
+        "item_name": "Claw Hammer",
+        "item_description": "This is a Irwin 16 Oz. fiberglass, general purpose claw hammer.",
+        "item_condition": "It's brand new and in perfect condition.",
+        "is_available": true,
+        "user_id": 4
+    },
+    {
+        "item_name": "Riding Lawn Mower",
+        "item_description": "This is a 42 in. 17.5 HP gas riding lawn mower. It has 13 different cutting height options from 1-4 inches in 1/4 inch increments.",
+        "item_condition": "I've mowed my lawn with it a few times and it's in great condition.",
+        "is_available": true,
+        "user_id": 6
+    },
+    {
+        "item_name": "Shop Vacuum",
+        "item_description": "This is a 12 gallon wet/dry utility vacuum. It has various attachments to complete any job.",
+        "item_condition": "It's a bit used but still works.",
+        "is_available": true,
+        "user_id": 4
+    },
+    {
+        "item_name": "Drill Set",
+        "item_description": "This is a Ryobi 18-Volt cordless 1/2 inch drill/driver as well as an impact drill combo kit. The drill has a 24-position clutch and 2-speed gearbox. The impact drill delivers up to 1,800 in./lbs of torque and 3200 impacts per minute.",
+        "item_condition": "It's used but still works like it's new.",
+        "is_available": true,
+        "user_id": 7
     }
 ]

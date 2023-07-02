@@ -2,16 +2,27 @@
   {
     "item_id": 1,
     "user_id": 2,
-    "request_status": "pending"
+    "request_status": "pending",
+    "is_available": true
   },
   {
     "item_id": 2,
     "user_id": 3,
-    "request_status": "approved"
+    "request_status": "approved",
+    "borrowed_by": 3,
+    "is_available": false
   },
   {
     "item_id": 3,
     "user_id": 1,
-    "request_status": "rejected"
+    "request_status": "rejected",
+    "is_available": true
+  },
+  {
+    "item_id": 4,
+    "user_id": 7,
+    "request_status": "approved",
+    "borrowed_by": 7,
+    "is_available": false
   }
 ]

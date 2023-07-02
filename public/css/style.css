@@ -4,6 +4,8 @@
   --highlights: #77b664; 
   --text: black; 
   --lawn: green;
+  --orange: #e67e22;
+  --red: #e74c3c;
 }
 
 * {
@@ -20,6 +22,38 @@ body {
 .logo-sm {
   width: 50px;
   height: 50px;
+}
+
+/* Global Styling */
+.stars {
+  color: var(--orange);
+}
+
+.trigger-modal {
+  cursor: pointer;
+}
+
+.card {
+  position: relative;
+}
+
+.status-dot {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+  position: absolute;
+  top: 10px;
+  right: 5px;
+}
+
+.available {
+  background-color: var(--highlights);
+}
+
+.not-available {
+  background-color: var(--red);
 }
 
 /*  Navbar Styling  */
@@ -65,18 +99,12 @@ body {
   margin-bottom: -80px;
 }
 
-.btn {
-  background-color: var(--primary);
-}
-
 /* Form Styling */
-
 .forms {
   margin: auto;
   margin-top: 3.5rem;
   width: 40%;
 }
-
 
 button .forms {
   background-color: none !important ;
@@ -89,9 +117,16 @@ button .forms {
 .input-group  > :last-child{
   border-color: var(--secondary);
   border-radius: var(--rounded-btn, 0.5rem);
+  background-color: white !important;
 }
 
-.register-link {
+.input-primary {
+  border-color: var(--secondary);
+  border-radius: var(--rounded-btn, 0.5rem);
+  background-color: white !important;
+}
+
+.form-link {
   color: var(--secondary);
 }
 
@@ -117,6 +152,30 @@ button .forms {
 .dash-card-text {
   font-size: large;
   margin-bottom: 1rem;
+}
+
+/* About Us */
+
+.about-title {
+  color: var(--text);
+  font-size: 3rem;
+  position: relative;
+  padding-top: 1rem;
+  font-weight: bold;
+}
+
+.about-body {
+  color: var(--text);
+  position: relative;
+  font-size: 1.5rem;
+  padding: 2rem;
+}
+
+.contact-body {
+  color: var(--text);
+  position: relative;
+  font-size: 1.5rem;
+  padding: 2rem;
 }
 
 /* Foot Styling */

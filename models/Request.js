@@ -6,10 +6,12 @@ class Request extends Model {
     Request.belongsTo(models.User, {
       foreignKey: 'user_id',
       onDelete: 'CASCADE',
+      as: 'user',
     });
     Request.belongsTo(models.Item, {
       foreignKey: 'item_id',
       onDelete: 'CASCADE',
+      as: 'item',
     });
   }
 }

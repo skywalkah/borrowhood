@@ -1,47 +1,33 @@
 <div class='relative flex-col justify-center h-screen overflow-hidden'>
   <div class='p-6 rounded-md shadow-md lg:max-w-lg forms'>
-    <form
-      id='login-form'
-      class='login-form space-y-4 requires-validation'
-      novalidate
-    >
-      <div id='login-alert'></div>
-      <div>
-        <label for='email' class='label'>
-          <span class='text-base label-text'>Email</span>
-        </label>
-        <div class='input-group has-validation'>
-          <input
-            type='email'
-            placeholder='Email Address'
-            class='w-full input input-bordered input-primary'
-            id='email'
-            required
-          />
-        </div>
-      </div>
-      <div>
-        <label for='password' class='label'>
-          <span class='text-base label-text'>Password</span>
-        </label>
-        <div class='input-group has-validation'>
-          <input
-            type='password'
-            placeholder='Enter Password'
-            class='w-full input input-bordered input-primary'
-            id='password'
-            required
-          />
-        </div>
-      </div>
-      <div>
-        <button type='submit' class='btn mt-4 login-btn'>Login</button>
-      </div>
-      <p class='text-center mt-3 mb-0'>Don't have an account?
-        <a class='link link-hover register-link' a href='/register'>Register
-          here</a></p>
-    </form>
+    <h1 class='text-3xl font-semibold text-center'>Log In</h1>
+      <form id='login-form' class='login-form space-y-4 requires-validation' novalidate>
+        <div id='login-alert'></div>
+          <div>
+              <label for='email' class='label'>
+                  <span class='text-base label-text'>Email</span>
+              </label>
+              <div class='input-group has-validation'>
+                <input type='email' placeholder='Email Address' class='w-full input input-bordered input-primary' id='email' required/>
+              </div>
+          </div>
+          <div>
+              <label for='password' class='label'>
+                  <span class='text-base label-text'>Password</span>
+              </label>
+              <div class='input-group has-validation'>
+                <input type='password' placeholder='Enter Password'
+                  class='w-full input input-bordered input-primary' id='password' required/>
+              </div>
+          </div>
+          <div>
+              <button type='submit' class='btn mt-4 login-btn'>Log in</button>
+          </div>
+          <p class='text-center mt-3 mb-0'>Don't have an account? 
+            <a class='link link-hover form-link' href='/register'>Register here</a></p>
+      </form>
   </div>
 </div>
+
 
 <script src='js/login.js'></script>

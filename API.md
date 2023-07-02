@@ -50,7 +50,7 @@ To update an item: PUT | http://localhost:3001/api/items/:id/update
   "user_id": id // Assigned to a different owner
 }
 ```
-To delete an item: **DELETE** | http://localhost:3001/api/items/:id  
+To delete an item: **DELETE** | http://localhost:3001/api/items/:id
 
 ---
 ## Reviews
@@ -86,3 +86,7 @@ Get all borrow requests for a user: **GET** | http://localhost:3001/api/users/:u
 Approve borrow request: **PUT** | http://localhost:3001/api/users/:userId/requests/:requestId/approve  
 Reject borrow request: **PUT** | http://localhost:3001/api/users/:userId/requests/:requestId/reject  
 Cancel borrow request: **DELETE** | http://localhost:3001/api/users/:userId/requests/:requestId
+
+## Return requests
+Return request: **Post** | http://localhost:3001/api/users/items/:itemId/return  
+Approve return request: **Put** | http://localhost:3001/api/users/items/:itemId/return/approve  

@@ -12,7 +12,7 @@ async function handleBorrowRequest(event) {
     };
 
     // Send the POST request to create the borrow request
-    const response = await fetch(`/api/users/${userId}/requests/create`, {
+    const response = await fetch(`/api/users/requests/create`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

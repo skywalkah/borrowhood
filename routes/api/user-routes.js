@@ -5,14 +5,24 @@ const isAuthenticated = require('../../middleware/isAuthenticated');
 router.post('/register', UserController.register);
 router.post('/login', UserController.login);
 router.post('/logout', isAuthenticated, UserController.logout);
-router.get('/items', isAuthenticated, UserController.getAllUsersWithItems);
 router.get('/', isAuthenticated, UserController.getAllUsers);
 router.get('/:id', isAuthenticated, UserController.getUser);
+router.get('/items', isAuthenticated, UserController.getAllUsersWithItems);
 router.post('/requests/create', isAuthenticated, UserController.createRequest);
 router.get(
   '/:userId/requests',
   isAuthenticated,
   UserController.getAllBorrowRequests
+);
+router.post(
+  '/items/:itemId/return',
+  isAuthenticated,
+  UserController.returnItem
+);
+router.put(
+  '/items/:itemId/return/approve',
+  isAuthenticated,
+  UserController.approveReturnRequest
 );
 router.put(
   '/:id/requests/:requestId/approve',
@@ -23,11 +33,6 @@ router.put(
   '/:id/requests/:requestId/reject',
   isAuthenticated,
   UserController.rejectBorrowRequest
-);
-router.delete(
-  '/:id/requests/:requestId',
-  isAuthenticated,
-  UserController.cancelRequest
 );
 
 module.exports = router;

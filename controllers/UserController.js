@@ -27,6 +27,7 @@ module.exports = {
     }
   },
 
+  // Log in user
   login: async (req, res) => {
     const {
       body: { email, password },
@@ -58,10 +59,19 @@ module.exports = {
       req.session.save(() => {
         req.session.isAuthenticated = true;
         req.session.currentUser = user;
-        res.status(200).json({
-          user,
-          message: 'You are now logged in!',
-        });
+
+        // Check the Accept header to determine the response type
+        const acceptHeader = req.headers.accept;
+        if (acceptHeader && acceptHeader.includes('application/json')) {
+          // API request, return JSON response
+          res.status(200).json({
+            user,
+            message: 'You are now logged in!',
+          });
+        } else {
+          // Client-side request, redirect to the /feed route
+          res.redirect('/feed');
+        }
       });
     } catch (err) {
       console.error(err);
@@ -271,6 +281,81 @@ module.exports = {
       await request.destroy();
 
       return res.status(200).json({ message: 'Request canceled' });
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json(err);
+    }
+  },
+
+  // Return a borrowed item
+  returnItem: async (req, res) => {
+    try {
+      const { itemId } = req.params;
+
+      // Find the item
+      const item = await Item.findByPk(itemId);
+
+      // Check if the item exists and is borrowed
+      if (!item || !item.borrowed_by) {
+        return res
+          .status(404)
+          .json({ message: 'Item not found or not borrowed' });
+      }
+
+      // Check if the authenticated user is the borrower of the item
+      const currentUser = req.session.currentUser;
+      if (item.borrowed_by !== currentUser.id) {
+        return res
+          .status(403)
+          .json({ message: 'Only the borrower can initiate the return' });
+      }
+
+      // Update the item status to indicate the return is pending
+      await item.update({ is_available: false });
+
+      // Create a return request
+      await Request.create({
+        user_id: item.user_id,
+        item_id: item.id,
+        request_status: 'pending', // Assign a value to request_status
+        is_return: true,
+      });
+
+      return res.status(200).json({ message: 'Return initiated successfully' });
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json(err);
+    }
+  },
+
+  approveReturnRequest: async (req, res) => {
+    try {
+      const { itemId } = req.params;
+
+      // Find the item
+      const item = await Item.findByPk(itemId);
+
+      // Check if the item exists and if it is currently borrowed
+      if (!item || !item.borrowed_by) {
+        return res
+          .status(404)
+          .json({ message: 'Item not found or not borrowed' });
+      }
+
+      // Ensure that the authenticated user is the owner of the item
+      const currentUser = req.session.currentUser;
+      if (item.user_id !== currentUser.id) {
+        return res
+          .status(403)
+          .json({ message: 'Only the owner can approve the return request' });
+      }
+
+      // Update the item status to make it available and clear the borrowed_by field
+      await item.update({ is_available: true, borrowed_by: null });
+
+      return res
+        .status(200)
+        .json({ message: 'Return request approved successfully' });
     } catch (err) {
       console.error(err);
       return res.status(500).json(err);

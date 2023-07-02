@@ -10,7 +10,7 @@
                 <span
                     class="status-dot {{#if this.is_available}}available{{else}}not-available{{/if}}
                 "></span>
-                <span class="stars">{{#if this.averageRating}}{{renderStars this.averageRating}}{{else}}No rated{{/if}}</span>
+                <span class="stars">{{#if this.averageRating}}{{renderStars this.averageRating}}{{else}}Not rated{{/if}}</span>
                 <h2 class='card-title mb-3'>{{this.item_name}}</h2>
                 <p class='mb-3'>{{{trimString this.item_description}}} ...</p>
                 <p class='mb-3'><strong>Condition</strong>: {{this.item_condition}}</p>

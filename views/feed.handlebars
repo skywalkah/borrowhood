@@ -14,7 +14,7 @@
                 <h2 class='card-title mb-3'>{{this.item_name}}</h2>
                 <p class='mb-3'>{{{trimString this.item_description}}} ...</p>
                 <p class='mb-3'><strong>Condition</strong>: {{this.item_condition}}</p>
-                <p class='mb-3'><strong>Posted by</strong>: {{this.owner.firstName}}</p>
+                <p class='mb-3'><strong>Owner</strong>: {{this.owner.firstName}}</p>
                 {{#if this.is_available}}
                     <p class='mb-3'><strong>Available</strong>: Yes</p>
                 {{else}}
@@ -48,7 +48,7 @@
                 <p class="mb-3"><strong>Condition</strong>: {{this.item_condition}}</p>
                 <p class="mb-3"><strong>Available</strong>:
                     {{#if this.is_available}}Yes{{else}}No{{/if}}</p>
-                <p class="mb-3"><strong>Posted by</strong>: {{this.user.firstName}}</p>
+                <p class="mb-3"><strong>Owner</strong>: {{this.owner.firstName}}</p>
                 
                 {{#if reviews}}
                     <h2><strong>Reviews</strong></h2>

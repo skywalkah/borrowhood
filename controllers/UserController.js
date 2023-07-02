@@ -19,7 +19,7 @@ module.exports = {
       req.session.save(() => {
         req.session.isAuthenticated = true;
         req.session.currentUser = user;
-        res.status(200).json(user);
+        res.redirect('/feed'); // Redirect to the /feed route
       });
     } catch (err) {
       console.error(err);

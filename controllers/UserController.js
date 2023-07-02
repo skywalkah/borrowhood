@@ -118,7 +118,7 @@ module.exports = {
         attributes: { exclude: ['password'] },
         include: {
           model: Item,
-          as: 'items',
+          as: 'ownedItems',
         },
       });
 
@@ -132,18 +132,18 @@ module.exports = {
   // Create a borrow request
   createRequest: async (req, res) => {
     try {
-      const { userId } = req.params;
-      const { item_id, request_status } = req.body;
+      const { item_id } = req.body;
+      const currentUser = req.session.currentUser;
 
       // Check if the user exists
-      const user = await User.findByPk(userId);
+      const user = await User.findByPk(currentUser.id);
       if (!user) {
         return res.status(404).json({ message: 'User not found' });
       }
 
       // Check if the user already has a request for the same item
       const existingRequest = await Request.findOne({
-        where: { user_id: userId, item_id },
+        where: { user_id: currentUser.id, item_id },
       });
       if (existingRequest) {
         return res
@@ -153,9 +153,9 @@ module.exports = {
 
       // Create the request
       const request = await Request.create({
-        user_id: userId,
+        user_id: currentUser.id,
         item_id,
-        request_status,
+        request_status: 'pending',
       });
 
       return res.status(201).json(request);
@@ -170,7 +170,14 @@ module.exports = {
     try {
       const requests = await Request.findAll({
         where: { user_id: req.params.userId },
-        include: [{ model: Item, as: 'item' }],
+        include: [
+          { model: Item, as: 'item' },
+          {
+            model: User,
+            as: 'user',
+            attributes: ['firstName'],
+          },
+        ],
       });
 
       if (requests.length === 0) {

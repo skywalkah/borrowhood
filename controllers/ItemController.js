@@ -36,13 +36,13 @@ const ItemController = {
   // Get my items (the logged in user)
   getMyItems: async (req, res) => {
     try {
-      const currentUser = req.session.currentUser; // Modify this according to your authentication mechanism
+      const currentUser = req.session.currentUser;
 
       const user = await User.findByPk(currentUser.id, {
         attributes: { exclude: ['password'] },
         include: {
           model: Item,
-          as: 'items',
+          as: 'ownedItems',
         },
       });
 
@@ -50,7 +50,7 @@ const ItemController = {
         return res.status(404).json({ message: 'User not found' });
       }
 
-      return res.json(user.items);
+      return res.json(user.ownedItems);
     } catch (err) {
       console.error(err);
       return res.status(500).json(err);
@@ -104,7 +104,7 @@ const ItemController = {
       const { item_name, item_description, item_condition } = req.body;
 
       // Get the logged-in user from the session or authentication middleware
-      const currentUser = req.session.currentUser; // Modify this according to your authentication mechanism
+      const currentUser = req.session.currentUser;
 
       // Create the item associated with the logged-in user
       await Item.create({

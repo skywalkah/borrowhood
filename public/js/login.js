@@ -11,7 +11,9 @@ const loginFormHandler = async event => {
     });
 
     if (response.ok) {
-      document.location.replace('/feed');
+      setTimeout(() => {
+        document.location.replace('/feed');
+      }, 0);
     } else {
       const alert = createAlert(
         'Invalid email and/or password. Please try again'

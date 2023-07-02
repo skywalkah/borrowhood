@@ -13,11 +13,14 @@
                 <span class="stars">{{#if this.averageRating}}{{renderStars this.averageRating}}{{else}}No rated{{/if}}</span>
                 <h2 class='card-title mb-3'>{{this.item_name}}</h2>
                 <p class='mb-3'>{{{trimString this.item_description}}} ...</p>
-                <p class='mb-3'><strong>Condition</strong>:
-                {{this.item_condition}}</p>
-                <p class='mb-3'><strong>Available</strong>:
-                {{#if this.is_available}}Yes{{else}}No{{/if}}</p>
-                <p><strong>Posted by</strong>: {{this.user.firstName}}</p>
+                <p class='mb-3'><strong>Condition</strong>:{{this.item_condition}}</p>
+                <p class='mb-3'><strong>Posted by</strong>: {{this.owner.firstName}}</p>
+                {{#if this.is_available}}
+                    <p class='mb-3'><strong>Available</strong>: Yes</p>
+                {{else}}
+                    <p class='mb-3'><strong>Available</strong>: No</p>
+                    <p><strong>Borrowed by</strong>: <span class='borrowed-by' data-item-id='{{this.id}}'>{{this.borrowedBy.firstName}}</span></p>
+                {{/if}}
             </a>
         </div>
 
@@ -70,4 +73,5 @@
     </div>
 
 </main>
+<script src='/js/feed.js'></script>
 <script src='/js/request.js'></script>

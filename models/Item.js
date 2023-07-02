@@ -6,6 +6,12 @@ class Item extends Model {
     Item.belongsTo(models.User, {
       foreignKey: 'user_id',
       onDelete: 'CASCADE',
+      as: 'owner',
+    });
+    Item.belongsTo(models.User, {
+      foreignKey: 'borrowed_by',
+      onDelete: 'SET NULL',
+      as: 'borrowedBy',
     });
     Item.hasMany(models.Review, {
       foreignKey: 'item_id',

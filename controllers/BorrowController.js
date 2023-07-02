@@ -14,8 +14,8 @@ const BorrowController = {
         where: { borrowed_by: currentUser.id },
       });
 
-      if (borrowedItems.length === 0) {
-        return res.status(404).json({ message: 'No borrowed items' });
+      if (!borrowedItems || borrowedItems.length === 0) {
+        return res.json({ message: 'No borrowed items' });
       } else {
         return res.json(borrowedItems);
       }

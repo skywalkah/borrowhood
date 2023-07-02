@@ -38,6 +38,7 @@ module.exports = {
         items,
         isAuthenticated: req.session.isAuthenticated,
         userId: req.session.currentUser.id,
+        currentUser: req.session.currentUser,
       });
     } catch (error) {
       console.error(error);

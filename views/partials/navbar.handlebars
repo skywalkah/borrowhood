@@ -22,9 +22,8 @@
   </div>
   <div class='navbar-end'>
     {{#if isAuthenticated}}
-     <button id='logout' class='btn btn-ghost btn-circle navbar-btn'>
-      <a role='button' class='btn' href='/'>Log Out</a></button>
-     {{ else}}
+      <a role='button' href='/' id="logout">{{currentUser.firstName}} <i class="fa fa-sign-out"></i></a>
+    {{ else}}
     <button class='btn btn-ghost btn-circle navbar-btn' >
       <a role='button' class='btn' href='/login'>Log In</a>
     </button>

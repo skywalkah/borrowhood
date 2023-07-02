@@ -42,7 +42,7 @@ const ItemController = {
         attributes: { exclude: ['password'] },
         include: {
           model: Item,
-          as: 'items',
+          as: 'ownedItems',
         },
       });
 
@@ -50,7 +50,7 @@ const ItemController = {
         return res.status(404).json({ message: 'User not found' });
       }
 
-      return res.json(user.items);
+      return res.json(user.ownedItems);
     } catch (err) {
       console.error(err);
       return res.status(500).json(err);

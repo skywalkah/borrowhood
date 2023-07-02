@@ -7,11 +7,17 @@ module.exports = {
         include: [
           {
             model: db.User,
+            as: 'owner',
             attributes: ['firstName'],
           },
           {
             model: db.Review,
             as: 'reviews',
+          },
+          {
+            model: db.User,
+            as: 'borrowedBy',
+            attributes: ['firstName'],
           },
         ],
       });
@@ -41,15 +47,30 @@ module.exports = {
 
   getDashboard: async (req, res) => {
     try {
-      const items = await db.User.findAll({
+      // Fetch all items owned by and borrowed by the user
+      const user = await db.User.findOne({
         where: { id: req.session.currentUser.id },
-        include: db.Item,
+        include: [
+          { model: db.Item, as: 'ownedItems' },
+          { model: db.Item, as: 'borrowedItems' },
+          {
+            model: db.Request,
+            as: 'requests',
+            include: { model: db.User, as: 'user', attributes: ['firstName'] },
+          },
+        ],
       });
+
+      // Get user's owned and borrowed items
+      const { ownedItems, borrowedItems, borrowedRequests } = user;
 
       res.render('dashboard', {
         welcomeMessage: `Welcome ${req.session.currentUser.firstName}! Here are your items`,
-        items,
+        ownedItems: ownedItems,
+        borrowedItems: borrowedItems,
+        borrowedRequests: borrowedRequests,
         isAuthenticated: req.session.isAuthenticated,
+        currentUser: req.session.currentUser,
       });
     } catch (error) {
       console.error(error);

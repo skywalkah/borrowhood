@@ -8,11 +8,7 @@ router.post('/logout', isAuthenticated, UserController.logout);
 router.get('/items', isAuthenticated, UserController.getAllUsersWithItems);
 router.get('/', isAuthenticated, UserController.getAllUsers);
 router.get('/:id', isAuthenticated, UserController.getUser);
-router.post(
-  '/:userId/requests/create',
-  isAuthenticated,
-  UserController.createRequest
-);
+router.post('/requests/create', isAuthenticated, UserController.createRequest);
 router.get(
   '/:userId/requests',
   isAuthenticated,

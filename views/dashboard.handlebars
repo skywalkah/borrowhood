@@ -1,30 +1,49 @@
 <h1 class='welcome-text text-center mt-5'>{{welcomeMessage}}</h1>
 
-<section class='main' id="dashboard-container">
-  {{#if ownedItems.length}}
-    <h2>My Items:</h2>
-    {{#each ownedItems}}
-          {{this.item_name}}
-          {{this.item_description}}
-          {{#if this.borrowed_by}}
-            <p class="dash-card-text" id="borrowedBy-{{this.id}}">Borrowed by: Loading...</p>
-          {{/if}}
-    {{/each}}
-  {{else}}
-    <p class="post mb-5">Post an item!</p>
-  {{/if}}
+<main class='container mx-auto px-4 prose lg:prose-lg' id="dashboard">
+  <section>
+    <h2>Your Items:</h2>  
+    <div class='grid grid-flow-row my-8 gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2'>
+      {{#if ownedItems.length}}
+        {{#each ownedItems}}
+          <div
+            class='rounded-xl p-6 shadow-lg shadow-gray-200 bg-white duration-300 hover:-translate-y-1 feed-card card'
+          >
+            <h4 class="mt-0">{{this.item_name}}</h4>
+            <p>{{this.item_description}}</p>
+            {{#if this.borrowed_by}}
+              <p class='dash-card-text' id='borrowedBy-{{this.id}}'>Borrowed by:
+                Loading...</p>
+            {{/if}}
+          </div>
+        {{/each}}
+      {{else}}
+        <p class='none mb-5 emptyBox p-5 rounded-xl'>You have no items, post one!</p>
+      {{/if}}
+    </div>
+  </section>
 
+  <section>
+    <h2>Your Borrowed Items:</h2>
+      {{#if borrowedItems.length}}
+      <div class='grid grid-flow-row my-8 gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2'>
+        <div
+          class='rounded-xl p-6 shadow-lg shadow-gray-200 bg-white duration-300 hover:-translate-y-1 feed-card card'
+        >
+          {{#each borrowedItems}}
+            <h4 class="mt-0">{{this.item_name}}</h4>
+            <p>{{this.item_description}}</p>
+            <p class='dash-card-text' id='borrowedFrom-{{this.id}}'>Borrowed by:
+              Loading...</p>
+          {{/each}}
+        </div>
+      </div>
+      {{else}}
+        <p class='none mb-5 emptyBox p-5 rounded-xl'>No borrowed items.</p>
+      {{/if}}
+    
+  </section>
 
-  {{#if borrowedItems.length}}
-    <h2>My Borrowed Items:</h2>
-    {{#each borrowedItems}}
-          {{this.item_name}}
-          {{this.item_description}}
-          <p class="dash-card-text" id="borrowedFrom-{{this.id}}">Borrowed by: Loading...</p>
-    {{/each}}
-  {{else}}
-    <p class="none mb-5">No borrowed items.</p>
-  {{/if}}
-</section>
+</main>
 
-<script src='/js/dashboard.js' data-user-id="{{ currentUser.id }}"></script>
+<script src='/js/dashboard.js' data-user-id='{{currentUser.id}}'></script>

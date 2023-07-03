@@ -23,6 +23,7 @@
     "sequelize": "^6.32.1"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.9",
     "daisy": "^0.1.7",
     "eslint": "^8.27.0",
     "eslint-config-prettier": "^8.8.0",

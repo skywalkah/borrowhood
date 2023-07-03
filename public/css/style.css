@@ -152,19 +152,19 @@ button .forms {
 
 /* Feed Styling */
 
-.stars {
+/* .stars {
   font-size: 2.5rem;
   color: var(--stars);
-}
+} */
 
 .modal-title {
   font-weight: bold;
   font-size: 2rem;
 }
 
-.card {
+/* .card {
   background-color: var(--secondary);
-}
+} */
 
 .card-title {
   color: var(--text);
@@ -190,12 +190,12 @@ button .forms {
   color: var(--text);
 }
 
-.not-rated {
+/* .not-rated {
   font-size: 1.2rem;
   padding-top: 1rem;
   padding-right: 1rem;
   padding-bottom: 1rem;
-}
+} */
 
 /* About Us */
 

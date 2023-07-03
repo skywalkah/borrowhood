@@ -27,11 +27,11 @@ document.addEventListener('DOMContentLoaded', async () => {
           fetch(`/api/users/${item.borrowed_by}`)
             .then(response => response.json())
             .then(user => {
-              borrowedByElement.textContent = `Borrowed by: ${user.firstName}`;
+              borrowedByElement.textContent = `Borrowed by ${user.firstName}`;
             })
             .catch(error => {
               console.error('2', error);
-              borrowedByElement.textContent = `Borrowed by: Unknown user`;
+              borrowedByElement.textContent = `Borrowed by unknown user`;
             });
         } else {
           borrowedByElement.textContent = `Available for borrowing`;

@@ -2,42 +2,28 @@
 
 <section class='main' id="dashboard-container">
   {{#if ownedItems.length}}
-    <h2>My items</h2>
+    <h2>My Items:</h2>
     {{#each ownedItems}}
-      <div class="item-card card bg-primary text-primary-content">
-        <div class="card-body">
-          <h2 class="dash-card-title card-title justify-center">
-            <i class="fa-solid fa-screwdriver-wrench"></i>
-            {{this.item_name}}
-          </h2>
-          <p class="dash-card-text text-center">{{this.item_description}}</p>
+          {{this.item_name}}
+          {{this.item_description}}
           {{#if this.borrowed_by}}
-            <p class="dash-card-text text-center" id="borrowedBy-{{this.id}}">Borrowed by: Loading...</p>
+            <p class="dash-card-text" id="borrowedBy-{{this.id}}">Borrowed by: Loading...</p>
           {{/if}}
-        </div>
-      </div>
     {{/each}}
   {{else}}
-    <p class="mb-5">Such empty... Post an item!</p>
+    <p class="post mb-5">Post an item!</p>
   {{/if}}
 
 
   {{#if borrowedItems.length}}
-    <h2>My borrowed items</h2>
+    <h2>My Borrowed Items:</h2>
     {{#each borrowedItems}}
-      <div class="item-card card bg-primary text-primary-content">
-        <div class="card-body">
-          <h2 class="dash-card-title card-title justify-center">
-            <i class="fa-solid fa-screwdriver-wrench"></i>
-            {{this.item_name}}
-          </h2>
-          <p class="dash-card-text text-center">{{this.item_description}}</p>
-          <p class="dash-card-text text-center" id="borrowedFrom-{{this.id}}">Borrowed by: Loading...</p>
-        </div>
-      </div>
+          {{this.item_name}}
+          {{this.item_description}}
+          <p class="dash-card-text" id="borrowedFrom-{{this.id}}">Borrowed by: Loading...</p>
     {{/each}}
   {{else}}
-    <p class="mb-5">No borrowed items.</p>
+    <p class="none mb-5">No borrowed items.</p>
   {{/if}}
 </section>
 

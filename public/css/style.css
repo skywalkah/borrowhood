@@ -6,6 +6,7 @@
   --lawn: green;
   --orange: #e67e22;
   --red: #e74c3c;
+  --stars: yellow;
 }
 
 * {
@@ -153,11 +154,40 @@ button .forms {
 
 .stars {
   font-size: 2.5rem;
+  color: var(--stars);
 }
 
 .modal-title {
   font-weight: bold;
   font-size: 2rem;
+}
+
+.card {
+  background-color: var(--secondary);
+}
+
+.card-title {
+  color: var(--text);
+}
+
+.card-description {
+  color: var(--text);
+}
+
+.card-condition {
+  color: var(--text);
+}
+
+.card-owner {
+  color: var(--text);
+}
+
+.card-available {
+  color: var(--text);
+}
+
+.card-not-available {
+  color: var(--text);
 }
 
 .not-rated {

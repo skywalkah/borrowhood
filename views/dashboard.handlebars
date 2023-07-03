@@ -1,6 +1,6 @@
 <h1 class='welcome-text text-center mt-5'>{{welcomeMessage}}</h1>
 
-<main class='container mx-auto px-4 prose lg:prose-lg' id="dashboard">
+<main class='container mx-auto px-4 prose lg:prose-lg mb-6' id="dashboard">
   <section>
     <h2>Your Items:</h2>  
     <div class='grid grid-flow-row my-8 gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2'>
@@ -9,10 +9,10 @@
           <div
             class='rounded-xl p-6 shadow-lg shadow-gray-200 bg-white duration-300 hover:-translate-y-1 feed-card card'
           >
-            <h4 class="mt-0">{{this.item_name}}</h4>
+            <h3 class="mt-0">{{this.item_name}}</h3>
             <p>{{this.item_description}}</p>
             {{#if this.borrowed_by}}
-              <p class='dash-card-text' id='borrowedBy-{{this.id}}'>Borrowed by:
+              <p class='dash-card-text' id='borrowedBy-{{this.id}}'>Borrowed by
                 Loading...</p>
             {{/if}}
           </div>
@@ -31,17 +31,16 @@
           class='rounded-xl p-6 shadow-lg shadow-gray-200 bg-white duration-300 hover:-translate-y-1 feed-card card'
         >
           {{#each borrowedItems}}
-            <h4 class="mt-0">{{this.item_name}}</h4>
+            <h3 class="mt-0">{{this.item_name}}</h3>
             <p>{{this.item_description}}</p>
-            <p class='dash-card-text' id='borrowedFrom-{{this.id}}'>Borrowed by:
+            <p class='dash-card-text' id='borrowedFrom-{{this.id}}'>Borrowed by
               Loading...</p>
           {{/each}}
         </div>
       </div>
       {{else}}
-        <p class='none mb-5 emptyBox p-5 rounded-xl'>No borrowed items.</p>
+        <p class='none emptyBox p-5 rounded-xl'>No borrowed items.</p>
       {{/if}}
-    
   </section>
 
 </main>

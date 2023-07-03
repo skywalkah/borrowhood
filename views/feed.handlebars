@@ -10,13 +10,13 @@
                 "></span>
                 <span class="stars">{{#if this.averageRating}}{{renderStars this.averageRating}}{{else}}<h4 class="not-rated">Not Rated</h4>{{/if}}</span>
                 <h2 class='card-title mb-3'>{{this.item_name}}</h2>
-                <p class='mb-3'>{{{trimString this.item_description}}} ...</p>
-                <p class='mb-3'><strong>Condition:</strong> {{this.item_condition}}</p>
-                <p class='mb-3'><strong>Owner:</strong> {{this.owner.firstName}}</p>
+                <p class='card-description mb-3'>{{{trimString this.item_description}}} ...</p>
+                <p class='card-condition mb-3'><strong>Condition:</strong> {{this.item_condition}}</p>
+                <p class='card-owner mb-3'><strong>Owner:</strong> {{this.owner.firstName}}</p>
                 {{#if this.is_available}}
-                    <p class='mb-3'><strong>Available:</strong> Yes</p>
+                    <p class='card-available mb-3'><strong>Available:</strong> Yes</p>
                 {{else}}
-                    <p class='mb-3'><strong>Available:</strong> No</p>
+                    <p class='card-not-available mb-3'><strong>Available:</strong> No</p>
                     <p><strong>Borrowed by:</strong> <span class='borrowed-by' data-item-id='{{this.id}}'>{{this.borrowedBy.firstName}}</span></p>
                 {{/if}}
             </a>

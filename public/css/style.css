@@ -155,6 +155,10 @@ button .forms {
   color: var(--text);
 }
 
+#dashboard section h4 {
+  margin-top: 0;
+}
+
 .emptyBox {
   display: block;
   width: 100%;

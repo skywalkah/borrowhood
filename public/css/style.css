@@ -133,25 +133,38 @@ button .forms {
 /* Dashboard Styling */
 
 .welcome-text {
+  font-size: x-large;
   color: var(--text);
-  font-size: xx-large;
+}
+
+.post {
+  padding-left: 1rem;
+  font-size: larger;
+  color: var(--text);
+}
+
+.none {
+  padding-left: 1rem;
+  font-size: larger;
+  color: var(--text);
+}
+
+/* Feed Styling */
+
+.stars {
+  font-size: 2.5rem;
+}
+
+.modal-title {
   font-weight: bold;
+  font-size: 2rem;
 }
 
-.item-card {
-  margin: auto;
-  width: 70%;
-  margin-top: 1rem;
-}
-
-.dash-card-title {
-  font-size: xx-large;
-  margin-bottom: 1rem;
-}
-
-.dash-card-text {
-  font-size: large;
-  margin-bottom: 1rem;
+.not-rated {
+  font-size: 1.2rem;
+  padding-top: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
 }
 
 /* About Us */
@@ -178,7 +191,7 @@ button .forms {
   padding: 2rem;
 }
 
-/* Foot Styling */
+/* Footer Styling */
 footer {
   background-color: var(--secondary);
   bottom: 0;

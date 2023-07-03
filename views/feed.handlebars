@@ -1,25 +1,23 @@
 <main class='container mx-auto px-4'>
     <div
-        class='grid grid-flow-row my-8 gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
-    >
+        class='grid grid-flow-row my-8 gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
         {{#each items}}
         <div
-            class='rounded-xl p-6 shadow-lg shadow-gray-200 bg-white duration-300 hover:-translate-y-1 card'
-        >
+            class='rounded-xl p-6 shadow-lg shadow-gray-200 bg-white duration-300 hover:-translate-y-1 card'>
             <a class="trigger-modal" onclick='my_modal_{{this.id}}.showModal()'>
                 <span
                     class="status-dot {{#if this.is_available}}available{{else}}not-available{{/if}}
                 "></span>
-                <span class="stars">{{#if this.averageRating}}{{renderStars this.averageRating}}{{else}}Not rated{{/if}}</span>
+                <span class="stars">{{#if this.averageRating}}{{renderStars this.averageRating}}{{else}}<h4 class="not-rated">Not Rated</h4>{{/if}}</span>
                 <h2 class='card-title mb-3'>{{this.item_name}}</h2>
                 <p class='mb-3'>{{{trimString this.item_description}}} ...</p>
-                <p class='mb-3'><strong>Condition</strong>: {{this.item_condition}}</p>
-                <p class='mb-3'><strong>Owner</strong>: {{this.owner.firstName}}</p>
+                <p class='mb-3'><strong>Condition:</strong> {{this.item_condition}}</p>
+                <p class='mb-3'><strong>Owner:</strong> {{this.owner.firstName}}</p>
                 {{#if this.is_available}}
-                    <p class='mb-3'><strong>Available</strong>: Yes</p>
+                    <p class='mb-3'><strong>Available:</strong> Yes</p>
                 {{else}}
-                    <p class='mb-3'><strong>Available</strong>: No</p>
-                    <p><strong>Borrowed by</strong>: <span class='borrowed-by' data-item-id='{{this.id}}'>{{this.borrowedBy.firstName}}</span></p>
+                    <p class='mb-3'><strong>Available:</strong> No</p>
+                    <p><strong>Borrowed by:</strong> <span class='borrowed-by' data-item-id='{{this.id}}'>{{this.borrowedBy.firstName}}</span></p>
                 {{/if}}
             </a>
         </div>
@@ -30,8 +28,7 @@
             id='my_modal_{{this.id}}'
             tabindex='-1'
             aria-labelledby='itemModal{{this.id}}Label'
-            aria-hidden='true'
-        >
+            aria-hidden='true'>
             <form method="dialog" class="modal-box">
                 <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>            
                 <h4
@@ -45,13 +42,13 @@
                     aria-label='Close'
                 ></button>
                 <p class="mb-3">{{this.item_description}}</p>
-                <p class="mb-3"><strong>Condition</strong>: {{this.item_condition}}</p>
-                <p class="mb-3"><strong>Available</strong>:
+                <p class="mb-3"><strong>Condition:</strong> {{this.item_condition}}</p>
+                <p class="mb-3"><strong>Available:</strong>
                     {{#if this.is_available}}Yes{{else}}No{{/if}}</p>
-                <p class="mb-3"><strong>Owner</strong>: {{this.owner.firstName}}</p>
+                <p class="mb-3"><strong>Owner:</strong> {{this.owner.firstName}}</p>
                 
                 {{#if reviews}}
-                    <h2><strong>Reviews</strong></h2>
+                    <h2><strong>Review:</strong></h2>
                     {{#each reviews}}
                         <p>
                             <blockquote>"{{this.review_text}}"</blockquote>

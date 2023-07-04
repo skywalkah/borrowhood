@@ -18,7 +18,7 @@
 body {
   background-color: var(--primary);
   min-height: 100vh;
-  height: 100%;
+
 }
 
 .logo-sm {
@@ -272,10 +272,6 @@ button .forms {
 /* Footer Styling */
 footer {
   background-color: var(--secondary);
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
 }
 
 footer .text {

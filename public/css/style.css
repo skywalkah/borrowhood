@@ -184,6 +184,7 @@ button .forms {
   width: 100%;
   background-color: var(--light-gray);
 }
+
 /* Feed Styling */
 
 .stars {
@@ -220,7 +221,7 @@ button .forms {
 /* About Us */
 
 .about-title {
-  color: var(--text);
+  color: var(--secondary);
   font-size: 3rem;
   position: relative;
   padding-top: 1rem;
@@ -232,6 +233,14 @@ button .forms {
   position: relative;
   font-size: 1.5rem;
   padding: 2rem;
+}
+
+.contact-title {
+  color: var(--secondary);
+  font-size: 3rem;
+  position: relative;
+  padding-top: 1rem;
+  font-weight: bold;
 }
 
 .contact-body {

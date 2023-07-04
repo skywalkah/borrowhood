@@ -66,7 +66,7 @@ module.exports = {
       const { ownedItems, borrowedItems, borrowedRequests } = user;
 
       res.render('dashboard', {
-        welcomeMessage: `Hi ${req.session.currentUser.firstName}! Here's your Dahsboard.`,
+        welcomeMessage: `Hi ${req.session.currentUser.firstName}! Here's your Dashboard.`,
         ownedItems: ownedItems,
         borrowedItems: borrowedItems,
         borrowedRequests: borrowedRequests,

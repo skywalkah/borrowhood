@@ -16,6 +16,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     const borrowedItemsData = await borrowedItemsResponse.json();
     const borrowedItems = borrowedItemsData || [];
 
+    // Feth the pending item requests
+    const pendingItemResponse = await fetch('/api/requests/mine', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    });
+    const pendingItemData = await pendingItemResponse.json();
+    const pendingItem = pendingRequestsData || [];
+
     // Render my items
     myItems.forEach(item => {
       // Render your item cards using the 'item' variable

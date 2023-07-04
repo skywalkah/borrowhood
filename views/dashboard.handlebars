@@ -72,6 +72,25 @@
       {{/if}}
   </section>
 
+  <section>
+    <h2>Your Pending Item Requests:</h2>
+      {{#if pendingItem.length}}
+      <div class='grid grid-flow-row my-8 gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2'>
+        <div
+          class='rounded-xl p-6 shadow-lg shadow-gray-200 bg-white duration-300 hover:-translate-y-1 feed-card card'
+        >
+          {{#each pendingItem}}
+            <h3 class="mt-0">{{this.item_name}}</h3>
+            <p>{{this.item_description}}</p>
+            <p class='dash-card-text' id='requestStatus-{{this.id}}'>Request Status: {{this.request_status}}</p>
+          {{/each}}
+        </div>
+      </div>
+      {{else}}
+        <p class='none emptyBox p-5 rounded-xl'>No Pending Requests.</p>
+      {{/if}}
+  </section>
+
 </main>
 
 <script src='/js/dashboard.js' data-user-id='{{currentUser.id}}'></script>

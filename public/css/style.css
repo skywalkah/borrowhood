@@ -237,11 +237,14 @@ button .forms {
   width: 100%;
 }
 
-.add-item-button {
+.add-item-button-div {
   display: flex;
   justify-content: center;
 }
 
+.close-icon {
+  float: right;
+}
 
 
 /* Feed Styling */

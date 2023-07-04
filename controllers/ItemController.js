@@ -1,4 +1,4 @@
-const { Item, Review, User } = require('../models');
+const { Item, Review, User, Request } = require('../models');
 
 const ItemController = {
   // Get all items
@@ -45,6 +45,45 @@ const ItemController = {
           as: 'ownedItems',
         },
       });
+
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+
+      return res.json(user.ownedItems);
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json(err);
+    }
+  },
+
+  // Get all items owned by the current user
+  getMyItemsWithRequests: async (req, res) => {
+    try {
+      const currentUser = req.session.currentUser;
+
+      const user = await User.findByPk(currentUser.id, {
+        attributes: { exclude: ['password'] },
+        include: [
+          {
+            model: Item,
+            as: 'ownedItems',
+            include: [
+              {
+                model: Request,
+                include: [
+                  {
+                    model: User,
+                    attributes: ['firstName'],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      });
+
+      console.log('User from db', user);
 
       if (!user) {
         return res.status(404).json({ message: 'User not found' });

@@ -37,6 +37,18 @@ const hbs = exphbs.create({
       var theString = passedString.substring(0, 125);
       return new SafeString(theString);
     },
+    // Helper to help debug handlebars when iterating through an object
+    stringify: function (context) {
+      return JSON.stringify(context);
+    },
+    // Helper to check if two values are equal
+    ifEqual: function (value1, value2, options) {
+      if (value1 === value2) {
+        return options.fn(this);
+      } else {
+        return options.inverse(this);
+      }
+    },
   },
   runtimeOptions: {
     allowProtoPropertiesByDefault: true,

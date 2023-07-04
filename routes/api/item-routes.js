@@ -4,6 +4,11 @@ const isAuthenticated = require('../../middleware/isAuthenticated');
 
 router.get('/', isAuthenticated, ItemController.getAllItems);
 router.get('/me', isAuthenticated, ItemController.getMyItems);
+router.get(
+  '/me/requests',
+  isAuthenticated,
+  ItemController.getMyItemsWithRequests
+);
 router.get('/reviews/', isAuthenticated, ItemController.getItemsAndReviews);
 router.get('/reviews/:id', isAuthenticated, ItemController.getItemAndReviews);
 router.get('/:id', isAuthenticated, ItemController.getItem);

@@ -203,6 +203,33 @@ module.exports = {
     }
   },
 
+  // Get pending borrow requests 
+  pendingRequests: async (req, res) => {
+    try {
+      const userId = req.session.currentUser.id;
+  
+      const requests = await Request.findAll({
+        where: {
+          user_id: userId,
+          request_status: 'pending',
+        },
+        include: [
+          { model: Item, as: 'item' },
+          { model: User, as: 'user', attributes: ['firstName'] },
+        ],
+      });
+  
+      if (requests.length === 0) {
+        return res.status(404).json({ message: 'No pending borrow requests found' });
+      }
+  
+      return res.json(requests);
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json(err);
+    }
+  },
+
   // Approve a borrow request
   approveBorrowRequest: async (req, res) => {
     try {

@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const borrowedItems = borrowedItemsData || [];
 
     // Feth the pending item requests
-    const pendingItemResponse = await fetch('/api/user/requests', {
+    const pendingItemResponse = await fetch('/user/requests/pending', {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     });

@@ -17,7 +17,7 @@ class User extends Model {
     User.hasMany(models.Request, {
       foreignKey: 'user_id',
       onDelete: 'CASCADE',
-      as: 'borrowedRequests',
+      as: 'user',
     });
     User.hasMany(models.Item, {
       foreignKey: 'borrowed_by',

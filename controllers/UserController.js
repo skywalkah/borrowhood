@@ -1,7 +1,7 @@
 const { User, Request, Item } = require('../models');
 
-// CREATE new user
 module.exports = {
+  // CREATE new user
   register: async (req, res) => {
     const {
       body: { firstName, lastName, email, password },

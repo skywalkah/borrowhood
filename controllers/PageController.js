@@ -52,24 +52,43 @@ module.exports = {
       const user = await db.User.findOne({
         where: { id: req.session.currentUser.id },
         include: [
-          { model: db.Item, as: 'ownedItems' },
-          { model: db.Item, as: 'borrowedItems' },
           {
-            model: db.Request,
-            as: 'requests',
-            include: { model: db.User, as: 'user', attributes: ['firstName'] },
+            model: db.Item,
+            as: 'ownedItems',
+            include: [
+              {
+                model: db.Request,
+                as: 'requests',
+                include: {
+                  model: db.User,
+                  as: 'user',
+                  attributes: ['firstName'],
+                },
+              },
+            ],
+          },
+          {
+            model: db.Item,
+            as: 'borrowedItems',
+            include: [
+              {
+                model: db.User,
+                as: 'owner',
+                attributes: ['firstName'],
+              },
+            ],
           },
         ],
       });
 
       // Get user's owned and borrowed items
-      const { ownedItems, borrowedItems, borrowedRequests } = user;
+      const { ownedItems, borrowedItems, requests } = user;
 
       res.render('dashboard', {
-        welcomeMessage: `Hi ${req.session.currentUser.firstName}! Here's your Dahsboard.`,
+        welcomeMessage: `Hi ${req.session.currentUser.firstName}! Here's your Dashboard.`,
         ownedItems: ownedItems,
         borrowedItems: borrowedItems,
-        borrowedRequests: borrowedRequests,
+        requests: requests,
         isAuthenticated: req.session.isAuthenticated,
         currentUser: req.session.currentUser,
       });

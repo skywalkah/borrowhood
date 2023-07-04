@@ -20,6 +20,7 @@ class Item extends Model {
     Item.hasMany(models.Request, {
       foreignKey: 'item_id',
       onDelete: 'CASCADE',
+      as: 'requests',
     });
   }
 }

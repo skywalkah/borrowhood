@@ -7,7 +7,6 @@
       <dialog id='my_modal_3' class='modal modal-bottom sm:modal-middle'>
         <form method='dialog' class='modal-box add-item-form'>
           <i class='fa fa-times close-icon' onclick='my_modal_3.close()'></i>
-          {{!-- <button type='click' onclick='my_modal_3.close()' class='btn btn-sm btn-circle btn-ghost absolute right-2 top-2 close'>✕</button> --}}
           <form id='add-item-form' class='space-y-4 add-item-form'>
             <div id='add-item-alert'></div>
               <div class='form-control'>
@@ -61,9 +60,9 @@
             {{else}}
               <p class='dash-card-text border-top border-top pt-5'>No requests for this item.</p>
             {{/if}}
-            <button class='delete-button relative'>
-              <i class='fa fa-trash'></i> Delete
-              </button>
+            {{!-- <button class='delete-button relative'> --}}
+              <i class='delete-button fa fa-trash'></i>
+              {{!-- </button> --}}
           </div>
           </div>
         {{/each}}

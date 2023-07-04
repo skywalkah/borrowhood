@@ -242,7 +242,7 @@ button .forms {
   justify-content: center;
 }
 
-.close-icon {
+.close-icon, .delete-button {
   float: right;
 }
 

@@ -4,10 +4,9 @@
   --highlights: #77b664; 
   --text: black;
   --light-gray: #DDDDDD;
-  --lawn: green;
-  --orange: #e67e22;
+  /* --lawn: green; */
   --red: #e74c3c;
-  --stars: yellow;
+  --stars: #e67e22;
 }
 
 * {
@@ -29,7 +28,7 @@ body {
 
 /* Global Styling */
 .stars {
-  color: var(--orange);
+  color: var(--stars);
 }
 
 .trigger-modal {
@@ -218,11 +217,6 @@ button .forms {
 
 
 /* Feed Styling */
-
-/* .stars {
-  font-size: 2.5rem;
-  color: var(--stars);
-} */
 
 .modal-title {
   font-weight: bold;

@@ -16,6 +16,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     const borrowedItemsData = await borrowedItemsResponse.json();
     const borrowedItems = borrowedItemsData || [];
 
+    // Fetch the pending item requests
+    const pendingItemResponse = await fetch('/api/users/requests/pending', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    });
+    const pendingItemData = await pendingItemResponse.json();
+    const pendingItem = pendingItemData || [];
+
     // Render my items
     myItems.forEach(item => {
       // Render your item cards using the 'item' variable
@@ -63,6 +71,17 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
       });
     }
+
+    // Render my pending item requests
+    pendingItem.forEach(async request => {
+      const requestStatusElement = document.getElementById(
+        `requestStatus-${request.id}`
+      );
+      if (requestStatusElement) {
+        requestStatusElement.textContent = `Request Status: ${request.request_status}`;
+      }
+    });
+
   } catch (error) {
     console.error(error);
   }

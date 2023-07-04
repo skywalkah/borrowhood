@@ -1,4 +1,34 @@
-<h1 class='welcome-text text-center mt-5'>{{welcomeMessage}}</h1>
+<section class=' container dashboard-top'>
+  <div class='flex flex-col w-full border-opacity-50'>
+    <div class='grid rounded-box place-items-center'>
+      <h1 class='welcome-text text-center mt-5'>{{welcomeMessage}}</h1>
+      <!-- You can open the modal using ID.showModal() method -->
+      <button class='btn' onclick='my_modal_3.showModal()'>Add Item </button>
+      <dialog id='my_modal_3' class='modal modal-bottom sm:modal-middle'>
+        <form method='dialog' class='modal-box add-item-form'>
+          <button class='btn btn-sm btn-circle btn-ghost absolute right-2 top-2'>✕</button>
+          <form id='add-item-form' class='space-y-4 add-item-form'>
+            <div id='add-item-alert'></div>
+              <div class='form-control'>
+                <label  for='item_name' class='input-group add-item-input'>
+                  <input type='text' placeholder='Item Name' class='input input-bordered add-item-nametxt' id='item_name' />
+                </label>
+                <label for='item_description' class='input-group add-item-input'>
+                  <textarea placeholder='Item Description' class='textarea textarea-bordered textarea-md add-item-txtarea' id='item_description' ></textarea>
+                </label>
+                <label for='item_condition' class='input-group add-item-input'>
+                  <textarea placeholder='Item Condition' class='textarea textarea-bordered textarea-md add-item-txtarea' id='item_condition' ></textarea>
+                </label>
+              </div>
+              <div class ='add-item-button'>
+                <button type='submit' class='btn mt-4 add-item-btn'>Add Item</button>
+              </div>
+            </form>
+        </form>
+      </dialog>
+    </div>
+  </div>
+</section>
 
 <main class='container mx-auto px-4 prose lg:prose-lg mb-6' id='dashboard'>
   <section>

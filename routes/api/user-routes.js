@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { UserController } = require('../../controllers');
 const isAuthenticated = require('../../middleware/isAuthenticated');
+const { User } = require('../../models');
 
 router.post('/register', UserController.register);
 router.post('/login', UserController.login);
@@ -9,6 +10,7 @@ router.get('/', isAuthenticated, UserController.getAllUsers);
 router.get('/:id', isAuthenticated, UserController.getUser);
 router.get('/items', isAuthenticated, UserController.getAllUsersWithItems);
 router.post('/requests/create', isAuthenticated, UserController.createRequest);
+router.get('/requests/pending', isAuthenticated, UserController.pendingRequests)
 router.get(
   '/:userId/requests',
   isAuthenticated,

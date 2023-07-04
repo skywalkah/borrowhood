@@ -1,6 +1,35 @@
-<h1 class='welcome-text text-center mt-5'>{{welcomeMessage}}</h1>
+<section class=' container dashboard-top'>
+  <div class='flex flex-col w-full border-opacity-50'>
+  <div class='grid rounded-box place-items-center'>
+    <h1 class='welcome-text text-center mt-5'>{{welcomeMessage}}</h1>
+    <!-- You can open the modal using ID.showModal() method -->
+<button class='btn' onclick='my_modal_3.showModal()'>Add Item </button>
+<dialog id='my_modal_3' class='modal modal-bottom sm:modal-middle'>
+  <form method='dialog' class='modal-box add-item-form'>
+    <button class='btn btn-sm btn-circle btn-ghost absolute right-2 top-2'>✕</button>
+    <form id='add-item-form' class='space-y-4 add-item-form'>
+      <div id='add-item-alert'></div>
+          <div class='form-control'>
+            <label  for='item_name' class='input-group add-item-input'>
+              <input type='text' placeholder='Item Name' class='input input-bordered add-item-nametxt' id='item_name' />
+              </label>
+              <label for='item_description' class='input-group add-item-input'>
+              <textarea placeholder='Item Description' class='textarea textarea-bordered textarea-md add-item-txtarea' id='item_description' ></textarea>
+            </label>
+            <label for='item_condition' class='input-group add-item-input'>
+              <textarea placeholder='Item Condition' class='textarea textarea-bordered textarea-md add-item-txtarea' id='item_condition' ></textarea>
+            </label>
+          </div>
+          <div class ='add-item-button'>
+              <button type='submit' class='btn mt-4 add-item-btn'>Add Item</button>
+          </div>
+      </form>
+  </form>
+</dialog>
+</div>
+</section>
 
-<main class='container mx-auto px-4 prose lg:prose-lg mb-6' id="dashboard">
+<main class='container mx-auto px-4 prose lg:prose-lg mb-6' id='dashboard'>
   <section>
     <h2>Your Items:</h2>  
     <div class='grid grid-flow-row my-8 gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2'>
@@ -9,7 +38,7 @@
           <div
             class='rounded-xl p-6 shadow-lg shadow-gray-200 bg-white duration-300 hover:-translate-y-1 feed-card card'
           >
-            <h3 class="mt-0">{{this.item_name}}</h3>
+            <h3 class='mt-0'>{{this.item_name}}</h3>
             <p>{{this.item_description}}</p>
             {{#if this.borrowed_by}}
               <p class='dash-card-text' id='borrowedBy-{{this.id}}'>Borrowed by
@@ -31,7 +60,7 @@
           class='rounded-xl p-6 shadow-lg shadow-gray-200 bg-white duration-300 hover:-translate-y-1 feed-card card'
         >
           {{#each borrowedItems}}
-            <h3 class="mt-0">{{this.item_name}}</h3>
+            <h4 class='mt-0'>{{this.item_name}}</h4>
             <p>{{this.item_description}}</p>
             <p class='dash-card-text' id='borrowedFrom-{{this.id}}'>Borrowed by
               Loading...</p>
@@ -40,6 +69,25 @@
       </div>
       {{else}}
         <p class='none emptyBox p-5 rounded-xl'>No borrowed items.</p>
+      {{/if}}
+  </section>
+
+  <section>
+    <h2>Your Pending Item Requests:</h2>
+      {{#if pendingItem.length}}
+      <div class='grid grid-flow-row my-8 gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2'>
+        <div
+          class='rounded-xl p-6 shadow-lg shadow-gray-200 bg-white duration-300 hover:-translate-y-1 feed-card card'
+        >
+          {{#each pendingItem}}
+            <h3 class='mt-0'>{{this.item_name}}</h3>
+            <p>{{this.item_description}}</p>
+            <p class='dash-card-text' id='requestStatus-{{this.id}}'>Request Status: {{this.request_status}}</p>
+          {{/each}}
+        </div>
+      </div>
+      {{else}}
+        <p class='none emptyBox p-5 rounded-xl'>No Pending Requests.</p>
       {{/if}}
   </section>
 

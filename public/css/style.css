@@ -4,10 +4,9 @@
   --highlights: #77b664; 
   --text: black;
   --light-gray: #DDDDDD;
-  --lawn: green;
-  --orange: #e67e22;
+  /* --lawn: green; */
   --red: #e74c3c;
-  --stars: yellow;
+  --stars: #e67e22;
 }
 
 * {
@@ -19,6 +18,7 @@
 body {
   background-color: var(--primary);
   min-height: 100vh;
+
 }
 
 .logo-sm {
@@ -28,7 +28,7 @@ body {
 
 /* Global Styling */
 .stars {
-  color: var(--orange);
+  color: var(--stars);
 }
 
 .trigger-modal {
@@ -112,7 +112,7 @@ button .forms {
   background-color: none !important ;
 }
 
-.login-btn {
+.login-btn, .borrow-button, .add-item-btn {
   border-color: var(--secondary);
 }
 
@@ -137,6 +137,12 @@ button .forms {
 .welcome-text {
   font-size: x-large;
   color: var(--text);
+}
+
+.dashboard-top {
+  margin: auto;
+  margin-top: 3.5rem;
+  width: 40%;
 }
 
 .post {
@@ -187,19 +193,42 @@ button .forms {
 
 /* Feed Styling */
 
-.stars {
-  font-size: 2.5rem;
-  color: var(--stars);
+/* .add-item-form {
+  margin: auto; 
+} */
+
+.add-item-input {
+  padding: .5rem;
+  width: 100%;
+
 }
+
+.add-item-txtarea {
+  width: 100%;
+}
+
+.add-item-nametxt {
+  width: 100%;
+}
+
+.add-item-button {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+/* Feed Styling */
 
 .modal-title {
   font-weight: bold;
   font-size: 2rem;
 }
 
-.feed-card {
+
+/* .feed-card {
   background-color: var(--secondary);
-}
+} */
 
 .card-title,
 .card-description,
@@ -211,12 +240,12 @@ button .forms {
   color: var(--text);
 }
 
-.not-rated {
+/* .not-rated {
   font-size: 1.2rem;
   padding-top: 1rem;
   padding-right: 1rem;
   padding-bottom: 1rem;
-}
+} */
 
 /* About Us */
 
@@ -253,10 +282,9 @@ button .forms {
 /* Footer Styling */
 footer {
   background-color: var(--secondary);
-  bottom: 0;
-  width: 100%;
 }
 
 footer .text {
   color: var(--text); 
 }
+ 

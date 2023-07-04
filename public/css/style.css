@@ -1,6 +1,7 @@
 :root { 
   --primary:#f5f2f2;
   --secondary: #43a6bf;
+  --secondary-light: #4dc0de;
   --highlights: #77b664; 
   --text: black;
   --light-gray: #DDDDDD;
@@ -27,6 +28,9 @@ body {
 }
 
 /* Global Styling */
+.display-inline {
+  display: inline-block;
+}
 .stars {
   color: var(--stars);
 }
@@ -85,6 +89,24 @@ body {
 .welcome {
   font-size: 20px;
   color: var(--text);
+}
+
+/* Request container */
+
+.request-container span {
+  padding: 10px;
+  background-color: var(--secondary-light);
+}
+.request-container span:last-of-type {
+  margin-bottom: 0;
+}
+.borrowed-by,
+.borrowed-from {
+  margin-top: 30px;
+  padding-top: 15px;
+}
+.border-top {
+  border-top: 2px solid var(--text);
 }
 
 /* Chat Styling */

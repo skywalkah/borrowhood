@@ -31,7 +31,7 @@
 
 <main class='container mx-auto px-4 prose lg:prose-lg mb-6' id='dashboard'>
   <section>
-    <h2>Your Items:</h2>  
+    <h2>Your Items:</h2>
     <div class='grid grid-flow-row my-8 gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2'>
       {{#if ownedItems.length}}
         {{#each ownedItems}}
@@ -40,9 +40,26 @@
           >
             <h3 class='mt-0'>{{this.item_name}}</h3>
             <p>{{this.item_description}}</p>
-            {{#if this.borrowed_by}}
-              <p class='dash-card-text' id='borrowedBy-{{this.id}}'>Borrowed by
-                Loading...</p>
+            {{#if this.requests.length}}
+              <div class="request-container mt-5 border-top">
+                {{#each this.requests}}
+                  {{#ifEqual request_status "pending"}}
+                  <span class="rounded-lg">
+                    {{this.user.firstName}} sent you a borrow request for this item.
+                    <button class='approve-button btn btn-outline btn-xs display-inline' data-item-id='{{item_id}}' data-request-id='{{id}}' data-user-id='{{this.user_id}}'>
+                      Approve
+                    </button>
+                    <button class='deny-button btn btn-outline btn-xs display-inline' data-item-id='{{item_id}}' data-request-id='{{id}}' data-user-id='{{this.user_id}}'>
+                      Deny
+                    </button>
+                  </span>
+                  {{else}}
+                    <p class='borrowed-by dash-card-text pt-5'>Borrowed by {{this.user.firstName}}</p>
+                  {{/ifEqual}}
+                {{/each}}
+              </div>
+            {{else}}
+              <p class='dash-card-text border-top border-top pt-5'>No requests for this item.</p>
             {{/if}}
           </div>
         {{/each}}
@@ -54,7 +71,7 @@
 
   <section>
     <h2>Your Borrowed Items:</h2>
-      {{#if borrowedItems.length}}
+    {{#if borrowedItems.length}}
       <div class='grid grid-flow-row my-8 gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2'>
         <div
           class='rounded-xl p-6 shadow-lg shadow-gray-200 bg-white duration-300 hover:-translate-y-1 feed-card card'
@@ -66,31 +83,14 @@
               Loading...</p>
           {{/each}}
         </div>
+        {{/each}}
       </div>
-      {{else}}
-        <p class='none emptyBox p-5 rounded-xl'>No borrowed items.</p>
-      {{/if}}
-  </section>
-
-  <section>
-    <h2>Your Pending Item Requests:</h2>
-      {{#if pendingItem.length}}
-      <div class='grid grid-flow-row my-8 gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2'>
-        <div
-          class='rounded-xl p-6 shadow-lg shadow-gray-200 bg-white duration-300 hover:-translate-y-1 feed-card card'
-        >
-          {{#each pendingItem}}
-            <h3 class='mt-0'>{{this.item_name}}</h3>
-            <p>{{this.item_description}}</p>
-            <p class='dash-card-text' id='requestStatus-{{this.id}}'>Request Status: {{this.request_status}}</p>
-          {{/each}}
-        </div>
-      </div>
-      {{else}}
-        <p class='none emptyBox p-5 rounded-xl'>No Pending Requests.</p>
-      {{/if}}
+    {{else}}
+      <p class='none emptyBox p-5 rounded-xl'>No borrowed items.</p>
+    {{/if}}
   </section>
 
 </main>
+
 
 <script src='/js/dashboard.js' data-user-id='{{currentUser.id}}'></script>

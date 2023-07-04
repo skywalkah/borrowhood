@@ -42,32 +42,31 @@ document.addEventListener('DOMContentLoaded', async () => {
               borrowedByElement.textContent = `Borrowed by unknown user`;
             });
         } else {
-          borrowedByElement.textContent = `Available for borrowing`;
+          console.error('Failed to approve request');
         }
+      } catch (error) {
+        console.error(error);
       }
-    });
+    }
+  });
 
-    // Render my borrowed items
-    if (Array.isArray(borrowedItems)) {
-      borrowedItems.forEach(async item => {
-        // Render borrowed item cards using the 'item' variable
-        const borrowedFromElement = document.getElementById(
-          `borrowedFrom-${item.id}`
-        );
-        if (borrowedFromElement) {
-          if (item.borrowedBy) {
-            fetch(`/api/users/${item.borrowedBy}`)
-              .then(response => response.json())
-              .then(user => {
-                borrowedFromElement.textContent = `Borrowed from: ${user.firstName}`;
-              })
-              .catch(error => {
-                console.error('1', error);
-                borrowedFromElement.textContent = `Borrowed from: Unknown user`;
-              });
-          } else {
-            borrowedFromElement.textContent = `Borrowed from: Unknown user`;
+  document.addEventListener('click', async event => {
+    if (event.target.classList.contains('deny-button')) {
+      const userId = event.target.getAttribute('data-user-id');
+      const requestId = event.target.getAttribute('data-request-id');
+      try {
+        const response = await fetch(
+          `/api/users/${userId}/requests/${requestId}`,
+          {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
           }
+        );
+        if (response.ok) {
+          console.log('Request denied!');
+          location.reload();
+        } else {
+          console.error('Failed to deny request');
         }
       });
     }

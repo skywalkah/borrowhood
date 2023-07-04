@@ -3,7 +3,7 @@
         class='grid grid-flow-row my-8 gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
         {{#each items}}
         <div
-            class='rounded-xl p-6 shadow-lg shadow-gray-200 bg-white duration-300 hover:-translate-y-1 card'>
+            class='rounded-xl p-6 shadow-lg shadow-gray-200 bg-white duration-300 hover:-translate-y-1 feed-card card'>
             <a class="trigger-modal" onclick='my_modal_{{this.id}}.showModal()'>
                 <span
                     class="status-dot {{#if this.is_available}}available{{else}}not-available{{/if}}
@@ -57,11 +57,11 @@
                 {{/if}}
                 <div class='modal-action'>
                     {{#isCurrentUserItem this.user_id ../userId this.is_available}}
-                        <button type='button' class='btn btn-primary borrow-button' data-user-id="{{../userId}}" data-item-id="{{this.id}}">Borrow</button>
+                        <button type='button' class='btn borrow-button' data-user-id="{{../userId}}" data-item-id="{{this.id}}">Borrow</button>
                     {{else if this.is_available}}
-                        <button type='button' class='btn btn-primary borrow-button' disabled>You own it</button>
+                        <button type='button' class='btn borrow-button' disabled>You own it</button>
                     {{else}}
-                        <button type='button' class='btn btn-primary borrow-button' disabled>Borrowed</button>
+                        <button type='button' class='btn borrow-button' disabled>Borrowed</button>
                     {{/isCurrentUserItem}}
                 </div>
             </form>

@@ -1064,6 +1064,10 @@ video {
   margin-bottom: 1.25rem;
 }
 
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
 .me-auto {
   -webkit-margin-end: auto;
           margin-inline-end: auto;
@@ -1153,6 +1157,10 @@ video {
 
 .rounded-xl {
   border-radius: 0.75rem;
+}
+
+.border-opacity-50 {
+  --tw-border-opacity: 0.5;
 }
 
 .bg-white {

@@ -7,16 +7,17 @@
 <dialog id='my_modal_3' class='modal modal-bottom sm:modal-middle'>
   <form method='dialog' class='modal-box add-item-form'>
     <button class='btn btn-sm btn-circle btn-ghost absolute right-2 top-2'>✕</button>
-    <form class='space-y-4'>
+    <form id='add-item-form' class='space-y-4 add-item-form'>
+      <div id='add-item-alert'></div>
           <div class='form-control'>
-            <label class='input-group add-item-input'>
-              <input type='text' placeholder='Item Name' class='input input-bordered add-item-nametxt' />
+            <label  for='item_name' class='input-group add-item-input'>
+              <input type='text' placeholder='Item Name' class='input input-bordered add-item-nametxt' id='item_name' />
               </label>
-              <label class='input-group add-item-input'>
-              <textarea placeholder="Item Description" class="textarea textarea-bordered textarea-md add-item-txtarea" ></textarea>
+              <label for='item_description' class='input-group add-item-input'>
+              <textarea placeholder="Item Description" class="textarea textarea-bordered textarea-md add-item-txtarea" id='item_description' ></textarea>
             </label>
-            <label class='input-group add-item-input'>
-              <textarea placeholder="Item Condition" class="textarea textarea-bordered textarea-md add-item-txtarea" ></textarea>
+            <label for='item_condition' class='input-group add-item-input'>
+              <textarea placeholder="Item Condition" class="textarea textarea-bordered textarea-md add-item-txtarea" id='item_condition' ></textarea>
             </label>
           </div>
           <div class ='add-item-button'>

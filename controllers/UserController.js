@@ -207,7 +207,6 @@ module.exports = {
   pendingRequests: async (req, res) => {
     try {
       const userId = req.session.currentUser.id;
-  
       const requests = await Request.findAll({
         where: {
           user_id: userId,
@@ -218,11 +217,9 @@ module.exports = {
           { model: User, as: 'user', attributes: ['firstName'] },
         ],
       });
-  
       if (requests.length === 0) {
         return res.status(404).json({ message: 'No pending borrow requests found' });
       }
-  
       return res.json(requests);
     } catch (err) {
       console.error(err);

@@ -81,8 +81,61 @@ document.addEventListener('DOMContentLoaded', async () => {
         requestStatusElement.textContent = `Request Status: ${request.request_status}`;
       }
     });
-
   } catch (error) {
     console.error(error);
   }
 });
+
+const addItemHandler = async event => {
+  event.preventDefault();
+
+  const item_name = document.querySelector('#item_name').value.trim();
+  const item_description = document
+    .querySelector('#item_description')
+    .value.trim();
+  const item_condition = document.querySelector('#item_condition').value.trim();
+
+  if (item_name && item_description && item_condition) {
+    const response = await fetch('/api/items', {
+      method: 'POST',
+      body: JSON.stringify({
+        item_name,
+        item_description,
+        item_condition,
+      }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+    if (response.ok) {
+      document.location.replace('/dashboard');
+    } else {
+      const alert = createAlert('An error occurred. Please try again.');
+      appendAlert(alert);
+    }
+  } else {
+    const alert = createAlert('Please make sure all fields are filled out.');
+    appendAlert(alert);
+  }
+};
+
+const createAlert = message => {
+  const alert = document.createElement('div');
+  alert.className = 'alert alert-error';
+  alert.innerHTML = `
+    <svg xmlns='http://www.w3.org/2000/svg' class='stroke-current shrink-0 h-6 w-6' fill='none' viewBox='0 0 24 24'>
+      <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z' />
+    </svg>
+    <span>${message}</span>
+  `;
+
+  return alert;
+};
+
+const appendAlert = alert => {
+  const registrationAlert = document.getElementById('add-item-alert');
+  registrationAlert.innerHTML = '';
+  registrationAlert.appendChild(alert);
+};
+
+document
+  .querySelector('.add-item-form')
+  .addEventListener('submit', addItemHandler);

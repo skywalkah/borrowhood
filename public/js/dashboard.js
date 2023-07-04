@@ -66,4 +66,24 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
     }
   });
+  // Delete item button
+  document.addEventListener('click', async event => {
+    if (event.target.classList.contains('delete-button')) {
+      const itemId = event.target.closest('.feed-card').id.split('-')[1];
+      try {
+        const response = await fetch(`/api/items/${itemId}`, {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' },
+        });
+        if (response.ok) {
+          console.log('Item deleted!');
+          location.reload();
+        } else {
+          console.error('Failed to delete item');
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  });
 });

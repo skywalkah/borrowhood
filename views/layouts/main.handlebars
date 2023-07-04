@@ -27,7 +27,6 @@
 
 <body>
   {{> navbar isAuthenticated=this.isAuthenticated }}
-  {{!-- {{> toast}} --}} {{!-- also leaving this commented out for now since this file still needs formatting, we many not need it as it is right now --}}
   {{{ body }}}
   {{> footer }}
   {{#if isAuthenticated}}

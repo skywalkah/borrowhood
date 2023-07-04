@@ -110,6 +110,10 @@ body {
 }
 
 /* Chat Styling */
+
+.home {
+  margin-top: 5.5rem;
+}
 .chat {
   padding: 80px;
 }
@@ -302,6 +306,7 @@ button .forms {
 }
 
 /* Footer Styling */
+
 footer {
   background-color: var(--secondary);
 }
@@ -309,4 +314,3 @@ footer {
 footer .text {
   color: var(--text); 
 }
- 

@@ -157,12 +157,32 @@ button .forms {
   color: var(--text);
 }
 
+#dashboard {
+  margin-bottom: 40px;
+}
+
 #dashboard section * {
   color: var(--text);
 }
 
-#dashboard section h4 {
+#dashboard section h2 {
+  margin-top: 20px;
+}
+
+#dashboard section h3 {
   margin-top: 0;
+}
+
+#dashboard section p {
+  margin-top: 0;
+}
+
+#dashboard section p:last-of-type {
+  margin-bottom: 0;
+}
+
+#dashboard section .dash-card-text {
+  font-weight: bold;
 }
 
 .emptyBox {
@@ -213,27 +233,13 @@ button .forms {
   background-color: var(--secondary);
 } */
 
-.card-title {
-  color: var(--text);
-}
-
-.card-description {
-  color: var(--text);
-}
-
-.card-condition {
-  color: var(--text);
-}
-
-.card-owner {
-  color: var(--text);
-}
-
-.card-available {
-  color: var(--text);
-}
-
-.card-not-available {
+.card-title,
+.card-description,
+.card-condition,
+.card-owner,
+.card-available,
+.card-not-available,
+.borrowed-by {
   color: var(--text);
 }
 

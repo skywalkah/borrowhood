@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   });
 
+  // Deny borrow request button
   document.addEventListener('click', async event => {
     if (event.target.classList.contains('deny-button')) {
       const userId = event.target.getAttribute('data-user-id');

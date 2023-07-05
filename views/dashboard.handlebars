@@ -72,7 +72,7 @@
     {{/if}}
   </section>
 
-  <section>
+ <section>
     <h2>Items You Borrowed:</h2>
     {{#if borrowedItems.length}}
       <div class='grid grid-flow-row my-8 gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2'>
@@ -83,6 +83,9 @@
           <p class='dash-card-text borrowed-from border-top'>
             Borrowed from {{this.owner.firstName}}
           </p>
+          <button class='return-button btn btn-outline btn-xs display-inline' data-item-id={{this.id}}>
+          Initiate Return
+        </button>
         </div>
         {{/each}}
       </div>
@@ -90,6 +93,7 @@
       <p class='none emptyBox p-5 rounded-xl'>No borrowed items.</p>
     {{/if}}
   </section>
+
 </main>
 
 <script src='/js/dashboard.js' data-user-id='{{currentUser.id}}'></script>

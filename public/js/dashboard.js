@@ -1,24 +1,24 @@
 document.addEventListener('DOMContentLoaded', async () => {
-  // Fetch the pending item requests
-  const pendingItemResponse = await fetch('/api/users/requests/pending', {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' },
-  });
-  const pendingItemData = await pendingItemResponse.json();
-  const pendingItem = pendingItemData || [];
+  // // Fetch the pending item requests
+  // const pendingItemResponse = await fetch('/api/users/requests/pending', {
+  //   method: 'GET',
+  //   headers: { 'Content-Type': 'application/json' },
+  // });
+  // const pendingItemData = await pendingItemResponse.json();
+  // const pendingItem = pendingItemData || [];
 
-  // Render my pending item requests
-  //Check if pending item is array before iterating
-  if (Array.isArray(pendingItem)) {
-    pendingItem.forEach(async request => {
-      const requestStatusElement = document.getElementById(
-        `requestStatus-${request.id}`
-      );
-      if (requestStatusElement) {
-        requestStatusElement.textContent = `Request Status: ${request.request_status}`;
-      }
-    });
-  }
+  // // Render my pending item requests
+  // //Check if pending item is array before iterating
+  // if (Array.isArray(pendingItem)) {
+  //   pendingItem.forEach(async request => {
+  //     const requestStatusElement = document.getElementById(
+  //       `requestStatus-${request.id}`
+  //     );
+  //     if (requestStatusElement) {
+  //       requestStatusElement.textContent = `Request Status: ${request.request_status}`;
+  //     }
+  //   });
+  // }
 
   // Accept request button
   document.addEventListener('click', async event => {
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (event.target.classList.contains('delete-button')) {
       const itemId = event.target.closest('.feed-card').id.split('-')[1];
       try {
-        const response = await fetch(`/api/items/${itemId}`, {
+        const response = await fetch(`api/items/${itemId}`, {
           method: 'DELETE',
           headers: { 'Content-Type': 'application/json' },
         });
@@ -123,27 +123,51 @@ document.addEventListener('DOMContentLoaded', async () => {
       appendAlert(alert);
     }
   };
+  //Initiating a return
+  const returnButtons = document.querySelectorAll('.return-button');
 
-  const createAlert = message => {
-    const alert = document.createElement('div');
-    alert.className = 'alert alert-error';
-    alert.innerHTML = `
+  returnButtons.forEach(function (button) {
+    button.addEventListener('click', async function () {
+      const itemId = button.getAttribute('data-item-id');
+      try {
+        const response = await fetch(`api/users/items/${itemId}/return`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'same-origin',
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to initiate return');
+        }
+
+        console.log('Return initiated successfully');
+      } catch (error) {
+        console.error('Failed to initiate return:', error);
+      }
+    });
+    const createAlert = message => {
+      const alert = document.createElement('div');
+      alert.className = 'alert alert-error';
+      alert.innerHTML = `
       <svg xmlns='http://www.w3.org/2000/svg' class='stroke-current shrink-0 h-6 w-6' fill='none' viewBox='0 0 24 24'>
         <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z' />
       </svg>
       <span>${message}</span>
     `;
 
-    return alert;
-  };
+      return alert;
+    };
 
-  const appendAlert = alert => {
-    const registrationAlert = document.getElementById('add-item-alert');
-    registrationAlert.innerHTML = '';
-    registrationAlert.appendChild(alert);
-  };
+    const appendAlert = alert => {
+      const registrationAlert = document.getElementById('add-item-alert');
+      registrationAlert.innerHTML = '';
+      registrationAlert.appendChild(alert);
+    };
 
-  document
-    .getElementsByClassName('add-item-form')[0]
-    .addEventListener('submit', addItemHandler);
+    document
+      .getElementsByClassName('add-item-form')[0]
+      .addEventListener('submit', addItemHandler);
+  });
 });

@@ -3,7 +3,7 @@
         class='grid grid-flow-row my-8 gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
         {{#each items}}
         <div
-            class='rounded-xl p-6 shadow-lg shadow-gray-200 bg-white duration-300 hover:-translate-y-1 feed-card card'>
+            class='rounded-xl p-6 shadow-lg shadow-gray-200 bg- duration-300 hover:-translate-y-1 feed-card card'>
             <a class='trigger-modal' onclick='my_modal_{{this.id}}.showModal()'>
                 <span
                     class='status-dot {{#if this.is_available}}available{{else}}not-available{{/if}}

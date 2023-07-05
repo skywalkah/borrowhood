@@ -89,6 +89,75 @@ module.exports = {
     }
   },
 
+  // Update user information
+  updateUser: async (req, res) => {
+    const {
+      body: { firstName, lastName, email },
+    } = req;
+    try {
+      const currentUser = req.session.currentUser;
+
+      // Check if the user exists
+      const user = await User.findByPk(currentUser.id);
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+
+      // Update user information
+      await user.update({
+        firstName,
+        lastName,
+        email,
+      });
+
+      // Fetch the updated user data
+      const updatedUser = await User.findByPk(currentUser.id, {
+        attributes: { exclude: ['password'] },
+      });
+
+      // Clear the form fields
+      req.body.firstName = '';
+      req.body.lastName = '';
+      req.body.email = '';
+
+      return res.json(updatedUser);
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json(err);
+    }
+  },
+
+  // Reset user password
+  resetPassword: async (req, res) => {
+    const {
+      body: { currentPassword, newPassword },
+    } = req;
+    try {
+      const currentUser = req.session.currentUser;
+
+      // Check if the user exists
+      const user = await User.findByPk(currentUser.id);
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+
+      // Check if the current password is valid
+      const validPassword = await user.checkPassword(currentPassword);
+      if (!validPassword) {
+        return res.status(400).json({ message: 'Invalid current password' });
+      }
+
+      // Update the password
+      user.password = newPassword;
+      await user.save();
+
+      return res.json({ message: 'Password reset successful' });
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json(err);
+    }
+  },
+
   // Get all users
   getAllUsers: async (req, res) => {
     try {

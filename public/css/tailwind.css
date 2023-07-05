@@ -1084,6 +1084,10 @@ video {
   width: 100%;
 }
 
+.max-w-xs {
+  max-width: 20rem;
+}
+
 .flex-grow {
   flex-grow: 1;
 }
@@ -1166,6 +1170,10 @@ video {
 
 .pt-5 {
   padding-top: 1.25rem;
+}
+
+.pt-6 {
+  padding-top: 1.5rem;
 }
 
 .text-center {

@@ -1,0 +1,44 @@
+<main class='container mx-auto px-4 prose lg:prose-lg mb-6 pt-6' id='profile'>
+    <h2>Profile</h2> 
+    <div class='grid grid-flow-row my-8 gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2'>
+        <section class='rounded-xl p-6 shadow-lg shadow-gray-200 bg-white duration-300 '>
+            <h3>Your current info:</h3>
+            <p>First Name: <strong>{{user.firstName}}</strong></p>
+            <p>Last Name: <strong>{{user.lastName}}</strong></p>
+            <p>Email: <strong>{{user.email}}</strong></p>
+
+            <form method="PUT" action="/api/users/update" id="profile-form">
+                <h3 class="border-top">Edit Profile</h3>
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" placeholder="{{user.firstName}}" class="input input-bordered w-full max-w-xs" value="{{user.firstName}}" />
+                <br>
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" placeholder="{{user.lastName}}" class="input input-bordered w-full max-w-xs" value="{{user.lastName}}" />
+                <br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="{{user.lastName}}" class="input input-bordered w-full max-w-xs" value="{{user.email}}" />
+                <br>
+                <button type="submit" class="btn btn-outline mt-5">Save Changes</button>
+            </form>
+        </section>
+
+        <section class='rounded-xl p-6 shadow-lg shadow-gray-200 bg-white duration-300 '>
+            <form method="PUT" action="/api/users/reset" id="password-form">
+                <h3>Reset Password</h3>
+                <label for="currentPassword">Current Password:</label>
+                <input type="password" id="currentPassword" name="currentPassword" class="input input-bordered w-full max-w-xs" />
+                <br>
+                <label for="newPassword">New Password:</label>
+                <input type="password" id="newPassword" name="newPassword" class="input input-bordered w-full max-w-xs" />
+                <br>
+                <label for="confirmPassword">Confirm New Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" class="input input-bordered w-full max-w-xs" />
+                <br>
+                <button type="submit" class="btn btn-outline mt-5">Reset Password</button>
+            </form>
+        </section>
+    </div>
+</main>
+
+<script src="/js/profile.js"></script>
+```

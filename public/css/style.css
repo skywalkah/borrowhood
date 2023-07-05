@@ -350,6 +350,32 @@ button .forms {
   padding: 2rem;
 }
 
+/* Profile Styling */
+
+#profile * {
+  color: var(--text);
+}
+
+#profile h3 {
+  margin-top: 0;
+}
+
+#profile h3.border-top {
+  padding-top: 20px;
+}
+
+#profile p {
+  margin: 0;
+}
+
+#profile p:last-of-type {
+  margin-bottom: 20px;
+}
+
+#profile input {
+  background-color: white;
+}
+
 /* Footer Styling */
 
 footer {

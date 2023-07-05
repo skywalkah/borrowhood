@@ -1,16 +1,21 @@
 const router = require('express').Router();
 const { UserController } = require('../../controllers');
 const isAuthenticated = require('../../middleware/isAuthenticated');
-const { User } = require('../../models');
 
 router.post('/register', UserController.register);
 router.post('/login', UserController.login);
 router.post('/logout', isAuthenticated, UserController.logout);
+router.put('/update', isAuthenticated, UserController.updateUser);
+router.put('/reset', isAuthenticated, UserController.resetPassword);
 router.get('/', isAuthenticated, UserController.getAllUsers);
 router.get('/items', isAuthenticated, UserController.getAllUsersWithItems);
 router.get('/:id', isAuthenticated, UserController.getUser);
 router.post('/requests/create', isAuthenticated, UserController.createRequest);
-router.get('/requests/pending', isAuthenticated, UserController.pendingRequests)
+router.get(
+  '/requests/pending',
+  isAuthenticated,
+  UserController.pendingRequests
+);
 router.get(
   '/:userId/requests',
   isAuthenticated,

@@ -75,6 +75,7 @@ body {
 .status-keys li {
   display: inline-block;
   margin-right: 15px;
+  color: var(--text);
 }
 
 .status-keys .status-dot {
@@ -95,7 +96,9 @@ body {
   border: none;
   cursor: pointer;
 }
-
+.navbar-end a#logout {
+  color: var(--text);
+}
 .burger :hover {
   background-color: none !important;
 }

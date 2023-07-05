@@ -8,14 +8,17 @@ document.addEventListener('DOMContentLoaded', async () => {
   const pendingItem = pendingItemData || [];
 
   // Render my pending item requests
-  pendingItem.forEach(async request => {
-    const requestStatusElement = document.getElementById(
-      `requestStatus-${request.id}`
-    );
-    if (requestStatusElement) {
-      requestStatusElement.textContent = `Request Status: ${request.request_status}`;
-    }
-  });
+  //Check if pending item is array before iterating
+  if (Array.isArray(pendingItem)) {
+    pendingItem.forEach(async request => {
+      const requestStatusElement = document.getElementById(
+        `requestStatus-${request.id}`
+      );
+      if (requestStatusElement) {
+        requestStatusElement.textContent = `Request Status: ${request.request_status}`;
+      }
+    });
+  }
 
   // Accept request button
   document.addEventListener('click', async event => {
@@ -143,10 +146,4 @@ document.addEventListener('DOMContentLoaded', async () => {
   document
     .getElementsByClassName('add-item-form')[0]
     .addEventListener('submit', addItemHandler);
-});
-
-document.addEventListener('click', async event => {
-  if (event.target.classList.contains('close')) {
-    
-  }
 });

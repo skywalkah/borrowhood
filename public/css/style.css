@@ -70,11 +70,13 @@ body {
 .status-keys {
   position: relative;
   text-align: center;
+  padding: .5rem;
 }
 
 .status-keys li {
   display: inline-block;
-  margin-right: 15px;
+  margin-right: 10px;
+  margin-left: 10px;
   color: var(--text);
 }
 
@@ -82,12 +84,15 @@ body {
   position: inherit;
 }
 
+.status-container {
+  background-color: rgba(0,0,0,.025);
+  width: 30%;
+}
+
 /*  Navbar Styling  */
 .navbar {
   padding: 25px;
   background-color: var(--primary);
-  border-bottom: solid 1px var(--secondary);
-  /* will remove bottom border later on, it's here for now as a reference */
 }
 .navbar-btn {
   margin-left: 2.5rem;

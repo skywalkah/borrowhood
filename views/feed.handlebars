@@ -1,9 +1,12 @@
 <main class='container mx-auto px-4'>
-    <ul class="status-keys mt-5">
+    <div class="flex flex-col place-items-center">
+  <div class="grid h-20 bg-base-300 rounded-box place-items-center status-container">
+    <ul class="status-keys">
         <li><span class='status-dot available'></span> Available</li>
         <li><span class='status-dot pending'></span> Pending</li>
         <li><span class='status-dot not-available'></span> Not available</li>
-    </ul>
+    </ul></div>
+    </div>
     <div
         class='grid grid-flow-row my-8 gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
         {{#each items}}

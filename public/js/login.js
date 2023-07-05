@@ -16,7 +16,7 @@ const loginFormHandler = async event => {
     if (response.ok) {
       setTimeout(() => {
         console.log('success');
-        document.location.replace('/feed');
+        window.location.href = '/feed';
       }, 0);
     } else {
       const alert = createAlert(

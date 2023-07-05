@@ -19,6 +19,10 @@ module.exports = {
             as: 'borrowedBy',
             attributes: ['firstName'],
           },
+          {
+            model: db.Request,
+            as: 'requests',
+          },
         ],
       });
 
@@ -34,11 +38,14 @@ module.exports = {
         }
       });
 
+      const { requests } = items;
+
       res.render('feed', {
         items,
         isAuthenticated: req.session.isAuthenticated,
         userId: req.session.currentUser.id,
         currentUser: req.session.currentUser,
+        requests: requests,
       });
     } catch (error) {
       console.error(error);

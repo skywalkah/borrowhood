@@ -95,9 +95,8 @@ body {
 /* Request container */
 
 .request-container span {
-  padding: 10px;
-  background-color: var(--secondary-light);
-  margin-top: 50px;
+  padding: 10px 0;
+  display: block;
 }
 /* .request-container span:last-of-type {
   margin-bottom: 0;

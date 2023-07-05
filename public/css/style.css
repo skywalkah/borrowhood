@@ -44,6 +44,12 @@ body {
   background-color: #e6ede7
 }
 
+/* Status dots */
+
+.status-container {
+  background-color: rgba(0,0,0,.025);
+}
+
 .status-dot {
   height: 10px;
   width: 10px;
@@ -78,16 +84,11 @@ body {
   margin-right: 10px;
   margin-left: 10px;
   color: var(--text);
+  font-size: .9em;
 }
 
 .status-keys .status-dot {
   position: inherit;
-}
-
-.status-container {
-  background-color: rgba(0,0,0,.025);
-  width: 30%;
-  height: 3rem;
 }
 
 /*  Navbar Styling  */

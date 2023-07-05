@@ -2,8 +2,17 @@
   <div class='flex flex-col w-full border-opacity-50'>
     <div class='grid rounded-box place-items-center'>
       <h1 class='welcome-text text-center mt-5'>{{welcomeMessage}}</h1>
-      <!-- You can open the modal using ID.showModal() method -->
-      <button class='btn' onclick='my_modal_3.showModal()'>Add Item </button>
+    </div>
+  </div>
+</section>
+
+<main class='container mx-auto px-4 prose lg:prose-lg mb-6' id='dashboard'>
+ <section>
+  <div class="'your-items">
+    <h2>Your Items:</h2>
+    <!-- You can open the modal using ID.showModal() method -->
+      <i class="fa fa-plus-square" onclick='my_modal_3.showModal()'></i>
+      {{!-- <button class='btn' onclick='my_modal_3.showModal()'>Add Item </button> --}}
       <dialog id='my_modal_3' class='modal modal-bottom sm:modal-middle'>
         <form method='dialog' class='modal-box add-item-form'>
           <i class='fa fa-times close-icon' onclick='my_modal_3.close()'></i>
@@ -26,13 +35,7 @@
             </form>
         </form>
       </dialog>
-    </div>
   </div>
-</section>
-
-<main class='container mx-auto px-4 prose lg:prose-lg mb-6' id='dashboard'>
- <section>
-    <h2>Your Items:</h2>
     {{#if ownedItems.length}}
       <div class='grid grid-flow-row my-8 gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2'>
         {{#each ownedItems}}

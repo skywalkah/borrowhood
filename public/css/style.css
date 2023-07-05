@@ -5,8 +5,7 @@
   --highlights: #77b664; 
   --text: black;
   --light-gray: #DDDDDD;
-  /* --lawn: green; */
-  --red: #e74c3c;
+  --unavailable: #e74c3c;
   --stars: #e67e22;
 }
 
@@ -60,7 +59,7 @@ body {
 }
 
 .not-available {
-  background-color: var(--red);
+  background-color: var(--unavailable);
 }
 
 /*  Navbar Styling  */
@@ -219,15 +218,18 @@ button .forms {
   background-color: var(--light-gray);
 }
 
-.borrow-alert-tag {
-  /* padding: 3.5rem; */
-}
 
 /* Feed Styling */
 
-/* .add-item-form {
-  margin: auto; 
-} */
+.borrow-card {
+  background-color: white; 
+  color: var(--text);
+}
+
+.add-item-form {
+  background-color: white; 
+  color: var(--text);
+}
 
 .add-item-input {
   padding: .5rem;
@@ -250,6 +252,19 @@ button .forms {
 
 .close-icon, .delete-button {
   float: right;
+  cursor: pointer;
+}
+
+.your-items {
+  display: block;
+}
+
+.fa-plus-square {
+  float: right;
+  margin-left: .5rem;
+  margin-top: -3.25rem;
+  font-size: 25px;
+  cursor: pointer;
 }
 
 

@@ -57,11 +57,15 @@
                 {{/if}}
                 <div class='modal-action'>
                     {{#isCurrentUserItem this.user_id ../userId this.is_available}}
-                        <button type='button' class='btn borrow-button' data-user-id='{{../userId}}' data-item-id='{{this.id}}'>Borrow</button>
-                    {{else if this.is_available}}
-                        <button type='button' class='btn borrow-button' disabled>You own it</button>
-                    {{else}}
-                        <button type='button' class='btn borrow-button' disabled>Borrowed</button>
+                        {{#if this.requests.length}}
+                            <button type='button' class='btn borrow-button' disabled>Pending</button>
+                        {{else}}
+                            <button type='button' class='btn borrow-button' data-user-id='{{../userId}}' data-item-id='{{this.id}}'>Borrow</button>
+                        {{/if}}
+                        {{else if this.is_available}}
+                            <button type='button' class='btn borrow-button' disabled>You own it</button>
+                        {{else}}
+                            <button type='button' class='btn borrow-button' disabled>Borrowed</button>
                     {{/isCurrentUserItem}}
                 </div>
             </form>

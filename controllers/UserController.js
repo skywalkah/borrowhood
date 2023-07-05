@@ -151,22 +151,17 @@ module.exports = {
         return res.status(404).json({ message: 'User not found' });
       }
 
-      // Check if the user already has a request for the same item
-      const existingRequest = await Request.findOne({
+      // Find or create the request
+      const [request, created] = await Request.findOrCreate({
         where: { user_id: currentUser.id, item_id },
+        defaults: { request_status: 'pending' },
       });
-      if (existingRequest) {
+
+      if (!created) {
         return res
           .status(400)
           .json({ message: 'You already have a request for this item' });
       }
-
-      // Create the request
-      const request = await Request.create({
-        user_id: currentUser.id,
-        item_id,
-        request_status: 'pending',
-      });
 
       return res.status(201).json(request);
     } catch (err) {
@@ -203,7 +198,7 @@ module.exports = {
     }
   },
 
-  // Get pending borrow requests 
+  // Get pending borrow requests
   pendingRequests: async (req, res) => {
     try {
       const userId = req.session.currentUser.id;
@@ -218,7 +213,9 @@ module.exports = {
         ],
       });
       if (requests.length === 0) {
-        return res.status(404).json({ message: 'No pending borrow requests found' });
+        return res
+          .status(404)
+          .json({ message: 'No pending borrow requests found' });
       }
       return res.json(requests);
     } catch (err) {

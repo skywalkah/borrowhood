@@ -18,6 +18,21 @@ To login: **PUT** | http://localhost:3001/api/users/login
 }
 ```  
 To logout: **PUT** | http://localhost:3001/api/users/logout  
+To update profile: **PUT** | http://localhost:3001/api/users/update  
+```code
+{
+  "firstName": "Matt",
+  "lastName": "Damon",
+  "email": "matt@gmail.com"
+}
+``` 
+To reset password: **PUT** | http://localhost:3001/api/users/reset  
+```code
+{
+  "currentPassword": "oldpassword",
+  "newPassword": "newpassword"
+}
+```
 To get user by id: **GET** | http://localhost:3001/api/users/:id
 To get all users: **GET** | http://localhost:3001/api/users/   
 To get all users and their associated items:  **GET** | http://localhost:3001/api/users/items   

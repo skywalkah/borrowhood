@@ -1,7 +1,7 @@
 const { User, Request, Item } = require('../models');
 
-// CREATE new user
 module.exports = {
+  // CREATE new user
   register: async (req, res) => {
     const {
       body: { firstName, lastName, email, password },
@@ -151,22 +151,17 @@ module.exports = {
         return res.status(404).json({ message: 'User not found' });
       }
 
-      // Check if the user already has a request for the same item
-      const existingRequest = await Request.findOne({
+      // Find or create the request
+      const [request, created] = await Request.findOrCreate({
         where: { user_id: currentUser.id, item_id },
+        defaults: { request_status: 'pending' },
       });
-      if (existingRequest) {
+
+      if (!created) {
         return res
           .status(400)
           .json({ message: 'You already have a request for this item' });
       }
-
-      // Create the request
-      const request = await Request.create({
-        user_id: currentUser.id,
-        item_id,
-        request_status: 'pending',
-      });
 
       return res.status(201).json(request);
     } catch (err) {
@@ -196,6 +191,32 @@ module.exports = {
           .json({ message: 'This user has no borrow requests' });
       }
 
+      return res.json(requests);
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json(err);
+    }
+  },
+
+  // Get pending borrow requests
+  pendingRequests: async (req, res) => {
+    try {
+      const userId = req.session.currentUser.id;
+      const requests = await Request.findAll({
+        where: {
+          user_id: userId,
+          request_status: 'pending',
+        },
+        include: [
+          { model: Item, as: 'item' },
+          { model: User, as: 'user', attributes: ['firstName'] },
+        ],
+      });
+      if (requests.length === 0) {
+        return res
+          .status(404)
+          .json({ message: 'No pending borrow requests found' });
+      }
       return res.json(requests);
     } catch (err) {
       console.error(err);

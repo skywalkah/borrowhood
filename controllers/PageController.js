@@ -19,6 +19,10 @@ module.exports = {
             as: 'borrowedBy',
             attributes: ['firstName'],
           },
+          {
+            model: db.Request,
+            as: 'requests',
+          },
         ],
       });
 
@@ -34,11 +38,14 @@ module.exports = {
         }
       });
 
+      const { requests } = items;
+
       res.render('feed', {
         items,
         isAuthenticated: req.session.isAuthenticated,
         userId: req.session.currentUser.id,
         currentUser: req.session.currentUser,
+        requests: requests,
       });
     } catch (error) {
       console.error(error);
@@ -52,24 +59,43 @@ module.exports = {
       const user = await db.User.findOne({
         where: { id: req.session.currentUser.id },
         include: [
-          { model: db.Item, as: 'ownedItems' },
-          { model: db.Item, as: 'borrowedItems' },
           {
-            model: db.Request,
-            as: 'requests',
-            include: { model: db.User, as: 'user', attributes: ['firstName'] },
+            model: db.Item,
+            as: 'ownedItems',
+            include: [
+              {
+                model: db.Request,
+                as: 'requests',
+                include: {
+                  model: db.User,
+                  as: 'user',
+                  attributes: ['firstName'],
+                },
+              },
+            ],
+          },
+          {
+            model: db.Item,
+            as: 'borrowedItems',
+            include: [
+              {
+                model: db.User,
+                as: 'owner',
+                attributes: ['firstName'],
+              },
+            ],
           },
         ],
       });
 
       // Get user's owned and borrowed items
-      const { ownedItems, borrowedItems, borrowedRequests } = user;
+      const { ownedItems, borrowedItems, requests } = user;
 
       res.render('dashboard', {
-        welcomeMessage: `Welcome ${req.session.currentUser.firstName}! Here are your items`,
+        welcomeMessage: `Hi ${req.session.currentUser.firstName}! Here's your Dashboard.`,
         ownedItems: ownedItems,
         borrowedItems: borrowedItems,
-        borrowedRequests: borrowedRequests,
+        requests: requests,
         isAuthenticated: req.session.isAuthenticated,
         currentUser: req.session.currentUser,
       });

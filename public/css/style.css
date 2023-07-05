@@ -1,11 +1,13 @@
 :root { 
   --primary:#f5f2f2;
   --secondary: #43a6bf;
+  --secondary-light: #4dc0de;
   --highlights: #77b664; 
-  --text: black; 
-  --lawn: green;
-  --orange: #e67e22;
-  --red: #e74c3c;
+  --text: black;
+  --light-gray: #DDDDDD;
+  --unavailable: #e74c3c;
+  --stars: #e67e22;
+  --yellow: #f1c40f;
 }
 
 * {
@@ -17,6 +19,7 @@
 body {
   background-color: var(--primary);
   min-height: 100vh;
+
 }
 
 .logo-sm {
@@ -25,8 +28,11 @@ body {
 }
 
 /* Global Styling */
+.display-inline {
+  display: inline-block;
+}
 .stars {
-  color: var(--orange);
+  color: var(--stars);
 }
 
 .trigger-modal {
@@ -35,6 +41,7 @@ body {
 
 .card {
   position: relative;
+  background-color: #e6ede7
 }
 
 .status-dot {
@@ -52,8 +59,26 @@ body {
   background-color: var(--highlights);
 }
 
+.pending {
+  background-color: var(--yellow);
+}
+
 .not-available {
-  background-color: var(--red);
+  background-color: var(--unavailable);
+}
+
+.status-keys {
+  position: relative;
+  text-align: center;
+}
+
+.status-keys li {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.status-keys .status-dot {
+  position: inherit;
 }
 
 /*  Navbar Styling  */
@@ -85,7 +110,29 @@ body {
   color: var(--text);
 }
 
+/* Request container */
+
+.request-container span {
+  padding: 10px 0;
+  display: block;
+}
+/* .request-container span:last-of-type {
+  margin-bottom: 0;
+} */
+.borrowed-by,
+.borrowed-from {
+  margin-top: 30px;
+  padding-top: 15px;
+}
+.border-top {
+  border-top: 2px solid var(--text);
+}
+
 /* Chat Styling */
+
+.home {
+  margin-top: 5.5rem;
+}
 .chat {
   padding: 80px;
 }
@@ -110,7 +157,7 @@ button .forms {
   background-color: none !important ;
 }
 
-.login-btn {
+.login-btn, .borrow-button, .add-item-btn {
   border-color: var(--secondary);
 }
 
@@ -133,31 +180,145 @@ button .forms {
 /* Dashboard Styling */
 
 .welcome-text {
+  font-size: x-large;
   color: var(--text);
-  font-size: xx-large;
+}
+
+.dashboard-top {
+  margin: auto;
+  margin-top: 3.5rem;
+  width: 40%;
+}
+
+.post {
+  padding-left: 1rem;
+  font-size: larger;
+  color: var(--text);
+}
+
+.none {
+  padding-left: 1rem;
+  font-size: larger;
+  color: var(--text);
+}
+
+#dashboard {
+  margin-bottom: 40px;
+}
+
+#dashboard section * {
+  color: var(--text);
+}
+
+#dashboard section h2 {
+  margin-top: 20px;
+}
+
+#dashboard section h3 {
+  margin-top: 0;
+}
+
+#dashboard section p {
+  margin-top: 0;
+}
+
+#dashboard section p:last-of-type {
+  margin-bottom: 0;
+}
+
+#dashboard section .dash-card-text {
   font-weight: bold;
 }
 
-.item-card {
-  margin: auto;
-  width: 70%;
-  margin-top: 1rem;
+.emptyBox {
+  display: block;
+  width: 100%;
+  background-color: var(--light-gray);
 }
 
-.dash-card-title {
-  font-size: xx-large;
-  margin-bottom: 1rem;
+
+/* Feed Styling */
+
+.borrow-card {
+  background-color: white; 
+  color: var(--text);
 }
 
-.dash-card-text {
-  font-size: large;
-  margin-bottom: 1rem;
+.add-item-form {
+  background-color: white; 
+  color: var(--text);
 }
+
+.add-item-input {
+  padding: .5rem;
+  width: 100%;
+
+}
+
+.add-item-txtarea {
+  width: 100%;
+}
+
+.add-item-nametxt {
+  width: 100%;
+}
+
+.add-item-button-div {
+  display: flex;
+  justify-content: center;
+}
+
+.close-icon, .delete-button {
+  float: right;
+  cursor: pointer;
+}
+
+.your-items {
+  display: block;
+}
+
+.fa-plus-square {
+  float: right;
+  margin-left: .5rem;
+  margin-top: -3.25rem;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+
+/* Feed Styling */
+
+.modal-title {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+
+/* .feed-card {
+  background-color: var(--secondary);
+} */
+
+.card-title,
+.card-description,
+.card-condition,
+.card-owner,
+.card-available,
+.card-not-available,
+.borrowed-by {
+  color: var(--text);
+}
+
+/* .not-rated {
+  font-size: 1.2rem;
+  padding-top: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+} */
 
 /* About Us */
 
 .about-title {
-  color: var(--text);
+  color: var(--secondary);
   font-size: 3rem;
   position: relative;
   padding-top: 1rem;
@@ -171,6 +332,14 @@ button .forms {
   padding: 2rem;
 }
 
+.contact-title {
+  color: var(--secondary);
+  font-size: 3rem;
+  position: relative;
+  padding-top: 1rem;
+  font-weight: bold;
+}
+
 .contact-body {
   color: var(--text);
   position: relative;
@@ -178,11 +347,10 @@ button .forms {
   padding: 2rem;
 }
 
-/* Foot Styling */
+/* Footer Styling */
+
 footer {
   background-color: var(--secondary);
-  bottom: 0;
-  width: 100%;
 }
 
 footer .text {

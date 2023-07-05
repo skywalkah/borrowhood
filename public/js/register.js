@@ -23,7 +23,10 @@ const registrationHandler = async event => {
       });
 
       if (response.ok) {
-        document.location.replace('/feed');
+        setTimeout(() => {
+          console.log('success');
+          window.location.href = '/feed'; // Redirect to /feed with full page refresh
+        }, 0);
       } else {
         const alert = createAlert('An error occurred. Please try again.');
         appendAlert(alert);

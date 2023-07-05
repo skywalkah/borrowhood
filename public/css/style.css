@@ -7,6 +7,7 @@
   --light-gray: #DDDDDD;
   --unavailable: #e74c3c;
   --stars: #e67e22;
+  --yellow: #f1c40f;
 }
 
 * {
@@ -58,8 +59,26 @@ body {
   background-color: var(--highlights);
 }
 
+.pending {
+  background-color: var(--yellow);
+}
+
 .not-available {
   background-color: var(--unavailable);
+}
+
+.status-keys {
+  position: relative;
+  text-align: center;
+}
+
+.status-keys li {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.status-keys .status-dot {
+  position: inherit;
 }
 
 /*  Navbar Styling  */

@@ -1,4 +1,9 @@
 <main class='container mx-auto px-4'>
+    <ul class="status-keys mt-5">
+        <li><span class='status-dot available'></span> Available</li>
+        <li><span class='status-dot pending'></span> Pending</li>
+        <li><span class='status-dot not-available'></span> Not available</li>
+    </ul>
     <div
         class='grid grid-flow-row my-8 gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
         {{#each items}}
@@ -6,7 +11,16 @@
             class='rounded-xl p-6 shadow-lg shadow-gray-200 bg- duration-300 hover:-translate-y-1 feed-card card'>
             <a class='trigger-modal' onclick='my_modal_{{this.id}}.showModal()'>
                 <span
-                    class='status-dot {{#if this.is_available}}available{{else}}not-available{{/if}}
+                    class='status-dot 
+                    {{#if this.is_available}}
+                        {{#if this.requests.length}}
+                            pending
+                        {{else}}
+                            available
+                        {{/if}}
+                    {{else}}
+                        not-available
+                    {{/if}}
                 '></span>
                 <span class='stars'>{{#if this.averageRating}}{{renderStars this.averageRating}}{{else}}<h4 class='not-rated'>Not Rated</h4>{{/if}}</span>
                 <h2 class='card-title mb-3'>{{this.item_name}}</h2>

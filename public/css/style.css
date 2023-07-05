@@ -87,6 +87,7 @@ body {
 .status-container {
   background-color: rgba(0,0,0,.025);
   width: 30%;
+  height: 3rem;
 }
 
 /*  Navbar Styling  */

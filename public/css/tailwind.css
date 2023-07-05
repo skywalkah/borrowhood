@@ -1014,20 +1014,8 @@ video {
   margin-bottom: 0;
 }
 
-.absolute {
-  position: absolute;
-}
-
 .relative {
   position: relative;
-}
-
-.right-2 {
-  right: 0.5rem;
-}
-
-.top-2 {
-  top: 0.5rem;
 }
 
 .z-\[1\] {

@@ -304,9 +304,41 @@ button .forms {
 }
 
 
-/* .feed-card {
-  background-color: var(--secondary);
-} */
+.feed-card {
+  position: relative;
+}
+
+.feed-card .dropdown {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.feed-card label,
+.feed-card label:hover {
+  background-color: transparent;
+}
+
+.feed-card label .fa-ellipsis-v::before {
+  color: #999;
+}
+
+.feed-card label:hover .fa-ellipsis-v::before {
+  color: var(--text)
+}
+
+.feed-card ul.dropdown-content {
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+
+.feed-card ul.dropdown-content li {
+  margin: 0;
+  padding: 15px;
+}
 
 .card-title,
 .card-description,

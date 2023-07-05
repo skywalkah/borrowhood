@@ -1,25 +1,4 @@
 document.addEventListener('DOMContentLoaded', async () => {
-  // Fetch the pending item requests
-  const pendingItemResponse = await fetch('/api/users/requests/pending', {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' },
-  });
-  const pendingItemData = await pendingItemResponse.json();
-  const pendingItem = pendingItemData || [];
-
-  // Render my pending item requests
-  //Check if pending item is array before iterating
-  if (Array.isArray(pendingItem)) {
-    pendingItem.forEach(async request => {
-      const requestStatusElement = document.getElementById(
-        `requestStatus-${request.id}`
-      );
-      if (requestStatusElement) {
-        requestStatusElement.textContent = `Request Status: ${request.request_status}`;
-      }
-    });
-  }
-
   // Accept request button
   document.addEventListener('click', async event => {
     if (event.target.classList.contains('approve-button')) {

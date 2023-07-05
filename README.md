@@ -14,7 +14,7 @@ Borrowhood is an application which allows people to borrow needed items from the
 - [Deployed Application](#deployed)
 
 ## Mockup
-
+![An image of the Borrowhood application dashboard.](./public/images/borrowhood-mockup.png)
 
 ## Installation
 N/A

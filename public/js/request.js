@@ -50,6 +50,9 @@ async function handleBorrowRequest(event) {
       // Process the item response
       const item = await itemResponse.json();
       console.log('Item updated:', item);
+    } else if (request.request_status === 'pending') {
+      button.disabled = true;
+      button.textContent = 'Pending';
     }
   } catch (error) {
     console.error('Error creating borrow request:', error.message);
@@ -60,3 +63,4 @@ const borrowButtons = document.querySelectorAll('.borrow-button');
 borrowButtons.forEach(button => {
   button.addEventListener('click', handleBorrowRequest);
 });
+

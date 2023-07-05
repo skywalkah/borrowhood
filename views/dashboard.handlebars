@@ -6,7 +6,7 @@
       <button class='btn' onclick='my_modal_3.showModal()'>Add Item </button>
       <dialog id='my_modal_3' class='modal modal-bottom sm:modal-middle'>
         <form method='dialog' class='modal-box add-item-form'>
-          <button class='btn btn-sm btn-circle btn-ghost absolute right-2 top-2'>✕</button>
+          <i class='fa fa-times close-icon' onclick='my_modal_3.close()'></i>
           <form id='add-item-form' class='space-y-4 add-item-form'>
             <div id='add-item-alert'></div>
               <div class='form-control'>
@@ -20,7 +20,7 @@
                   <textarea placeholder='Item Condition' class='textarea textarea-bordered textarea-md add-item-txtarea' id='item_condition' ></textarea>
                 </label>
               </div>
-              <div class ='add-item-button'>
+              <div class ='add-item-button-div'>
                 <button type='submit' class='btn mt-4 add-item-btn'>Add Item</button>
               </div>
             </form>
@@ -31,19 +31,19 @@
 </section>
 
 <main class='container mx-auto px-4 prose lg:prose-lg mb-6' id='dashboard'>
-  <section>
+ <section>
     <h2>Your Items:</h2>
-    <div class='grid grid-flow-row my-8 gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2'>
-      {{#if ownedItems.length}}
+    {{#if ownedItems.length}}
+      <div class='grid grid-flow-row my-8 gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2'>
         {{#each ownedItems}}
-          <div class='rounded-xl p-6 shadow-lg shadow-gray-200 bg-white duration-300 hover:-translate-y-1 feed-card' id='item-{{this.id}}'>
-            <h3 class='mt-0'>{{this.item_name}}</h3>
+        <div class='rounded-xl p-6 shadow-lg shadow-gray-200 bg-white duration-300 hover:-translate-y-1 feed-card' id='item-{{this.id}}'>
+          <h3 class='mt-0'>{{this.item_name}}</h3>
             <p>{{this.item_description}}</p>
             {{#if this.requests.length}}
-              <div class="request-container mt-5 border-top">
-                {{#each this.requests}}
-                  {{#ifEqual request_status "pending"}}
-                  <span class="rounded-lg">
+            <div class='request-container mt-5 border-top'>
+              {{#each this.requests}}
+              {{#ifEqual request_status 'pending'}}
+              <span class='rounded-lg borrow-alert-tag'>
                     {{this.user.firstName}} sent you a borrow request for this item.
                     <button class='approve-button btn btn-outline btn-xs display-inline' data-item-id='{{item_id}}' data-request-id='{{id}}' data-user-id='{{this.user_id}}'>
                       Approve
@@ -52,24 +52,23 @@
                       Deny
                     </button>
                   </span>
-                  {{else}}
+                   {{else}}
                     <p class='borrowed-by dash-card-text pt-5'>Borrowed by {{this.user.firstName}}</p>
-                  {{/ifEqual}}
-                {{/each}}
-              </div>
+              {{/ifEqual}}
+              {{/each}}
+            </div>
             {{else}}
-              <p class='dash-card-text border-top border-top pt-5'>No requests for this item.</p>
+             <p class='dash-card-text border-top border-top pt-5'>No requests for this item.</p>
             {{/if}}
-            <button class='delete-button relative top-2 right-2 bg-red-500 text-white px-2 py-1 rounded'>Delete</button>
-          </div>
-          </div>
+            <i class='delete-button fa fa-trash'></i>
+        </div>
         {{/each}}
-      {{else}}
-        <p class='none mb-5 emptyBox p-5 rounded-xl'>You have no items, post one!</p>
-      {{/if}}
-    </div>
+      </div>
+    {{else}}
+       <p class='none mb-5 emptyBox p-5 rounded-xl'>You have no items, post one!</p>
+    {{/if}}
   </section>
- 
+
   <section>
     <h2>Your Borrowed Items:</h2>
     {{#if borrowedItems.length}}
@@ -96,7 +95,7 @@
           class='rounded-xl p-6 shadow-lg shadow-gray-200 bg-white duration-300 hover:-translate-y-1 feed-card card'
         >
           {{#each pendingItem}}
-            <h3 class="mt-0">{{this.item_name}}</h3>
+            <h3 class='mt-0'>{{this.item_name}}</h3>
             <p>{{this.item_description}}</p>
             <p class='dash-card-text' id='requestStatus-{{this.id}}'>Request Status: {{this.request_status}}</p>
           {{/each}}

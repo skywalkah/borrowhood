@@ -96,10 +96,11 @@ body {
 .request-container span {
   padding: 10px;
   background-color: var(--secondary-light);
+  margin-top: 50px;
 }
-.request-container span:last-of-type {
+/* .request-container span:last-of-type {
   margin-bottom: 0;
-}
+} */
 .borrowed-by,
 .borrowed-from {
   margin-top: 30px;
@@ -217,6 +218,10 @@ button .forms {
   background-color: var(--light-gray);
 }
 
+.borrow-alert-tag {
+  /* padding: 3.5rem; */
+}
+
 /* Feed Styling */
 
 /* .add-item-form {
@@ -237,11 +242,14 @@ button .forms {
   width: 100%;
 }
 
-.add-item-button {
+.add-item-button-div {
   display: flex;
   justify-content: center;
 }
 
+.close-icon, .delete-button {
+  float: right;
+}
 
 
 /* Feed Styling */

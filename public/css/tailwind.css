@@ -1022,6 +1022,10 @@ video {
   z-index: 1;
 }
 
+.m-1 {
+  margin: 0.25rem;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -1038,6 +1042,10 @@ video {
 
 .mb-3 {
   margin-bottom: 0.75rem;
+}
+
+.mb-32 {
+  margin-bottom: 8rem;
 }
 
 .mb-5 {
@@ -1070,10 +1078,6 @@ video {
 
 .grid {
   display: grid;
-}
-
-.h-20 {
-  height: 5rem;
 }
 
 .h-screen {

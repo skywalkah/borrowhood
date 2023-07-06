@@ -252,7 +252,9 @@ button .forms {
 
 .collapse {
 background-color: rgba(119, 182, 100, 0.25);
-color: var(--text)
+color: var(--text);
+margin-top: 1.5rem;
+
 }
 
 .review-form {
@@ -294,6 +296,12 @@ color: var(--text)
 
 .add-item-txtarea, .add-review-txtarea {
   width: 100%;
+}
+
+.add-review-txtarea {
+  background-color: rgba(119, 182, 100, 0);
+  border-color: var(--secondary);
+  color: var(--text);
 }
 
 .add-item-nametxt {

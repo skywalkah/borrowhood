@@ -3,11 +3,12 @@
   --secondary: #43a6bf;
   --secondary-light: #4dc0de;
   --highlights: #77b664; 
+  --highlights-light: #e6ede7;
   --text: black;
   --light-gray: #DDDDDD;
   --unavailable: #e74c3c;
   --stars: #e67e22;
-  --yellow: #f1c40f;
+  --pending: #f1c40f;
 }
 
 * {
@@ -19,6 +20,7 @@
 body {
   background-color: var(--primary);
   min-height: 100vh;
+  color:var(--text);
 
 }
 
@@ -41,7 +43,7 @@ body {
 
 .card {
   position: relative;
-  background-color: #e6ede7
+  background-color: var(--highlights-light);
 }
 
 /* Status dots */
@@ -66,7 +68,7 @@ body {
 }
 
 .pending {
-  background-color: var(--yellow);
+  background-color: var(--pending);
 }
 
 .not-available {
@@ -167,7 +169,7 @@ button .forms {
   background-color: none !important ;
 }
 
-.login-btn, .borrow-button, .add-item-btn {
+.login-btn, .borrow-button, .add-item-btn, .add-review-button, .return-button {
   border-color: var(--secondary);
 }
 
@@ -246,6 +248,33 @@ button .forms {
   background-color: var(--light-gray);
 }
 
+/* Collapse Review Styling */
+
+.collapse {
+background-color: rgba(119, 182, 100, 0.25);
+color: var(--text);
+margin-top: 1.5rem;
+
+}
+
+.review-form {
+  background-color: none !important;
+  color: var(--text)
+}
+
+.collapse-content {
+  color: var(--text);
+}
+
+
+.rating {
+  width: 180px;
+}
+
+.rating__star {
+  cursor: pointer;
+  color: var(--stars);
+}
 
 /* Feed Styling */
 
@@ -259,14 +288,20 @@ button .forms {
   color: var(--text);
 }
 
-.add-item-input {
+.add-item-input, .add-review-input {
   padding: .5rem;
   width: 100%;
 
 }
 
-.add-item-txtarea {
+.add-item-txtarea, .add-review-txtarea {
   width: 100%;
+}
+
+.add-review-txtarea {
+  background-color: rgba(119, 182, 100, 0);
+  border-color: var(--secondary);
+  color: var(--text);
 }
 
 .add-item-nametxt {

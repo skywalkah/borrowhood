@@ -124,30 +124,75 @@ document.addEventListener('DOMContentLoaded', async () => {
   document
     .getElementsByClassName('add-item-form')[0]
     .addEventListener('submit', addItemHandler);
-});
 
-//Initiating a return
-const returnButtons = document.querySelectorAll('.return-button');
+  // // Add Review
+  const addReviewHandler = async event => {
+    event.preventDefault();
 
-returnButtons.forEach(function (button) {
-  button.addEventListener('click', async function () {
-    const itemId = button.getAttribute('data-item-id');
-    try {
-      const response = await fetch(`api/users/items/${itemId}/return`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'same-origin',
+    if (event.target.classList.contains('review-form')) {
+      const ratings = document.querySelectorAll('.rating input');
+      let rating = 0;
+      ratings.forEach((selectedRating, index) => {
+        if (selectedRating.checked) {
+          rating = index + 1;
+        }
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to initiate return');
-      }
+      const itemId = event.target.getAttribute('data-item-id');
+      const review_text = document.querySelector(`.add-review-txtarea`).value;
+      try {
+        const response = await fetch(`/api/reviews`, {
+          method: 'POST',
+          body: JSON.stringify({
+            rating,
+            review_text,
+            itemId,
+          }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
 
-      console.log('Return initiated successfully');
-    } catch (error) {
-      console.error('Failed to initiate return:', error);
+        if (response.ok) {
+          console.log('Review submitted!');
+          location.reload();
+        } else {
+          console.error('Failed to submit review');
+        }
+      } catch (error) {
+        console.error(error);
+      }
     }
+  };
+  document
+    .getElementsByClassName('review-form')[0]
+    .addEventListener('submit', addReviewHandler);
+
+  //Initiating a return
+  const returnButtons = document.querySelectorAll('.return-button');
+
+  returnButtons.forEach(function (button) {
+    button.addEventListener('click', async function () {
+      const itemId = button.getAttribute('data-item-id');
+      try {
+        const response = await fetch(`api/users/items/${itemId}/return`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'same-origin',
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to initiate return');
+        }
+        button.disabled = true;
+        button.textContent = 'Pending Return';
+
+        console.log('Return initiated successfully');
+      } catch (error) {
+        console.error('Failed to initiate return:', error);
+      }
+    });
   });
 });

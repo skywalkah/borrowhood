@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
-BorrowHood is an application which allows people to borrow needed items from their neighbors. Borrowhood allows neighbors to lend and borrow tools, equipment, and household items with or from one another. It encourages community interaction and sharing of resources which, in turn, minimizes individual purchases and decreases landfill waste. It's easy and fast to sign up and start listing items available for lending or searching for what you need!
+Borrowhood is an application which allows people to borrow needed items from their neighbors. It also allows neighbors to lend and borrow tools, equipment, and household items with or from one another. It encourages community interaction and sharing of resources which, in turn, minimizes individual purchases and decreases landfill waste. It's easy and fast to sign up and start listing items available for lending or searching for what you need!
 
 ## Table of Contents
 - [Mockup](#mockup)
@@ -14,7 +14,7 @@ BorrowHood is an application which allows people to borrow needed items from the
 - [Deployed Application](#deployed)
 
 ## Mockup
-
+![An image of the Borrowhood application dashboard.](./public/images/borrowhood-mockup.png)
 
 ## Installation
 N/A

@@ -8,10 +8,10 @@
 
 <main class='container mx-auto px-4 prose lg:prose-lg mb-6' id='dashboard'>
  <section>
-  <div class="'your-items">
+  <div class='your-items'>
     <h2>Your Items:</h2>
     <!-- You can open the modal using ID.showModal() method -->
-      <i class="fa fa-plus-square" onclick='my_modal_3.showModal()'></i>
+      <i class='fa fa-plus-square' onclick='my_modal_3.showModal()'></i>
       {{!-- <button class='btn' onclick='my_modal_3.showModal()'>Add Item </button> --}}
       <dialog id='my_modal_3' class='modal modal-bottom sm:modal-middle'>
         <form method='dialog' class='modal-box add-item-form'>
@@ -38,22 +38,38 @@
   </div>
     {{#if ownedItems.length}}
       <div class='grid grid-flow-row my-8 gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2'>
-        {{#each ownedItems}}
-          <div class='rounded-xl p-6 shadow-lg shadow-gray-200 bg-white duration-300 hover:-translate-y-1 feed-card' id='item-{{this.id}}'>
-            <h3 class='mt-0'>{{this.item_name}}</h3>
-            <p>{{this.item_description}}</p>
-            {{#if this.requests.length}}
+        {{#each ownedItems as |ownedItem|}}
+          <div class='rounded-xl p-6 shadow-lg shadow-gray-200 bg-white duration-300 hover:-translate-y-1 feed-card' id='item-{{ownedItem.id}}'>
+            {{#each ownedItem.requests}}
+              {{#ifEqual request_status 'pending'}}
+                <div class="indicator"></div>
+                <div class="hint"></div>
+              {{/ifEqual}}
+            {{/each}}
+            <div class='dropdown dropdown-end'>
+              <label tabindex='0' class='btn m-1'><i class='fa fa-ellipsis-v' aria-hidden='true'></i></label>
+              <ul tabindex='0' class='dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52'>
+                <li><a class='delete-button'><i class='delete-button fa fa-trash'></i> Delete item</a></li>
+                {{#each ownedItem.requests}}
+                  {{#ifEqual request_status 'pending'}}
+                      <li><button class='approve-button display-inline' data-item-id='{{item_id}}' data-request-id='{{id}}' data-user-id='{{this.user_id}}' data-request-type='{{ownedItem.is_available}}'>
+                        <i class="fa fa-check" aria-hidden="true"></i> Approve
+                      </button></li>
+                      <li><button class='deny-button display-inline' data-item-id='{{item_id}}' data-request-id='{{id}}' data-user-id='{{this.user_id}}' data-request-type='{{ownedItem.is_available}}'>
+                        <i class="fa fa-ban" aria-hidden="true"></i> Deny
+                      </button></li>
+                  {{/ifEqual}}
+                {{/each}}
+              </ul>
+            </div>
+            <h3 class='mt-0'>{{ownedItem.item_name}}</h3>
+            <p>{{ownedItem.item_description}}</p>
+            {{#if ownedItem.requests.length}}
             <div class='request-container mt-5 border-top'>
-              {{#each this.requests}}
+              {{#each ownedItem.requests}}
                 {{#ifEqual request_status 'pending'}}
                   <span class='rounded-lg borrow-alert-tag'>
                     {{this.user.firstName}} sent you a borrow request for this item.
-                    <button class='approve-button btn btn-outline btn-xs display-inline' data-item-id='{{item_id}}' data-request-id='{{id}}' data-user-id='{{this.user_id}}'>
-                      Approve
-                    </button>
-                    <button class='deny-button btn btn-outline btn-xs display-inline' data-item-id='{{item_id}}' data-request-id='{{id}}' data-user-id='{{this.user_id}}'>
-                      Deny
-                    </button>
                   </span>
                 {{else}}
                   <p class='borrowed-by dash-card-text pt-5'>Borrowed by {{this.user.firstName}}</p>
@@ -63,7 +79,6 @@
             {{else}}
               <p class='dash-card-text border-top border-top pt-5'>No requests for this item.</p>
             {{/if}}
-            <i class='delete-button fa fa-trash'></i>
           </div>
         {{/each}}
       </div>
@@ -72,17 +87,21 @@
     {{/if}}
   </section>
 
-  <section>
+ <section>
     <h2>Items You Borrowed:</h2>
     {{#if borrowedItems.length}}
       <div class='grid grid-flow-row my-8 gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2'>
         {{#each borrowedItems}}
-        <div class='rounded-xl p-6 shadow-lg shadow-gray-200 bg-white duration-300 hover:-translate-y-1 feed-card card'>
+        <div class='rounded-xl p-6 shadow-lg shadow-gray-200 bg-white duration-300 hover:-translate-y-1 feed-card card' id='render-add-review'>
           <h3 class='mt-0'>{{this.item_name}}</h3>
           <p>{{this.item_description}}</p>
           <p class='dash-card-text borrowed-from border-top'>
             Borrowed from {{this.owner.firstName}}
           </p>
+           <button class='return-button btn btn-xs display-inline' data-item-id={{this.id}}>
+            Initiate Return 
+            </button>    
+            <div class="review-wrapper" id="review-wrapper-{{this.id}}"></div>
         </div>
         {{/each}}
       </div>
@@ -90,6 +109,9 @@
       <p class='none emptyBox p-5 rounded-xl'>No borrowed items.</p>
     {{/if}}
   </section>
+
+   
+
 </main>
 
 <script src='/js/dashboard.js' data-user-id='{{currentUser.id}}'></script>

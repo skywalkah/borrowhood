@@ -1,43 +1,51 @@
 document.addEventListener('DOMContentLoaded', async () => {
-  // Fetch the pending item requests
-  const pendingItemResponse = await fetch('/api/users/requests/pending', {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' },
-  });
-  const pendingItemData = await pendingItemResponse.json();
-  const pendingItem = pendingItemData || [];
-
-  // Render my pending item requests
-  pendingItem.forEach(async request => {
-    const requestStatusElement = document.getElementById(
-      `requestStatus-${request.id}`
-    );
-    if (requestStatusElement) {
-      requestStatusElement.textContent = `Request Status: ${request.request_status}`;
-    }
-  });
-
   // Accept request button
   document.addEventListener('click', async event => {
     if (event.target.classList.contains('approve-button')) {
       const userId = event.target.getAttribute('data-user-id');
       const requestId = event.target.getAttribute('data-request-id');
-      try {
-        const response = await fetch(
-          `/api/users/${userId}/requests/${requestId}/approve`,
-          {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
+      const isAvailable = event.target.getAttribute('data-request-type');
+      const itemId = event.target.getAttribute('data-item-id');
+      //Checking to see if item is available, then it's a borrow request
+      //Otherwise it's a return request
+      if (isAvailable == 'true') {
+        try {
+          const response = await fetch(
+            `/api/users/${userId}/requests/${requestId}/approve`,
+            {
+              method: 'PUT',
+              headers: { 'Content-Type': 'application/json' },
+            }
+          );
+          if (response.ok) {
+            console.log(' Borrow Request approved!');
+            location.reload();
+          } else {
+            console.error('Failed to approve borrow request');
           }
-        );
-        if (response.ok) {
-          console.log('Request approved!');
-          location.reload();
-        } else {
-          console.error('Failed to approve request');
+        } catch (error) {
+          console.error(error);
         }
-      } catch (error) {
-        console.error(error);
+      } else {
+        console.log('approving return');
+        try {
+          const response = await fetch(
+            `/api/users/items/${itemId}/return/approve`,
+            {
+              method: 'PUT',
+              headers: { 'Content-Type': 'application/json' },
+            }
+          );
+          if (response.ok) {
+            console.log(' Return Request approved!');
+            location.reload();
+          } else {
+            console.error('Failed to approve return request');
+          }
+        } catch (error) {
+          console.error(error);
+        }
+
       }
     }
   });
@@ -71,7 +79,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (event.target.classList.contains('delete-button')) {
       const itemId = event.target.closest('.feed-card').id.split('-')[1];
       try {
-        const response = await fetch(`/api/items/${itemId}`, {
+        const response = await fetch(`api/items/${itemId}`, {
           method: 'DELETE',
           headers: { 'Content-Type': 'application/json' },
         });
@@ -120,7 +128,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       appendAlert(alert);
     }
   };
-
   const createAlert = message => {
     const alert = document.createElement('div');
     alert.className = 'alert alert-error';
@@ -143,10 +150,82 @@ document.addEventListener('DOMContentLoaded', async () => {
   document
     .getElementsByClassName('add-item-form')[0]
     .addEventListener('submit', addItemHandler);
-});
 
-document.addEventListener('click', async event => {
-  if (event.target.classList.contains('close')) {
-    
-  }
-});
+  // Initiating a return and adding a review
+  const returnButtons = document.querySelectorAll('.return-button');
+
+  returnButtons.forEach(function (button) {
+    button.addEventListener('click', async function () {
+      const itemId = button.getAttribute('data-item-id');
+      const reviewWrapper = document.getElementById(`review-wrapper-${itemId}`);
+      try {
+        const response = await fetch(`api/users/items/${itemId}/return`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'same-origin',
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to initiate return');
+        }
+
+        button.disabled = true;
+        button.textContent = 'Pending Return';
+
+        // Load the reviews partial
+        const reviewPartial = await fetch(`api/reviews/partial/${itemId}`);
+        const reviewHTML = await reviewPartial.text();
+        reviewWrapper.innerHTML = reviewHTML;
+        document
+          .getElementsByClassName('review-form')[0]
+          .addEventListener('submit', addReviewHandler);
+
+        console.log('Return initiated successfully');
+      } catch (error) {
+        console.error('Failed to initiate return:', error);
+      }
+    });
+    // // Add Review
+    const addReviewHandler = async event => {
+      event.preventDefault();
+
+      if (event.target.classList.contains('review-form')) {
+        const ratings = document.querySelectorAll('.rating input');
+        let rating = 0;
+        ratings.forEach((selectedRating, index) => {
+          if (selectedRating.checked) {
+            rating = index + 1;
+          }
+        });
+
+        const itemId = event.target.getAttribute('data-item-id');
+        const review_text = document.querySelector(`.add-review-txtarea`).value;
+        try {
+          const response = await fetch(`/api/reviews`, {
+            method: 'POST',
+            body: JSON.stringify({
+              rating,
+              review_text,
+              itemId,
+            }),
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          });
+
+          if (response.ok) {
+            console.log('Review submitted!');
+            location.reload();
+          } else {
+            console.error('Failed to submit review');
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    };
+    console.log(document.getElementsByClassName('review-form'));
+    })
+  });

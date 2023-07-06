@@ -104,4 +104,22 @@ module.exports = {
       res.status(500).send('Internal Server Error');
     }
   },
+
+  getProfile: async (req, res) => {
+    try {
+      const userId = req.session.currentUser.id;
+
+      // Fetch the user's profile information
+      const user = await db.User.findByPk(userId);
+
+      res.render('profile', {
+        user,
+        isAuthenticated: req.session.isAuthenticated,
+        currentUser: req.session.currentUser,
+      });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
+    }
+  },
 };

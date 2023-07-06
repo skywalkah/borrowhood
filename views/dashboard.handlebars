@@ -91,6 +91,8 @@
           <button class='return-button btn btn-outline btn-xs display-inline' data-item-id={{this.id}}>
           Initiate Return
         </button>
+        {{log this}}
+        {{> review }}      
         </div>
         {{/each}}
       </div>
@@ -98,6 +100,8 @@
       <p class='none emptyBox p-5 rounded-xl'>No borrowed items.</p>
     {{/if}}
   </section>
+
+   
 
 </main>
 

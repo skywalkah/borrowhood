@@ -167,7 +167,7 @@ button .forms {
   background-color: none !important ;
 }
 
-.login-btn, .borrow-button, .add-item-btn {
+.login-btn, .borrow-button, .add-item-btn, .add-review-button {
   border-color: var(--secondary);
 }
 
@@ -246,6 +246,25 @@ button .forms {
   background-color: var(--light-gray);
 }
 
+/* Drop for Review Styling */
+
+.collapse {
+background-color: var(--secondary);
+color: var(--text)
+}
+
+.collapse-content {
+  color: var(--text);
+}
+
+.rating {
+  width: 180px;
+}
+
+.rating__star {
+  cursor: pointer;
+  color: var(--stars);
+}
 
 /* Feed Styling */
 
@@ -254,18 +273,18 @@ button .forms {
   color: var(--text);
 }
 
-.add-item-form {
+.add-item-form, .review-form {
   background-color: white; 
   color: var(--text);
 }
 
-.add-item-input {
+.add-item-input, .add-review-input {
   padding: .5rem;
   width: 100%;
 
 }
 
-.add-item-txtarea {
+.add-item-txtarea, .add-review-txtarea {
   width: 100%;
 }
 

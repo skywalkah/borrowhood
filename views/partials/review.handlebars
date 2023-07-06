@@ -1,0 +1,31 @@
+<div class="collapse bg-base-200">
+  <input type="checkbox" class="peer" /> 
+  <div class="collapse-title">
+    Would you like to leave a review?
+  </div>
+  <div class="collapse-content text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content"> 
+   <form id='review-form-{{this.id}}' class='space-y-4 review-form' data-item-id={{this.id}}>
+            {{!-- <div id='add-review-alert'></div> --}}
+              <div class='form-control'>
+                <label  for='rating-label' class='input-group add-review-input'>
+                  {{!-- <input type='text' placeholder='Item Name' class='input input-bordered add-review-nametxt' id='item_name' /> --}}
+
+                  <div class="rating">
+                    <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400 star-1" />
+                    <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400 star-2" />
+                    <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400 star-3"/>
+                    <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400 star-4" />
+                    <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400 star-5" />
+                </div>
+
+                </label>
+                <label for='comment' class='input-group add-review-text'>
+                  <textarea placeholder='Comment' class='textarea textarea-bordered textarea-md add-review-txtarea' ></textarea>
+                </label>
+              </div>
+              <div class ='add-review-button-div'>
+                <button type='submit' class='btn mt-4 add-review-button'>Add Review</button>
+              </div>
+            </form>
+  </div>
+</div>

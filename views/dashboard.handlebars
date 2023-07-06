@@ -82,7 +82,7 @@
     {{#if borrowedItems.length}}
       <div class='grid grid-flow-row my-8 gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2'>
         {{#each borrowedItems}}
-        <div class='rounded-xl p-6 shadow-lg shadow-gray-200 bg-white duration-300 hover:-translate-y-1 feed-card card'>
+        <div class='rounded-xl p-6 shadow-lg shadow-gray-200 bg-white duration-300 hover:-translate-y-1 feed-card card' id='render-add-review'>
           <h3 class='mt-0'>{{this.item_name}}</h3>
           <p>{{this.item_description}}</p>
           <p class='dash-card-text borrowed-from border-top'>
@@ -91,7 +91,9 @@
            <button class='return-button btn btn-xs display-inline' data-item-id={{this.id}}>
             Initiate Return 
             </button>    
-            {{> review }}  
+            {{> review }}
+          
+
         </div>
         {{/each}}
       </div>

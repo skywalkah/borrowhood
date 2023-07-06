@@ -187,6 +187,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           throw new Error('Failed to initiate return');
         }
         button.disabled = true;
+        button.textContent = 'Pending Return';
 
         console.log('Return initiated successfully');
       } catch (error) {

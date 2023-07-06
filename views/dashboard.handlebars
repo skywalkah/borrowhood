@@ -69,7 +69,7 @@
               {{#each ownedItem.requests}}
                 {{#ifEqual request_status 'pending'}}
                   <span class='rounded-lg borrow-alert-tag'>
-                    {{this.user.firstName}} sent you a borrow request for this item.
+                    You have a request
                   </span>
                 {{else}}
                   <p class='borrowed-by dash-card-text pt-5'>Borrowed by {{this.user.firstName}}</p>

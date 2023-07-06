@@ -330,15 +330,14 @@ color: var(--text)
   font-size: 2rem;
 }
 
-
 .feed-card {
   position: relative;
 }
 
 .feed-card .dropdown {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 14px;
+  right: 4px;
   cursor: pointer;
   background-color: transparent;
 }
@@ -364,7 +363,56 @@ color: var(--text)
 
 .feed-card ul.dropdown-content li {
   margin: 0;
-  padding: 15px;
+  padding: 0 15px;
+}
+
+.feed-card ul.dropdown-content li:first-child {
+  padding-top: 15px;
+}
+
+.feed-card ul.dropdown-content li:last-child {
+  padding-bottom: 15px;
+}
+
+.indicator {
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background-color: var(--unavailable);
+}
+
+.hint {
+  position: absolute;
+  top: 21px;
+  right: 6px;
+	border-radius: 50%;
+	margin: 10px;
+	height: 20px;
+	width: 20px;
+
+	box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+  transform: scale(1);
+	animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2);
+	}
+
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+	}
+
+	100% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+	}
 }
 
 .card-title,
@@ -387,33 +435,43 @@ color: var(--text)
 /* About Us */
 
 .about-title {
-  color: var(--secondary);
-  font-size: 3rem;
+  color: var(--text);
+  background-color: var(--secondary-light);
+  font-size: 2.5rem;
   position: relative;
-  padding-top: 1rem;
   font-weight: bold;
+  margin-left: 3rem;
+  margin-right: 3rem;
 }
 
-.about-body {
+.about-desc {
   color: var(--text);
   position: relative;
   font-size: 1.5rem;
-  padding: 2rem;
+  margin: 3rem;
+}
+
+.divider {
+  margin-left: 3rem;
+  margin-right: 3rem;
+  margin-bottom: 3rem;
 }
 
 .contact-title {
-  color: var(--secondary);
-  font-size: 3rem;
+  color: var(--text);
+  background-color: var(--secondary-light);
+  font-size: 2.5rem;
   position: relative;
-  padding-top: 1rem;
   font-weight: bold;
+  margin-left: 3rem;
+  margin-right: 3rem;
 }
 
-.contact-body {
+.contact-desc {
   color: var(--text);
   position: relative;
   font-size: 1.5rem;
-  padding: 2rem;
+  margin: 3rem;
 }
 
 /* Profile Styling */

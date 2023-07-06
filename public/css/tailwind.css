@@ -1048,10 +1048,6 @@ video {
   margin-bottom: 0.75rem;
 }
 
-.mb-32 {
-  margin-bottom: 8rem;
-}
-
 .mb-5 {
   margin-bottom: 1.25rem;
 }
@@ -1082,6 +1078,10 @@ video {
 
 .grid {
   display: grid;
+}
+
+.h-20 {
+  height: 5rem;
 }
 
 .h-screen {

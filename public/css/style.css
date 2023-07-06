@@ -360,33 +360,43 @@ button .forms {
 /* About Us */
 
 .about-title {
-  color: var(--secondary);
-  font-size: 3rem;
+  color: var(--text);
+  background-color: var(--secondary-light);
+  font-size: 2.5rem;
   position: relative;
-  padding-top: 1rem;
   font-weight: bold;
+  margin-left: 3rem;
+  margin-right: 3rem;
 }
 
-.about-body {
+.about-desc {
   color: var(--text);
   position: relative;
   font-size: 1.5rem;
-  padding: 2rem;
+  margin: 3rem;
+}
+
+.divider {
+  margin-left: 3rem;
+  margin-right: 3rem;
+  margin-bottom: 3rem;
 }
 
 .contact-title {
-  color: var(--secondary);
-  font-size: 3rem;
+  color: var(--text);
+  background-color: var(--secondary-light);
+  font-size: 2.5rem;
   position: relative;
-  padding-top: 1rem;
   font-weight: bold;
+  margin-left: 3rem;
+  margin-right: 3rem;
 }
 
-.contact-body {
+.contact-desc {
   color: var(--text);
   position: relative;
   font-size: 1.5rem;
-  padding: 2rem;
+  margin: 3rem;
 }
 
 /* Profile Styling */

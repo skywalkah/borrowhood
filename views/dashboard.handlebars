@@ -38,9 +38,9 @@
   </div>
     {{#if ownedItems.length}}
       <div class='grid grid-flow-row my-8 gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2'>
-        {{#each ownedItems}}
-          <div class='rounded-xl p-6 shadow-lg shadow-gray-200 bg-white duration-300 hover:-translate-y-1 feed-card' id='item-{{this.id}}'>
-            {{#each this.requests}}
+        {{#each ownedItems as |ownedItem|}}
+          <div class='rounded-xl p-6 shadow-lg shadow-gray-200 bg-white duration-300 hover:-translate-y-1 feed-card' id='item-{{ownedItem.id}}'>
+            {{#each ownedItem.requests}}
               {{#ifEqual request_status 'pending'}}
                 <div class="indicator"></div>
                 <div class="hint"></div>
@@ -49,24 +49,24 @@
             <div class='dropdown dropdown-end'>
               <label tabindex='0' class='btn m-1'><i class='fa fa-ellipsis-v' aria-hidden='true'></i></label>
               <ul tabindex='0' class='dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52'>
-                <li><a><i class='delete-button fa fa-trash'></i> Delete item</a></li>
-                {{#each this.requests}}
+                <li><a class='delete-button'><i class='delete-button fa fa-trash'></i> Delete item</a></li>
+                {{#each ownedItem.requests}}
                   {{#ifEqual request_status 'pending'}}
-                      <li><button class='approve-button display-inline' data-item-id='{{item_id}}' data-request-id='{{id}}' data-user-id='{{this.user_id}}'>
+                      <li><button class='approve-button display-inline' data-item-id='{{item_id}}' data-request-id='{{id}}' data-user-id='{{this.user_id}}' data-request-type='{{ownedItem.is_available}}'>
                         <i class="fa fa-check" aria-hidden="true"></i> Approve
                       </button></li>
-                      <li><button class='deny-button display-inline' data-item-id='{{item_id}}' data-request-id='{{id}}' data-user-id='{{this.user_id}}'>
+                      <li><button class='deny-button display-inline' data-item-id='{{item_id}}' data-request-id='{{id}}' data-user-id='{{this.user_id}}' data-request-type='{{ownedItem.is_available}}'>
                         <i class="fa fa-ban" aria-hidden="true"></i> Deny
                       </button></li>
                   {{/ifEqual}}
                 {{/each}}
               </ul>
             </div>
-            <h3 class='mt-0'>{{this.item_name}}</h3>
-            <p>{{this.item_description}}</p>
-            {{#if this.requests.length}}
+            <h3 class='mt-0'>{{ownedItem.item_name}}</h3>
+            <p>{{ownedItem.item_description}}</p>
+            {{#if ownedItem.requests.length}}
             <div class='request-container mt-5 border-top'>
-              {{#each this.requests}}
+              {{#each ownedItem.requests}}
                 {{#ifEqual request_status 'pending'}}
                   <span class='rounded-lg borrow-alert-tag'>
                     {{this.user.firstName}} sent you a borrow request for this item.

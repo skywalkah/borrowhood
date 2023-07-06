@@ -14,7 +14,8 @@ router.post('/requests/create', isAuthenticated, UserController.createRequest);
 router.get(
   '/requests/pending',
   isAuthenticated,
-  UserController.pendingRequests
+  UserController.pendingRequests 
+  // this is being used by both borrow and return? 
 );
 router.get(
   '/:userId/requests',
@@ -32,6 +33,7 @@ router.put(
   isAuthenticated,
   UserController.approveReturnRequest
 );
+
 router.put(
   '/:id/requests/:requestId/approve',
   isAuthenticated,

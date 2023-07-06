@@ -4,22 +4,48 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (event.target.classList.contains('approve-button')) {
       const userId = event.target.getAttribute('data-user-id');
       const requestId = event.target.getAttribute('data-request-id');
-      try {
-        const response = await fetch(
-          `/api/users/${userId}/requests/${requestId}/approve`,
-          {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
+      const isAvailable = event.target.getAttribute('data-request-type');
+      const itemId = event.target.getAttribute('data-item-id');
+      //Checking to see if item is available, then it's a borrow request
+      //Otherwise it's a return request
+      if (isAvailable == 'true') {
+        try {
+          const response = await fetch(
+            `/api/users/${userId}/requests/${requestId}/approve`,
+            {
+              method: 'PUT',
+              headers: { 'Content-Type': 'application/json' },
+            }
+          );
+          if (response.ok) {
+            console.log(' Borrow Request approved!');
+            location.reload();
+          } else {
+            console.error('Failed to approve borrow request');
           }
-        );
-        if (response.ok) {
-          console.log('Request approved!');
-          location.reload();
-        } else {
-          console.error('Failed to approve request');
+        } catch (error) {
+          console.error(error);
         }
-      } catch (error) {
-        console.error(error);
+      } else {
+        console.log('approving return');
+        try {
+          const response = await fetch(
+            `/api/users/items/${itemId}/return/approve`,
+            {
+              method: 'PUT',
+              headers: { 'Content-Type': 'application/json' },
+            }
+          );
+          if (response.ok) {
+            console.log(' Return Request approved!');
+            location.reload();
+          } else {
+            console.error('Failed to approve return request');
+          }
+        } catch (error) {
+          console.error(error);
+        }
+
       }
     }
   });
@@ -149,9 +175,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         button.textContent = 'Pending Return';
 
         // Load the reviews partial
-        const reviewPartial = await fetch(`api/reviews/partial`);
+        const reviewPartial = await fetch(`api/reviews/partial/${itemId}`);
         const reviewHTML = await reviewPartial.text();
         reviewWrapper.innerHTML = reviewHTML;
+        document
+          .getElementsByClassName('review-form')[0]
+          .addEventListener('submit', addReviewHandler);
 
         console.log('Return initiated successfully');
       } catch (error) {
@@ -159,46 +188,44 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
     });
     // // Add Review
-  const addReviewHandler = async event => {
-    event.preventDefault();
+    const addReviewHandler = async event => {
+      event.preventDefault();
 
-    if (event.target.classList.contains('review-form')) {
-      const ratings = document.querySelectorAll('.rating input');
-      let rating = 0;
-      ratings.forEach((selectedRating, index) => {
-        if (selectedRating.checked) {
-          rating = index + 1;
-        }
-      });
-
-      const itemId = event.target.getAttribute('data-item-id');
-      const review_text = document.querySelector(`.add-review-txtarea`).value;
-      try {
-        const response = await fetch(`/api/reviews`, {
-          method: 'POST',
-          body: JSON.stringify({
-            rating,
-            review_text,
-            itemId,
-          }),
-          headers: {
-            'Content-Type': 'application/json',
-          },
+      if (event.target.classList.contains('review-form')) {
+        const ratings = document.querySelectorAll('.rating input');
+        let rating = 0;
+        ratings.forEach((selectedRating, index) => {
+          if (selectedRating.checked) {
+            rating = index + 1;
+          }
         });
 
-        if (response.ok) {
-          console.log('Review submitted!');
-          location.reload();
-        } else {
-          console.error('Failed to submit review');
+        const itemId = event.target.getAttribute('data-item-id');
+        const review_text = document.querySelector(`.add-review-txtarea`).value;
+        try {
+          const response = await fetch(`/api/reviews`, {
+            method: 'POST',
+            body: JSON.stringify({
+              rating,
+              review_text,
+              itemId,
+            }),
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          });
+
+          if (response.ok) {
+            console.log('Review submitted!');
+            location.reload();
+          } else {
+            console.error('Failed to submit review');
+          }
+        } catch (error) {
+          console.error(error);
         }
-      } catch (error) {
-        console.error(error);
       }
-      document
-      .getElementsByClassName('review-form')[0]
-      .addEventListener('submit', addReviewHandler);
-    }
-  };
-  })
-});
+    };
+    console.log(document.getElementsByClassName('review-form'));
+    })
+  });

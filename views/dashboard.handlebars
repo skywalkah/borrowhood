@@ -8,10 +8,10 @@
 
 <main class='container mx-auto px-4 prose lg:prose-lg mb-6' id='dashboard'>
  <section>
-  <div class="'your-items">
+  <div class='your-items'>
     <h2>Your Items:</h2>
     <!-- You can open the modal using ID.showModal() method -->
-      <i class="fa fa-plus-square" onclick='my_modal_3.showModal()'></i>
+      <i class='fa fa-plus-square' onclick='my_modal_3.showModal()'></i>
       {{!-- <button class='btn' onclick='my_modal_3.showModal()'>Add Item </button> --}}
       <dialog id='my_modal_3' class='modal modal-bottom sm:modal-middle'>
         <form method='dialog' class='modal-box add-item-form'>
@@ -40,9 +40,9 @@
       <div class='grid grid-flow-row my-8 gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2'>
         {{#each ownedItems}}
           <div class='rounded-xl p-6 shadow-lg shadow-gray-200 bg-white duration-300 hover:-translate-y-1 feed-card' id='item-{{this.id}}'>
-            <div class="dropdown dropdown-end mb-32">
-              <label tabindex="0" class="btn m-1"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></label>
-              <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+            <div class='dropdown dropdown-end mb-32'>
+              <label tabindex='0' class='btn m-1'><i class='fa fa-ellipsis-v' aria-hidden='true'></i></label>
+              <ul tabindex='0' class='dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52'>
                 <li><a><i class='delete-button fa fa-trash'></i> Delete</a></li>
               </ul>
             </div>
@@ -88,11 +88,10 @@
           <p class='dash-card-text borrowed-from border-top'>
             Borrowed from {{this.owner.firstName}}
           </p>
-          <button class='return-button btn btn-outline btn-xs display-inline' data-item-id={{this.id}}>
-          Initiate Return
-        </button>
-        {{log this}}
-        {{> review }}      
+           <button class='return-button btn btn-xs display-inline' data-item-id={{this.id}}>
+            Initiate Return 
+            </button>    
+            {{> review }}  
         </div>
         {{/each}}
       </div>

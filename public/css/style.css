@@ -3,11 +3,12 @@
   --secondary: #43a6bf;
   --secondary-light: #4dc0de;
   --highlights: #77b664; 
+  --highlights-light: #e6ede7;
   --text: black;
   --light-gray: #DDDDDD;
   --unavailable: #e74c3c;
   --stars: #e67e22;
-  --yellow: #f1c40f;
+  --pending: #f1c40f;
 }
 
 * {
@@ -19,6 +20,7 @@
 body {
   background-color: var(--primary);
   min-height: 100vh;
+  color:var(--text);
 
 }
 
@@ -41,7 +43,7 @@ body {
 
 .card {
   position: relative;
-  background-color: #e6ede7
+  background-color: var(--highlights-light);
 }
 
 /* Status dots */
@@ -66,7 +68,7 @@ body {
 }
 
 .pending {
-  background-color: var(--yellow);
+  background-color: var(--pending);
 }
 
 .not-available {
@@ -167,7 +169,7 @@ button .forms {
   background-color: none !important ;
 }
 
-.login-btn, .borrow-button, .add-item-btn, .add-review-button {
+.login-btn, .borrow-button, .add-item-btn, .add-review-button, .return-button {
   border-color: var(--secondary);
 }
 
@@ -246,16 +248,22 @@ button .forms {
   background-color: var(--light-gray);
 }
 
-/* Drop for Review Styling */
+/* Collapse Review Styling */
 
 .collapse {
-background-color: var(--secondary);
+background-color: rgba(119, 182, 100, 0.25);
 color: var(--text)
+}
+
+.review-form {
+  background-color: none !important;
+  color: var(--text)
 }
 
 .collapse-content {
   color: var(--text);
 }
+
 
 .rating {
   width: 180px;
@@ -273,7 +281,7 @@ color: var(--text)
   color: var(--text);
 }
 
-.add-item-form, .review-form {
+.add-item-form {
   background-color: white; 
   color: var(--text);
 }

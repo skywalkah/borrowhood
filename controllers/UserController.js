@@ -267,6 +267,8 @@ module.exports = {
     }
   },
 
+  //Is this the problem??? 
+
   // Get pending borrow requests
   pendingRequests: async (req, res) => {
     try {
@@ -442,6 +444,8 @@ module.exports = {
 
       // Update the item status to make it available and clear the borrowed_by field
       await item.update({ is_available: true, borrowed_by: null });
+      //TODO: later development, persist request instead of destroy
+      await Request.destroy({ where: { item_id: itemId } });
 
       return res
         .status(200)

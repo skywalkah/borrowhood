@@ -179,6 +179,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         const reviewPartial = await fetch(`api/reviews/partial`);
         const reviewHTML = await reviewPartial.text();
         reviewWrapper.innerHTML = reviewHTML;
+        document
+          .getElementsByClassName('review-form')[0]
+          .addEventListener('submit', addReviewHandler);
 
         console.log('Return initiated successfully');
       } catch (error) {
@@ -186,46 +189,44 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
     });
     // // Add Review
-  const addReviewHandler = async event => {
-    event.preventDefault();
+    const addReviewHandler = async event => {
+      event.preventDefault();
 
-    if (event.target.classList.contains('review-form')) {
-      const ratings = document.querySelectorAll('.rating input');
-      let rating = 0;
-      ratings.forEach((selectedRating, index) => {
-        if (selectedRating.checked) {
-          rating = index + 1;
-        }
-      });
-
-      const itemId = event.target.getAttribute('data-item-id');
-      const review_text = document.querySelector(`.add-review-txtarea`).value;
-      try {
-        const response = await fetch(`/api/reviews`, {
-          method: 'POST',
-          body: JSON.stringify({
-            rating,
-            review_text,
-            itemId,
-          }),
-          headers: {
-            'Content-Type': 'application/json',
-          },
+      if (event.target.classList.contains('review-form')) {
+        const ratings = document.querySelectorAll('.rating input');
+        let rating = 0;
+        ratings.forEach((selectedRating, index) => {
+          if (selectedRating.checked) {
+            rating = index + 1;
+          }
         });
 
-        if (response.ok) {
-          console.log('Review submitted!');
-          location.reload();
-        } else {
-          console.error('Failed to submit review');
+        const itemId = event.target.getAttribute('data-item-id');
+        const review_text = document.querySelector(`.add-review-txtarea`).value;
+        try {
+          const response = await fetch(`/api/reviews`, {
+            method: 'POST',
+            body: JSON.stringify({
+              rating,
+              review_text,
+              itemId,
+            }),
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          });
+
+          if (response.ok) {
+            console.log('Review submitted!');
+            location.reload();
+          } else {
+            console.error('Failed to submit review');
+          }
+        } catch (error) {
+          console.error(error);
         }
-      } catch (error) {
-        console.error(error);
       }
-      document
-      .getElementsByClassName('review-form')[0]
-      .addEventListener('submit', addReviewHandler);
-    }
-  };
-  })
-});
+    };
+    console.log(document.getElementsByClassName('review-form'))
+    })
+  });

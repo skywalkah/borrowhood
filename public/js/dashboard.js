@@ -45,7 +45,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         } catch (error) {
           console.error(error);
         }
-
       }
     }
   });
@@ -151,7 +150,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     .getElementsByClassName('add-item-form')[0]
     .addEventListener('submit', addItemHandler);
 
-  // Initiating a return and adding a review
+  // Initiating a return
   const returnButtons = document.querySelectorAll('.return-button');
 
   returnButtons.forEach(function (button) {
@@ -159,20 +158,16 @@ document.addEventListener('DOMContentLoaded', async () => {
       const itemId = button.getAttribute('data-item-id');
       const reviewWrapper = document.getElementById(`review-wrapper-${itemId}`);
       try {
-        const response = await fetch(`api/users/items/${itemId}/return`, {
+        const response = await fetch(`/api/users/items/${itemId}/return`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          credentials: 'same-origin',
         });
 
         if (!response.ok) {
           throw new Error('Failed to initiate return');
         }
-
-        button.disabled = true;
-        button.textContent = 'Pending Return';
 
         // Load the reviews partial
         const reviewPartial = await fetch(`api/reviews/partial/${itemId}`);
@@ -187,45 +182,71 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error('Failed to initiate return:', error);
       }
     });
-    // // Add Review
-    const addReviewHandler = async event => {
-      event.preventDefault();
+  });
 
-      if (event.target.classList.contains('review-form')) {
-        const ratings = document.querySelectorAll('.rating input');
-        let rating = 0;
-        ratings.forEach((selectedRating, index) => {
-          if (selectedRating.checked) {
-            rating = index + 1;
-          }
+  // Add Review
+  const addReviewHandler = async event => {
+    event.preventDefault();
+
+    if (event.target.classList.contains('review-form')) {
+      const ratings = document.querySelectorAll('.rating input');
+      let rating = 0;
+      ratings.forEach((selectedRating, index) => {
+        if (selectedRating.checked) {
+          rating = index + 1;
+        }
+      });
+
+      const itemId = event.target.getAttribute('data-item-id');
+      const review_text = document.querySelector(`.add-review-txtarea`).value;
+      try {
+        const response = await fetch(`/api/reviews`, {
+          method: 'POST',
+          body: JSON.stringify({
+            rating,
+            review_text,
+            itemId,
+          }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
         });
 
-        const itemId = event.target.getAttribute('data-item-id');
-        const review_text = document.querySelector(`.add-review-txtarea`).value;
-        try {
-          const response = await fetch(`/api/reviews`, {
-            method: 'POST',
-            body: JSON.stringify({
-              rating,
-              review_text,
-              itemId,
-            }),
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          });
-
-          if (response.ok) {
-            console.log('Review submitted!');
-            location.reload();
-          } else {
-            console.error('Failed to submit review');
-          }
-        } catch (error) {
-          console.error(error);
+        if (response.ok) {
+          console.log('Review submitted!');
+          location.reload();
+        } else {
+          console.error('Failed to submit review');
         }
+      } catch (error) {
+        console.error(error);
       }
-    };
-    console.log(document.getElementsByClassName('review-form'));
-    })
+    }
+  };
+  console.log(document.getElementsByClassName('review-form'));
+
+  // Confirming a return
+  document.addEventListener('click', async event => {
+    if (event.target.classList.contains('confirm-return-btn')) {
+      const itemId = event.target.getAttribute('data-item-id');
+      console.log(itemId);
+      try {
+        const response = await fetch(
+          `/api/users/items/${itemId}/return/approve`,
+          {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+          }
+        );
+        if (response.ok) {
+          console.log('Return confirmed!');
+          location.reload();
+        } else {
+          console.error('Failed to confirm return');
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
   });
+});

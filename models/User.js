@@ -27,7 +27,12 @@ class User extends Model {
     User.hasMany(models.Request, {
       foreignKey: 'borrowed_by',
       onDelete: 'SET NULL',
-      as: 'borrowedRequests', // Update the alias to 'borrowedRequests'
+      as: 'borrowedRequests',
+    });
+    User.hasMany(models.ReturnItem, {
+      foreignKey: 'user_id',
+      onDelete: 'CASCADE',
+      as: 'returns',
     });
   }
 }

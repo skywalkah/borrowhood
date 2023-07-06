@@ -30,9 +30,15 @@ body {
 }
 
 /* Global Styling */
+.red,
+.red::before {
+  color: var(--unavailable);
+}
+
 .display-inline {
   display: inline-block;
 }
+
 .stars {
   color: var(--stars);
 }
@@ -128,9 +134,10 @@ body {
   padding: 10px 0;
   display: block;
 }
-/* .request-container span:last-of-type {
+
+.borrowed-by {
   margin-bottom: 0;
-} */
+}
 .borrowed-by,
 .borrowed-from {
   margin-top: 30px;
@@ -228,6 +235,7 @@ button .forms {
 
 #dashboard section h3 {
   margin-top: 0;
+  margin-right: 20px;
 }
 
 #dashboard section p {

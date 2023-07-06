@@ -46,20 +46,39 @@
                 <div class="hint"></div>
               {{/ifEqual}}
             {{/each}}
-            <div class='dropdown dropdown-end'>
-              <label tabindex='0' class='btn m-1'><i class='fa fa-ellipsis-v' aria-hidden='true'></i></label>
-              <ul tabindex='0' class='dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52'>
-                <li><a class='delete-button'><i class='delete-button fa fa-trash'></i> Delete item</a></li>
-                {{#each ownedItem.requests}}
+            {{#if this.return}}
+              {{#ifEqual this.return.return_status 'pending'}}
+                <div class="indicator"></div>
+                <div class="hint"></div>
+              {{/ifEqual}}
+            {{/if}}
+            <div class="dropdown dropdown-end">
+              <label tabindex="0" class="btn m-1"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></label>
+              <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                <li><a><i class='delete-button fa fa-trash'></i> Delete item</a></li>
+                {{#each this.requests}}
                   {{#ifEqual request_status 'pending'}}
-                      <li><button class='approve-button display-inline' data-item-id='{{item_id}}' data-request-id='{{id}}' data-user-id='{{this.user_id}}' data-request-type='{{ownedItem.is_available}}'>
+                    <li>
+                      <button class='approve-button display-inline' data-item-id='{{item_id}}' data-request-id='{{id}}' data-user-id='{{this.user_id}}'>
                         <i class="fa fa-check" aria-hidden="true"></i> Approve
-                      </button></li>
-                      <li><button class='deny-button display-inline' data-item-id='{{item_id}}' data-request-id='{{id}}' data-user-id='{{this.user_id}}' data-request-type='{{ownedItem.is_available}}'>
+                      </button>
+                    </li>
+                    <li>
+                      <button class='deny-button display-inline' data-item-id='{{item_id}}' data-request-id='{{id}}' data-user-id='{{this.user_id}}'>
                         <i class="fa fa-ban" aria-hidden="true"></i> Deny
-                      </button></li>
+                      </button>
+                    </li>
                   {{/ifEqual}}
                 {{/each}}
+                {{#if this.return}}
+                  {{#ifEqual this.return.return_status 'pending'}}
+                    <li>
+                      <button class='confirm-return-btn display-inline' data-item-id='{{this.return.item_id}}' data-request-id='{{this.return.id}}' data-user-id='{{this.return.user_id}}'>
+                        <i class="fa fa-check" aria-hidden="true"></i>Confirm Return
+                      </button>
+                    </li>
+                  {{/ifEqual}}
+                {{/if}}
               </ul>
             </div>
             <h3 class='mt-0'>{{ownedItem.item_name}}</h3>
@@ -71,8 +90,16 @@
                   <span class='rounded-lg borrow-alert-tag'>
                     {{this.user.firstName}} sent you a borrow request for this item.
                   </span>
+                {{else ifEqual ../return.return_status 'pending'}}
+                  <p class='dash-card-text border-top border-top pt-5'>
+                    {{this.user.firstName}} sent a return request.
+                  </p>
                 {{else}}
-                  <p class='borrowed-by dash-card-text pt-5'>Borrowed by {{this.user.firstName}}</p>
+                  {{#if this.is_available}}
+                    <p class='dash-card-text border-top border-top pt-5'>No requests for this item.</p>
+                  {{else}}
+                    <p class='borrowed-by dash-card-text pt-5'>Borrowed by {{this.user.firstName}}</p>
+                  {{/if}}
                 {{/ifEqual}}
               {{/each}}
             </div>
@@ -87,7 +114,7 @@
     {{/if}}
   </section>
 
- <section>
+  <section>
     <h2>Items You Borrowed:</h2>
     {{#if borrowedItems.length}}
       <div class='grid grid-flow-row my-8 gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2'>
@@ -98,10 +125,15 @@
           <p class='dash-card-text borrowed-from border-top'>
             Borrowed from {{this.owner.firstName}}
           </p>
-           <button class='return-button btn btn-xs display-inline' data-item-id={{this.id}}>
-            Initiate Return 
-            </button>    
-            <div class="review-wrapper" id="review-wrapper-{{this.id}}"></div>
+          {{#if return}}
+            <button class='return-button btn btn-outline btn-xs display-inline' data-item-id={{this.id}} disabled>
+              Return Initiated
+            </button>
+          {{else}}
+            <button class='return-button btn btn-outline btn-xs display-inline' data-item-id={{this.id}}>
+              Initiate Return
+            </button>
+          {{/if}}
         </div>
         {{/each}}
       </div>

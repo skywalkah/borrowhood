@@ -3,7 +3,7 @@ const { ReviewController } = require('../../controllers');
 const isAuthenticated = require('../../middleware/isAuthenticated');
 
 
-router.get('/partial', isAuthenticated, ReviewController.getPartial)
+router.get('/partial/:itemId', isAuthenticated, ReviewController.getPartial)
 router.get('/:id', isAuthenticated, ReviewController.getReview);
 router.get('/', isAuthenticated, ReviewController.getAllReviews);
 router.post('/', isAuthenticated, ReviewController.createReview);

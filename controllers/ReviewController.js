@@ -71,19 +71,17 @@ const ReviewController = {
   },
 
   //Get the review Partial
-  getPartial: async (_req, res) => {
+  getPartial: async (req, res) => {
     try {
-     
-      const reviewsPartial = await generateReviewsPartial();
+      const reviewsPartial = await generateReviewsPartial(req.params.itemId);
       res.send(reviewsPartial);
     } catch (error) {
       console.error('Failed to generate reviews partial:', error);
       res.status(500).send('Failed to generate reviews partial');
     }
 
-    
-    function generateReviewsPartial() {
-      return new Promise((resolve) => {
+    function generateReviewsPartial(id) {
+      return new Promise(resolve => {
         setTimeout(() => {
           const reviewsPartial = `
         <div class='collapse'>
@@ -92,7 +90,7 @@ const ReviewController = {
           Would you like to leave a review?
         </div>
         <div class='collapse-content'> 
-          <form id='review-form-{{this.id}}' class='space-y-4 review-form' data-item-id={{this.id}}>
+          <form id='review-form-${id}' class='space-y-4 review-form' data-item-id=${id}>
             <div class='form-control'>
               <label for='review-form' class='add-review-input'>
                 <div class='rating'>
@@ -115,7 +113,7 @@ const ReviewController = {
       </div>
         `;
           resolve(reviewsPartial);
-        }, 1000); 
+        }, 1000);
       });
     }
   },

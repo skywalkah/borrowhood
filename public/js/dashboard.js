@@ -4,9 +4,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (event.target.classList.contains('approve-button')) {
       const userId = event.target.getAttribute('data-user-id');
       const requestId = event.target.getAttribute('data-request-id');
-      const isAvailable = event.target.getAttribute('data-request-type');    
+      const isAvailable = event.target.getAttribute('data-request-type');
       const itemId = event.target.getAttribute('data-item-id');
-      console.log('is', isAvailable);
       //Checking to see if item is available, then it's a borrow request
       //Otherwise it's a return request
       if (isAvailable == 'true') {
@@ -176,7 +175,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         button.textContent = 'Pending Return';
 
         // Load the reviews partial
-        const reviewPartial = await fetch(`api/reviews/partial`);
+        const reviewPartial = await fetch(`api/reviews/partial/${itemId}`);
         const reviewHTML = await reviewPartial.text();
         reviewWrapper.innerHTML = reviewHTML;
         document
@@ -227,6 +226,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
       }
     };
-    console.log(document.getElementsByClassName('review-form'))
+    console.log(document.getElementsByClassName('review-form'));
     })
   });

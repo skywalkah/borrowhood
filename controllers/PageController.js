@@ -72,6 +72,10 @@ module.exports = {
                   attributes: ['firstName'],
                 },
               },
+              {
+                model: db.ReturnItem,
+                as: 'return',
+              },
             ],
           },
           {
@@ -83,19 +87,24 @@ module.exports = {
                 as: 'owner',
                 attributes: ['firstName'],
               },
+              {
+                model: db.ReturnItem,
+                as: 'return',
+              },
             ],
           },
         ],
       });
 
       // Get user's owned and borrowed items
-      const { ownedItems, borrowedItems, requests } = user;
+      const { ownedItems, borrowedItems, requests, returns } = user;
 
       res.render('dashboard', {
         welcomeMessage: `Hi ${req.session.currentUser.firstName}! Here's your Dashboard.`,
         ownedItems: ownedItems,
         borrowedItems: borrowedItems,
         requests: requests,
+        returns: returns,
         isAuthenticated: req.session.isAuthenticated,
         currentUser: req.session.currentUser,
       });

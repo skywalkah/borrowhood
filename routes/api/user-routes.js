@@ -21,7 +21,6 @@ router.get(
   isAuthenticated,
   UserController.getAllBorrowRequests
 );
-
 router.post(
   '/items/:itemId/return',
   isAuthenticated,

@@ -124,30 +124,55 @@ document.addEventListener('DOMContentLoaded', async () => {
   document
     .getElementsByClassName('add-item-form')[0]
     .addEventListener('submit', addItemHandler);
-});
 
-//Initiating a return
-const returnButtons = document.querySelectorAll('.return-button');
+  // Initiating a return
+  const returnButtons = document.querySelectorAll('.return-button');
 
-returnButtons.forEach(function (button) {
-  button.addEventListener('click', async function () {
-    const itemId = button.getAttribute('data-item-id');
-    try {
-      const response = await fetch(`api/users/items/${itemId}/return`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'same-origin',
-      });
+  returnButtons.forEach(function (button) {
+    button.addEventListener('click', async function () {
+      const itemId = button.getAttribute('data-item-id');
+      try {
+        const response = await fetch(`/api/users/items/${itemId}/return`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
 
-      if (!response.ok) {
-        throw new Error('Failed to initiate return');
+        if (!response.ok) {
+          throw new Error('Failed to initiate return');
+        }
+
+        console.log('Return initiated successfully');
+        location.reload();
+      } catch (error) {
+        console.error('Failed to initiate return:', error);
       }
+    });
+  });
 
-      console.log('Return initiated successfully');
-    } catch (error) {
-      console.error('Failed to initiate return:', error);
+  // Confirming a return
+  document.addEventListener('click', async event => {
+    if (event.target.classList.contains('confirm-return-btn')) {
+      const itemId = event.target.getAttribute('data-item-id');
+      console.log(itemId);
+      try {
+        const response = await fetch(
+          `/api/users/items/${itemId}/return/approve`,
+          {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+          }
+        );
+        if (response.ok) {
+          console.log('Return confirmed!');
+          location.reload();
+        } else {
+          console.error('Failed to confirm return');
+        }
+      } catch (error) {
+        console.error(error);
+      }
     }
   });
 });

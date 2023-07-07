@@ -84,33 +84,33 @@ const ReviewController = {
       return new Promise(resolve => {
         setTimeout(() => {
           const reviewsPartial = `
-        <div class='collapse'>
-        <input type='checkbox' class='peer' /> 
-        <div class='collapse-title'>
-          Would you like to leave a review?
-        </div>
-        <div class='collapse-content'> 
-          <form id='review-form-${id}' class='space-y-4 review-form' data-item-id=${id}>
-            <div class='form-control'>
-              <label for='review-form' class='add-review-input'>
-                <div class='rating'>
-                  <input type='radio' name='rating-2' class='mask mask-star-2 bg-orange-400 stars' checked />
-                  <input type='radio' name='rating-2' class='mask mask-star-2 bg-orange-400 stars' />
-                  <input type='radio' name='rating-2' class='mask mask-star-2 bg-orange-400 stars'/>
-                  <input type='radio' name='rating-2' class='mask mask-star-2 bg-orange-400 stars' />
-                  <input type='radio' name='rating-2' class='mask mask-star-2 bg-orange-400 stars' />
+          <div class='collapse'>
+            <input type='checkbox' class='peer' /> 
+            <div class='collapse-title'>
+              Would you like to leave a review?
+            </div>
+            <div class='collapse-content'> 
+              <form id='review-form-${id}' class='space-y-4 review-form' data-item-id=${id}>
+                <div class='form-control'>
+                  <label for='review-form' class='add-review-input'>
+                    <div class='rating'>
+                      <input type='radio' name='rating-2' class='mask mask-star-2 bg-orange-400 stars' checked />
+                      <input type='radio' name='rating-2' class='mask mask-star-2 bg-orange-400 stars' />
+                      <input type='radio' name='rating-2' class='mask mask-star-2 bg-orange-400 stars'/>
+                      <input type='radio' name='rating-2' class='mask mask-star-2 bg-orange-400 stars' />
+                      <input type='radio' name='rating-2' class='mask mask-star-2 bg-orange-400 stars' />
+                    </div>
+                  </label>
+                  <label for='review-form' class='add-review-text'>
+                    <textarea placeholder='Comment' class='textarea textarea-bordered textarea-md add-review-txtarea' ></textarea>
+                  </label>
                 </div>
-              </label>
-              <label for='review-form' class='add-review-text'>
-                <textarea placeholder='Comment' class='textarea textarea-bordered textarea-md add-review-txtarea' ></textarea>
-              </label>
+                <div class ='add-review-button-div'>
+                  <button type='submit' class='btn mt-4 add-review-button'>Add Review</button>
+                </div>
+              </form>
             </div>
-            <div class ='add-review-button-div'>
-              <button type='submit' class='btn mt-4 add-review-button'>Add Review</button>
-            </div>
-          </form>
-        </div>
-      </div>
+          </div>
         `;
           resolve(reviewsPartial);
         }, 1000);

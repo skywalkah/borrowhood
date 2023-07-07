@@ -63,6 +63,3 @@ const borrowButtons = document.querySelectorAll('.borrow-button');
 borrowButtons.forEach(button => {
   button.addEventListener('click', handleBorrowRequest);
 });
-
-
-///Maybe something here for return request?? 

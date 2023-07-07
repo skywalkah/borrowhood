@@ -451,7 +451,7 @@ module.exports = {
         // Update the return status to "returned"
         await returnItem.update({ return_status: 'returned' });
       } else {
-        console.error('Return item not found'); // Handle the case where the return item is not found
+        console.error('Return item not found');
       }
 
       return res

@@ -9,7 +9,7 @@ const loginFormHandler = async event => {
       body: JSON.stringify({ email, password }),
       headers: {
         'Content-Type': 'application/json',
-        Accept: 'application/json', // Add the Accept header
+        Accept: 'application/json',
       },
     });
 

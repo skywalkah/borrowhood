@@ -29,7 +29,7 @@ Borrowhood makes it easy to find tools and equipment that you need to borrow in 
 MIT
 
 ## GitHub
-GitHub Repository: https://github.com/skywalkah/borrowhood/tree/develop
+GitHub Repository: https://github.com/skywalkah/borrowhood/tree/main
 
 ## Credits
 Developers: [Arianne Pandini](https://github.com/aripandini), [Caitlin Ramsey](https://github.com/caitlinramsey), [Joshua Wongg](https://github.com/joshuawongg), and [Lucas Schvindt](https://github.com/skywalkah)

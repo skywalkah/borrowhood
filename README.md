@@ -5,6 +5,9 @@
 ## Description
 Borrowhood is an application which allows people to borrow needed items from their neighbors. It also allows neighbors to lend and borrow tools, equipment, and household items with or from one another. It encourages community interaction and sharing of resources which, in turn, minimizes individual purchases and decreases landfill waste. It's easy and fast to sign up and start listing items available for lending or searching for what you need!
 
+## API Documentation
+We wrote some API documentation for you. You can read it right [here](API.md)
+
 ## Table of Contents
 - [Mockup](#mockup)
 - [Installation](#installation)
@@ -25,9 +28,8 @@ Borrowhood makes it easy to find tools and equipment that you need to borrow in 
 ## License
 MIT
 
-
 ## GitHub
-GitHub Repository: https://github.com/skywalkah/borrowhood/tree/develop
+GitHub Repository: https://github.com/skywalkah/borrowhood/tree/main
 
 ## Credits
 Developers: [Arianne Pandini](https://github.com/aripandini), [Caitlin Ramsey](https://github.com/caitlinramsey), [Joshua Wongg](https://github.com/joshuawongg), and [Lucas Schvindt](https://github.com/skywalkah)

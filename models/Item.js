@@ -22,6 +22,11 @@ class Item extends Model {
       onDelete: 'CASCADE',
       as: 'requests',
     });
+    Item.hasOne(models.ReturnItem, {
+      foreignKey: 'item_id',
+      onDelete: 'CASCADE',
+      as: 'return',
+    });
   }
 }
 

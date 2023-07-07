@@ -1,4 +1,4 @@
-const { User, Request, Item } = require('../models');
+const { User, Request, Item, ReturnItem } = require('../models');
 
 module.exports = {
   // CREATE new user
@@ -267,8 +267,6 @@ module.exports = {
     }
   },
 
-  //Is this the problem??? 
-
   // Get pending borrow requests
   pendingRequests: async (req, res) => {
     try {
@@ -319,7 +317,10 @@ module.exports = {
 
       await request.update({ request_status: 'approved' });
       await Item.update(
-        { is_available: false, borrowed_by: request.user_id },
+        {
+          is_available: false,
+          borrowed_by: request.user_id,
+        },
         { where: { id: request.item_id } }
       );
 
@@ -379,44 +380,34 @@ module.exports = {
     }
   },
 
-  // Return a borrowed item
   returnItem: async (req, res) => {
     try {
       const { itemId } = req.params;
+      const userId = req.session.currentUser.id;
 
       // Find the item
       const item = await Item.findByPk(itemId);
-
-      // Check if the item exists and is borrowed
-      if (!item || !item.borrowed_by) {
-        return res
-          .status(404)
-          .json({ message: 'Item not found or not borrowed' });
+      if (!item) {
+        return res.status(404).json({ message: 'Item not found' });
       }
 
-      // Check if the authenticated user is the borrower of the item
-      const currentUser = req.session.currentUser;
-      if (item.borrowed_by !== currentUser.id) {
-        return res
-          .status(403)
-          .json({ message: 'Only the borrower can initiate the return' });
-      }
-
-      // Update the item status to indicate the return is pending
-      await item.update({ is_available: false });
-
-      // Create a return request
-      await Request.create({
-        user_id: item.user_id,
+      // Create the return item
+      const returnItem = await ReturnItem.create({
         item_id: item.id,
-        request_status: 'pending', // Assign a value to request_status
-        is_return: true,
+        user_id: userId,
+        return_status: 'pending',
       });
 
+      if (!returnItem) {
+        return res
+          .status(500)
+          .json({ message: 'Failed to create return item' });
+      }
+
       return res.status(200).json({ message: 'Return initiated successfully' });
-    } catch (err) {
-      console.error(err);
-      return res.status(500).json(err);
+    } catch (error) {
+      console.error('Failed to initiate return:', error);
+      return res.status(500).json({ message: 'Failed to initiate return' });
     }
   },
 
@@ -442,10 +433,26 @@ module.exports = {
           .json({ message: 'Only the owner can approve the return request' });
       }
 
-      // Update the item status to make it available and clear the borrowed_by field
-      await item.update({ is_available: true, borrowed_by: null });
-      //TODO: later development, persist request instead of destroy
-      await Request.destroy({ where: { item_id: itemId } });
+      // Update the item status to make it available and clear the borrower information
+      await item.update({
+        is_available: true,
+        borrowed_by: null,
+        requests: [],
+      });
+
+      await Request.destroy({ where: { item_id: item.id } });
+
+      // Find the return item associated with the item
+      const returnItem = await ReturnItem.findOne({
+        where: { item_id: item.id },
+      });
+
+      if (returnItem) {
+        // Update the return status to "returned"
+        await returnItem.update({ return_status: 'returned' });
+      } else {
+        console.error('Return item not found');
+      }
 
       return res
         .status(200)

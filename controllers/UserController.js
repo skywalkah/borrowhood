@@ -391,11 +391,6 @@ module.exports = {
         return res.status(404).json({ message: 'Item not found' });
       }
 
-      // Check if the item is already borrowed
-      // if (!item.is_available || item.borrowed_by !== userId) {
-      //   return res.status(400).json({ message: 'Item cannot be returned' });
-      // }
-
       // Create the return item
       const returnItem = await ReturnItem.create({
         item_id: item.id,

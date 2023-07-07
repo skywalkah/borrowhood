@@ -74,7 +74,7 @@
                   {{#ifEqual this.return.return_status 'pending'}}
                     <li>
                       <button class='confirm-return-btn display-inline' data-item-id='{{this.return.item_id}}' data-request-id='{{this.return.id}}' data-user-id='{{this.return.user_id}}'>
-                        <i class="fa fa-check" aria-hidden="true"></i>Confirm Return
+                        <i class="fa fa-check" aria-hidden="true"></i> Confirm Return
                       </button>
                     </li>
                   {{/ifEqual}}
@@ -123,17 +123,19 @@
           <h3 class='mt-0'>{{this.item_name}}</h3>
           <p>{{this.item_description}}</p>
           <p class='dash-card-text borrowed-from border-top'>
-            Borrowed from {{this.owner.firstName}}
-          </p>
-          {{#if return}}
+            <span>Borrowed from {{this.owner.firstName}}</span>
+          {{#ifEqual this.return.return_status 'pending'}}
             <button class='return-button btn btn-outline btn-xs display-inline' data-item-id={{this.id}} disabled>
               Return Initiated
             </button>
+          </p>
           {{else}}
             <button class='return-button btn btn-outline btn-xs display-inline' data-item-id={{this.id}}>
               Initiate Return
             </button>
-          {{/if}}
+          </p>
+          <div class="review-wrapper" id="review-wrapper-{{this.id}}"></div>
+          {{/ifEqual}}
         </div>
         {{/each}}
       </div>

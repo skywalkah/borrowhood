@@ -138,11 +138,17 @@ body {
 .borrowed-by {
   margin-bottom: 0;
 }
+
 .borrowed-by,
 .borrowed-from {
   margin-top: 30px;
   padding-top: 15px;
 }
+
+.borrowed-from span {
+  margin-right: 5px;
+}
+
 .border-top {
   border-top: 2px solid var(--text);
 }
@@ -176,8 +182,24 @@ button .forms {
   background-color: none !important ;
 }
 
-.login-btn, .borrow-button, .add-item-btn, .add-review-button, .return-button {
+.return-button {
+  display: inline-block;
+}
+
+.login-btn,
+.borrow-button,
+.add-item-button-div button.add-item-btn,
+.add-review-button,
+.return-button {
   border-color: var(--secondary);
+  color: var(--black)
+}
+.login-btn:hover,
+.borrow-button:hover,
+.add-item-button-div button.add-item-btn:hover,
+.add-review-button:hover,
+.return-button:hover {
+  color: var(--primary) !important;
 }
 
 .input-group  > :last-child{
@@ -388,6 +410,14 @@ margin-top: 1.5rem;
 
 .feed-card ul.dropdown-content li:last-child {
   padding-bottom: 15px;
+}
+
+.navbar ul.dropdown-content {
+  background-color: white;
+}
+
+.navbar ul.dropdown-content li a:hover {
+  color: var(--text)
 }
 
 .indicator {

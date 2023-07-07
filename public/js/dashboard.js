@@ -4,47 +4,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (event.target.classList.contains('approve-button')) {
       const userId = event.target.getAttribute('data-user-id');
       const requestId = event.target.getAttribute('data-request-id');
-      const isAvailable = event.target.getAttribute('data-request-type');
-      const itemId = event.target.getAttribute('data-item-id');
-      //Checking to see if item is available, then it's a borrow request
-      //Otherwise it's a return request
-      if (isAvailable == 'true') {
-        try {
-          const response = await fetch(
-            `/api/users/${userId}/requests/${requestId}/approve`,
-            {
-              method: 'PUT',
-              headers: { 'Content-Type': 'application/json' },
-            }
-          );
-          if (response.ok) {
-            console.log(' Borrow Request approved!');
-            location.reload();
-          } else {
-            console.error('Failed to approve borrow request');
+      try {
+        const response = await fetch(
+          `/api/users/${userId}/requests/${requestId}/approve`,
+          {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
           }
-        } catch (error) {
-          console.error(error);
+        );
+        if (response.ok) {
+          console.log('Request approved!');
+          location.reload();
+        } else {
+          console.error('Failed to approve request');
         }
-      } else {
-        console.log('approving return');
-        try {
-          const response = await fetch(
-            `/api/users/items/${itemId}/return/approve`,
-            {
-              method: 'PUT',
-              headers: { 'Content-Type': 'application/json' },
-            }
-          );
-          if (response.ok) {
-            console.log(' Return Request approved!');
-            location.reload();
-          } else {
-            console.error('Failed to approve return request');
-          }
-        } catch (error) {
-          console.error(error);
-        }
+      } catch (error) {
+        console.error(error);
       }
     }
   });
@@ -73,6 +48,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
     }
   });
+
   // Delete item button
   document.addEventListener('click', async event => {
     if (event.target.classList.contains('delete-button')) {
@@ -150,7 +126,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     .getElementsByClassName('add-item-form')[0]
     .addEventListener('submit', addItemHandler);
 
-  // Initiating a return
+  // Initiating a return and adding a review
   const returnButtons = document.querySelectorAll('.return-button');
 
   returnButtons.forEach(function (button) {
@@ -248,5 +224,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error(error);
       }
     }
+    console.log(document.getElementsByClassName('review-form'));
   });
 });

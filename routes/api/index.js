@@ -5,8 +5,8 @@ const itemRoutes = require('./item-routes');
 const reviewRoutes = require('./review-routes');
 const borrowRoutes = require('./borrow-routes');
 
-router.use('/users', userRoutes);
 router.use('/items', itemRoutes);
+router.use('/users', userRoutes);
 router.use('/reviews', reviewRoutes);
 router.use('/borrows', borrowRoutes);
 

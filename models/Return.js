@@ -1,22 +1,22 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../db/config');
 
-class Request extends Model {
+class ReturnItem extends Model {
   static associate(models) {
-    Request.belongsTo(models.User, {
-      foreignKey: 'user_id',
-      onDelete: 'CASCADE',
-      as: 'user',
-    });
-    Request.belongsTo(models.Item, {
+    ReturnItem.belongsTo(models.Item, {
       foreignKey: 'item_id',
       onDelete: 'CASCADE',
       as: 'item',
     });
+    ReturnItem.belongsTo(models.User, {
+      foreignKey: 'user_id',
+      onDelete: 'CASCADE',
+      as: 'user',
+    });
   }
 }
 
-Request.init(
+ReturnItem.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -38,9 +38,9 @@ Request.init(
         key: 'id',
       },
     },
-    request_status: {
+    return_status: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
       defaultValue: 'pending',
     },
   },
@@ -48,8 +48,8 @@ Request.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'request',
+    modelName: 'return_item',
   }
 );
 
-module.exports = Request;
+module.exports = ReturnItem;

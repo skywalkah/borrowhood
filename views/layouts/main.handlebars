@@ -30,23 +30,23 @@
   {{{ body }}}
   {{> footer }}
   {{#if isAuthenticated}}
-    <script src='/js/logout.js'></script>
+  <script src='/js/logout.js'></script>
   {{/if}}
   <script>
     (function () {
-      'use strict'
+      'use strict';
       const forms = document.querySelectorAll('.requires-validation');
       Array.from(forms)
         .forEach(function (form) {
           form.addEventListener('submit', function (event) {
             if (!form.checkValidity()) {
-              event.preventDefault()
-              event.stopPropagation()
+              event.preventDefault();
+              event.stopPropagation();
             }
 
-            form.classList.add('was-validated')
-          }, false)
-        })
+            form.classList.add('was-validated');
+          }, false);
+        });
     })()
   </script>
 </body>
